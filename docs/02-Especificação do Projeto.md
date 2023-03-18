@@ -23,23 +23,23 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-01| Permitir que o usuário cadastre sócios | ALTA | 
-|RF-02| permitir que os usuários integrem os pagamentos   | MÉDIA |
-|RF-03|permitir que os usuários visualizem seu histórico de pagamentos, incluindo pagamentos anteriores e futuros| ALTA | 
-|RF-04| permitir que os usuários gerem relatórios de pagamentos|ALTA | 
-|RF-05| O aplicativo deve ser capaz de se integrar com outras plataformas de pagamento | BAIXA|
-|RF-06| O aplicativo deve permitir a gestão de membros do clube, incluindo informações pessoais, status de associação, histórico de pagamentos, entre outros dados | ALTA|
-|RF-07|O aplicativo deve permitir que o clube gerencie a lista de associados, com informações como nome, endereço, telefone, e-mail e outras informações pertinentes.| ALTA|
-|RF-08|O aplicativo deve permitir que o clube controle o acesso de associados e visitantes às dependências do clube| ALTA|
+|RF-01 | Permitir que o usuário cadastre sócios | ALTA | 
+|RF-02 | permitir que os usuários integrem os pagamentos   | MÉDIA |
+|RF-03 | Permitir que os usuários visualizem seu histórico de pagamentos, incluindo pagamentos anteriores e futuros| ALTA | 
+|RF-04 | Permitir que os usuários gerem relatórios de pagamentos|ALTA | 
+|RF-05 | O aplicativo deve ser capaz de se integrar com outras plataformas de pagamento | BAIXA|
+|RF-06 | Permitir a gestão de membros do clube, incluindo informações pessoais, status de associação, histórico de pagamentos, entre outros dados | ALTA|
+|RF-07 | Permitir que o clube gerencie a lista de associados, com informações como nome, endereço, telefone, e-mail e outras informações pertinentes.| ALTA|
+|RF-08 | Permitir que o clube controle o acesso de associados e visitantes às dependências do clube| ALTA|
 
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-01| A aplicação deverá ser responsiva, permitindo a visualização em um browser de forma adequada.  | MÉDIA | 
-|RNF-02| A aplicação deverá ter uma fonte padrão para todas as escritas, com alterações apenas no tamanho.   |  MÉDIA |
-|RNF-03| A aplicação deverá apresentar um layout padrão para todas as telas, podendo ser criado ou utilizado um existente.   |  MÉDIA |
+|RNF-01 | A aplicação deverá ser responsiva, permitindo a visualização em um browser de forma adequada.  | MÉDIA | 
+|RNF-02 | A aplicação deverá ter uma fonte padrão para todas as escritas, com alterações apenas no tamanho.   |  MÉDIA |
+|RNF-03 | A aplicação deverá apresentar um layout padrão para todas as telas, podendo ser criado ou utilizado um existente.   |  MÉDIA |
 
 
 ## Restrições
