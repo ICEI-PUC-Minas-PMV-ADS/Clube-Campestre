@@ -1,23 +1,28 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+`ANÁLISE E DESENVOLVIMENTO DE SISTEMAS`
 
-`DISCIPLINA`
+`Eixo 5 - Projeto: Projeto: Desenvolvimento de um Sistema Sociotécnico Inovador`
 
-`SEMESTRE`
+`Turma 01 - 2023/1`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Gerir um clube com vários sócios e dependentes entrando e saindo diariamente não é uma atividade simples. Através do desenvolvimente de um sistema de gestão dos sócios e dependentes, iremos facilitar esse tipo de controle para o Clube Campestre em Sabinópolis - MG.
+
+A idéia inicial é ter uma base de dados com os sócios e seus dependentes e fazer o controle das inadimplencias, de forma a emitir relátorios dos que estão em dia. Dessa forma teremos um melhor controle durante a entrada desses no clube.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Adriana Neves da Silva Carvalho
+* Carlos Roberto Teixeira
+* Gustavo Figueiredo Costa
+* José Flavio Miranda
+* Rafael Henrique Teixeira
+* Rodrigo Pereira Lacerda
+* Vanessa Aparecida André
 
 ## Orientador
 
-* Nome completo do professor 1
+* Sandra Maria Silveira
 
 ## Instruções de utilização
 
