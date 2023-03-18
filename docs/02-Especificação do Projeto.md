@@ -1,4 +1,4 @@
-# Especificações do Projeto
+_# Especificações do Projeto
 
 <span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
 
@@ -15,9 +15,6 @@ o	Descreva brevemente a arquitetura definida para o projeto e as tecnologias a s
 ![image](https://user-images.githubusercontent.com/81272703/225780698-a0fcf66a-fea8-4e71-907b-7deaecb6dbf1.png)
 
 
-> **Links Úteis**:
-> Disponíveis em material de apoio do projeto
-
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
@@ -26,30 +23,24 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-01| Permitir que o usuário cadastre sócios | ALTA | 
+|RF-02| permitir que os usuários integrem os pagamentos   | MÉDIA |
+|RF-03|permitir que os usuários visualizem seu histórico de pagamentos, incluindo pagamentos anteriores e futuros| ALTA | 
+|RF-04| permitir que os usuários gerem relatórios de pagamentos|ALTA | 
+|RF-05| O aplicativo deve ser capaz de se integrar com outras plataformas de pagamento | BAIXA|
+|RF-06| O aplicativo deve permitir a gestão de membros do clube, incluindo informações pessoais, status de associação, histórico de pagamentos, entre outros dados | ALTA|
+|RF-07|O aplicativo deve permitir que o clube gerencie a lista de associados, com informações como nome, endereço, telefone, e-mail e outras informações pertinentes.| ALTA|
+|RF-08|O aplicativo deve permitir que o clube controle o acesso de associados e visitantes às dependências do clube| ALTA|
+
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-01| A aplicação deverá ser responsiva, permitindo a visualização em um browser de forma adequada.  | MÉDIA | 
+|RNF-02| A aplicação deverá ter uma fonte padrão para todas as escritas, com alterações apenas no tamanho.   |  MÉDIA |
+|RNF-03| A aplicação deverá apresentar um layout padrão para todas as telas, podendo ser criado ou utilizado um existente.   |  MÉDIA |
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
 
 ## Restrições
 
@@ -58,13 +49,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|02| A equipe não pode subcontratar o desenvolvimento do trabalho |
 
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Diagrama de Casos de Uso
 
@@ -92,3 +78,4 @@ A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
 ## Projeto da Base de Dados
 
 O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
+_
