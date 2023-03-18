@@ -20,17 +20,22 @@ A tecnologia pode aprimorar as operações e os serviços de centros recreativos
 
 Centros recreativos podem utilizar sistemas que para rastrear taxas de associação, monitorar o uso e automatizar processos de cobrança para reduzir o risco de contas não pagas. Baseado nisso, o desenvolvimento de uma solução que otimize a gestão dos sócios, incluindo: controle de cadastros e controle de pagamentos, otimizará o tempo despendido e a reduzirá o risco para erros. 
 
+
+E um desafio desenvolver esse projeto , onde vamos poder criar um sistema  com tecnologias moderna para esse cliente , onde que atualmente o clube faz o seus controles com blocos de notas e carimbos. 
+
+
 ## Relação com a Extensão Universitária
 
-Desenvolver um Sitema de controle de um clube que tem um impacto na cidade onde esta sediado na cidade de sabatinópolis - MG . 
-E um desafio desenvolver esse projeto , onde vamos poder criar um sistema  com tecnologias moderna para esse cliente , onde que atualmente o clube faz o seus controles 
-com blocos de notas e carimbos. 
+O desenvolvimento não permite uma nova ciência. mas uma nova cultura. Os avanços e as inovações tecnológicos ocasionam velozes mudanças nos estilos de vida da sociedade nos itinerários educativos e de aprendizagem, nas invenções e qualificações educacionais. Além de simples mudanças, essa chegada tecnológica tem se caraterizado como um fenômeno que muitas vezes impõe diferentes hábitos e comportamentos na sociedade moderna, convertendo a relação do ser humano com o outro, com o meio ambiente e consigo mesmo.
+
+A extensão permite que a universidade se envolva com a comunidade, ofereça serviços e ajude a resolver problemas locais. Fornceem também, a chance dos estudantes aplicarem seus conhecimentos e habilidades em um contexto do mundo real e aprenderem com a experiência prática. A extensão universitária envolve a participação de estudantes e professores em projetos e programas que envolvem a comunidade. Esses projetos podem incluir atividades como prestação de serviços, educação comunitária, desenvolvimento econômico e social, entre outros.
+
 
 **Relacionar a situação-problema da organização com o impacto social esperado com a implantação do sistema sociotécnico.**
 
 ## Descrição do Parceiro
 
-E um clube de lazer onde tem socios que pagam mensalmente um valor para ter uma cota na participação do clube e aproveitar o que o clube oferece.
+O Clube Campestre de lazer está presente Sabinopolis em Minar Gerais. Para acessá-lo, os socios pagam mensalmente uma taxa por uma cota de participação do clube e assim, desfrutar dos beneficios que o clube oferece.
 
 
-**Apresente uma descrição resumida sobre a organização onde o projeto será desenvolvido para que possa ser compreendido o cenário sistema sociotécnico.**
+
