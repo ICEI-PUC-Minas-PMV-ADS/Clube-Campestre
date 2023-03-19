@@ -54,28 +54,65 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Diagrama de Casos de Uso
 
-O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
+|ATOR| DESCRIÇÃO                                            |
+|--|-------------------------------------------------------|
+|Administrador do Clube| Pessoa responsável por administrar o sistema e fazer a gestão dos usuários. |
+|Sistema| Disponibiliza funcionalidades e dados para serem manipulados pelo administrador do clube.|
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
+|CASO DE USO| DESCRIÇÃO | RF |
+|--|-------------------------------------------------------|----------------------|
+|Visualizar notícias e informações úteis na HomePage | Na homepage da aplicação deve conter algumas notícias e informações úteis para o usuário| RF-008 |
+|Realizar cadastro de usuário | O usuário deve conseguir realizar um cadastro na aplicação | RF-002 |
+|Efetuar login na aplicação | O usuário deve conseguir realizar um login na aplicação com suas credenciais cadastradas | RF-001 |
+|Alterar a senha | O usuário deve conseguir alterar a sua senha | RF-001 |
+|O usuário deve conseguir alterar a sua senha | A aplicação deve permitir ao usuário solicitar a coleta de materiais na sua residência| RF-003 |
+|Buscar requisitos de coleta |A aplicação deve buscar quais são os requisitos para que a coleta seja realizada diretamente na residência do usuário | RF-006 |
+|Solicitar Descarte de materiais | A aplicação deve permitir ao usuário solicitar a realização de descarte de materiais indo até um ecoponto selecionado | RF-003|
+|Buscar materiais possíveis de descarte | A aplicação deve buscar quais são os materiais permitidos para o descarte em no ecoponto selecionado pelo usuário Buscar materiais possíveis de descarte | RF-006 |
+|Visualizar os pontos de coleta mais próximos  | A aplicação deverá mostrar quais são os ecopontos que permitem a coleta/descarte mais próximos dele | RF-004| 
+|Acompanhar a solicitação de coleta | Em caso de coleta de materiais na residência, o usuário deve conseguir acompanhar o status da sua solicitação| RF-005 |
+|Realizar a baixa dos materiais coletados  | O Ecoponto deverá conseguir realizar a baixa nas solicitações de descarte e coleta informando que os materiais foram devidamente coletados  | RF-011|
 
-> **Links Úteis**:
-> - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
-> - [Como Criar Diagrama de Caso de Uso: Tutorial Passo a Passo](https://gitmind.com/pt/fazer-diagrama-de-caso-uso.html/)
-> - [Lucidchart](https://www.lucidchart.com/)
-> - [Astah](https://astah.net/)
-> - [Diagrams](https://app.diagrams.net/)
+|RELACIONAMENTO| DESCRIÇÃO                                            |
+|--|-------------------------------------------------------|
+|INCLUSÃO| É necessário fazer o login na aplicação antes de realizar os casos de uso: “Solicitar Coleta de Materiais”, “Solicitar Descarte de Materiais” e “Realizar a baixa dos materiais coletados” |
+||Para solicitar coleta de materiais é necessário que o banco de dados busque quais são os requisitos de coleta |
+||Para solicitar descarte de materiais é necessário que o banco de dados busque quais são os requisitos de descarte | 
+|EXTENSÃO| Caso o usuário ainda não tenha cadastro, será necessário fazê-lo antes de fazer login na aplicação |
+||Caso o usuário tenha esquecido sua senha, será necessário alterá-la antes de fazer login na aplicação  |
+||Caso o usuário deseje saber onde descartar seus materiais, é possível visualizar os pontos de coleta mais próximos |
 
-## Modelo ER (Projeto Conceitual)
+### Representação Visual
+![Figura 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Casos%20de%20Uso.png)
 
-O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
+*Figura 1 – Diagrama de Casos de Uso* 
+# Arquitetura da Solução
 
-Sugestão de ferramentas para geração deste artefato: LucidChart e Draw.io.
+<span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>
 
-A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
+Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
 
-> - [Como fazer um diagrama entidade relacionamento | Lucidchart](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
+## Diagrama de Classes
+
+O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória, conforme *Figura xx*, demonstrada a seguir:
+
+![Figura XX](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Classes.png)
+
+*Figura XX – Diagrama de Classes*  
+
+## Modelo ER
+
+O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa, conforme pode ser visualizado na *Figura XX*, apresentada logo abaixo:
+
+![Figura XX](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Modelo%20de%20Entidades%20e%20Relacionamentos.png)
+
+*Figura XX – Modelo de Entidades e Relacionamentos*  
 
 ## Projeto da Base de Dados
 
-O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
-_
+O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chaves primárias e estrangeiras. O ER da aplicação em desenvolvimento corresponde à *Figura XX*, representada a seguir:
+ 
+![Figura XX](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Esquema%20Relacional.png)
+
+*Figura XX – Esquema Relacional*  
+
