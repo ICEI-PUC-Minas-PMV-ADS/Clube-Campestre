@@ -4,16 +4,15 @@
 
 Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
 
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
-
 ## Arquitetura e Tecnologias
 
 o	Descreva brevemente a arquitetura definida para o projeto e as tecnologias a serem utilizadas. Sugere-se a criação de um diagrama de componentes da solução.
 
 ## Project Model Canvas
 
-![image](https://user-images.githubusercontent.com/81272703/225780698-a0fcf66a-fea8-4e71-907b-7deaecb6dbf1.png)
+![Figura 1](https://user-images.githubusercontent.com/81272703/225780698-a0fcf66a-fea8-4e71-907b-7deaecb6dbf1.png)
 
+*Figura 1 – Project Model Canvas*
 
 ## Requisitos
 
@@ -57,6 +56,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Diagrama de Casos de Uso
 
+O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. A representação visual do diagrama segue conforme a Figura 2.
+
 |ATOR| DESCRIÇÃO                                            |
 |--|-------------------------------------------------------|
 |Administrador do Clube| Pessoa responsável por administrar o sistema e fazer a gestão dos usuários. |
@@ -85,16 +86,17 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 
 ### Representação Visual
-![Figura 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Casos%20de%20Uso.png)
+![Figura 2](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Casos%20de%20Uso.png)
 
-*Figura 1 – Diagrama de Casos de Uso*
+*Figura 2 – Diagrama de Casos de Uso*
 
 ## Diagrama de Fluxo
 
-Conforme pode ser visto, a Figura X mostra o diagrama de fluxo de interação do usuário pelas telas do sistema. Cada uma das telas deste fluxo é detalhada na seção de Wireframes que será desenvolvido.
+Conforme pode ser visto, a *Figura 3* mostra o diagrama de fluxo de interação do usuário pelas telas do sistema. Cada uma das telas deste fluxo é detalhada na seção de Wireframes que será desenvolvido. 
 
-![Figura X](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/blob/d615943f5be0764f0f036b2dd85dbdeb0e184bdb/docs/img/Fluxograma%20de%20Usu%C3%A1rio.png)
+![Figura 3](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/blob/d615943f5be0764f0f036b2dd85dbdeb0e184bdb/docs/img/Fluxograma%20de%20Usu%C3%A1rio.png)
 
+*Figura 3 – Diagrama de Casos de Uso*
 
 # Arquitetura da Solução
 
@@ -104,25 +106,25 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 ## Diagrama de Classes
 
-O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória, conforme *Figura xx*, demonstrada a seguir:
+O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória, conforme *Figura 4*, demonstrada a seguir:
 
-![Figura XX](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Classes.png)
+![Figura 4](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Classes.png)
 
-*Figura XX – Diagrama de Classes*  
+*Figura 4 – Diagrama de Classes*  
 
 ## Modelo ER
 
-O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa, conforme pode ser visualizado na *Figura XX*, apresentada logo abaixo:
+O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa, conforme pode ser visualizado na *Figura 5*, apresentada logo abaixo:
 
-![Figura XX](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Modelo%20de%20Entidades%20e%20Relacionamentos.png)
+![Figura 5X](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Modelo%20de%20Entidades%20e%20Relacionamentos.png)
 
-*Figura XX – Modelo de Entidades e Relacionamentos*  
+*Figura 5 – Modelo de Entidades e Relacionamentos*  
 
 ## Projeto da Base de Dados
 
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chaves primárias e estrangeiras. O ER da aplicação em desenvolvimento corresponde à *Figura XX*, representada a seguir:
+O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chaves primárias e estrangeiras. O ER da aplicação em desenvolvimento corresponde à *Figura 6*, representada a seguir:
  
 ![Figura XX](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Esquema%20Relacional.png)
 
-*Figura XX – Esquema Relacional*  
+*Figura 6 – Esquema Relacional*  
 
