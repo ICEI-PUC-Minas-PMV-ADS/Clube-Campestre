@@ -78,12 +78,11 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |RELACIONAMENTO| DESCRIÇÃO                                            |
 |--|-------------------------------------------------------|
-|INCLUSÃO| É necessário fazer o login na aplicação antes de realizar os casos de uso: “Solicitar Coleta de Materiais”, “Solicitar Descarte de Materiais” e “Realizar a baixa dos materiais coletados” |
-||Para solicitar coleta de materiais é necessário que o banco de dados busque quais são os requisitos de coleta |
-||Para solicitar descarte de materiais é necessário que o banco de dados busque quais são os requisitos de descarte | 
-|EXTENSÃO| Caso o usuário ainda não tenha cadastro, será necessário fazê-lo antes de fazer login na aplicação |
-||Caso o usuário tenha esquecido sua senha, será necessário alterá-la antes de fazer login na aplicação  |
-||Caso o usuário deseje saber onde descartar seus materiais, é possível visualizar os pontos de coleta mais próximos |
+|INCLUSÃO| É necessário que o sistema apresente a lista de sócios para permitir que  o administrador execute a ação "Filtrar lista de Sócios" |
+||É necessário que o sistema apresente a lista de sócios para permitir que  o administrador execute a ação "Ordenar lista de Sócios" |
+|EXTENSÃO| Caso o usuário tenha esquecido sua senha, será necessário alterá-la antes de fazer login na aplicação |
+||Caso o sócio a ser cadastrado possua dependentes ou deseje retirar algum de seus já existentes, será necessário que administrador execute a ação "Adicionar/Remover Dependentes"|
+
 
 ### Representação Visual
 ![Figura 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Casos%20de%20Uso.png)
