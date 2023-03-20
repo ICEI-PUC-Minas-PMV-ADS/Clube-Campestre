@@ -1,4 +1,4 @@
-_# Especificações do Projeto
+# Especificações do Projeto
 
 <span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
 
@@ -23,14 +23,17 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-01 | Permitir que o usuário cadastre sócios | ALTA | 
-|RF-02 | permitir que os usuários integrem os pagamentos   | MÉDIA |
-|RF-03 | Permitir que os usuários visualizem seu histórico de pagamentos, incluindo pagamentos anteriores e futuros| ALTA | 
-|RF-04 | Permitir que os usuários gerem relatórios de pagamentos|ALTA | 
-|RF-05 | O aplicativo deve ser capaz de se integrar com outras plataformas de pagamento | BAIXA|
-|RF-06 | Permitir a gestão de membros do clube, incluindo informações pessoais, status de associação, histórico de pagamentos, entre outros dados | ALTA|
-|RF-07 | Permitir que o clube gerencie a lista de associados, com informações como nome, endereço, telefone, e-mail e outras informações pertinentes.| ALTA|
-|RF-08 | Permitir que o clube controle o acesso de associados e visitantes às dependências do clube| ALTA|
+|RF-01 | Permitir que o administrador faça login na aplicação | ALTA | 
+|RF-02 | Permitir que o administrador altere a sua senha | BAIXA | 
+|RF-03 | Permitir que o administrador cadastre, edite e busque sócios | ALTA | 
+|RF-04 | Permitir que o administrador adicione dependentes ao cadastro dos sócios | MÉDIA |
+|RF-05 | Permitir que o administrador crie parcelas para pagamento dos sócios |ALTA |
+|RF-06 | Permitir que o administrador visualize uma lista com todos as parcelas em aberto de cada sócio | ALTA | 
+|RF-07 | Permitir que o administrador retire um extrato de pagamento por sócios| MÉDIA | 
+|RF-08 | Permitir que o administrador visualize uma lista com todos os sócios do clube | ALTA | 
+|RF-09 | Permitir que o administrador faça filtros variados na lista de sócios | MÉDIA | 
+|RF-10 | Permitir que o administrador ordene a lista de sócios por nº da cota e nome | BAIXA |
+|RF-11 | Permitir que o administrador gere um relatório de não inadimplentes para entrada no clube | BAIXA |
 
 
 ### Requisitos não Funcionais
@@ -61,17 +64,17 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |CASO DE USO| DESCRIÇÃO | RF |
 |--|-------------------------------------------------------|----------------------|
-|Visualizar notícias e informações úteis na HomePage | Na homepage da aplicação deve conter algumas notícias e informações úteis para o usuário| RF-008 |
-|Realizar cadastro de usuário | O usuário deve conseguir realizar um cadastro na aplicação | RF-002 |
-|Efetuar login na aplicação | O usuário deve conseguir realizar um login na aplicação com suas credenciais cadastradas | RF-001 |
-|Alterar a senha | O usuário deve conseguir alterar a sua senha | RF-001 |
-|O usuário deve conseguir alterar a sua senha | A aplicação deve permitir ao usuário solicitar a coleta de materiais na sua residência| RF-003 |
-|Buscar requisitos de coleta |A aplicação deve buscar quais são os requisitos para que a coleta seja realizada diretamente na residência do usuário | RF-006 |
-|Solicitar Descarte de materiais | A aplicação deve permitir ao usuário solicitar a realização de descarte de materiais indo até um ecoponto selecionado | RF-003|
-|Buscar materiais possíveis de descarte | A aplicação deve buscar quais são os materiais permitidos para o descarte em no ecoponto selecionado pelo usuário Buscar materiais possíveis de descarte | RF-006 |
-|Visualizar os pontos de coleta mais próximos  | A aplicação deverá mostrar quais são os ecopontos que permitem a coleta/descarte mais próximos dele | RF-004| 
-|Acompanhar a solicitação de coleta | Em caso de coleta de materiais na residência, o usuário deve conseguir acompanhar o status da sua solicitação| RF-005 |
-|Realizar a baixa dos materiais coletados  | O Ecoponto deverá conseguir realizar a baixa nas solicitações de descarte e coleta informando que os materiais foram devidamente coletados  | RF-011|
+|Efetuar login na aplicação | O administrador deve conseguir realizar um login na aplicação com suas credenciais cadastradas | RF-01 |
+|Alterar a senha | O administrador deve conseguir alterar a sua senha | RF-02 |
+|Buscar/Cadastrar/Editar Sócios| O administrador deve conseguir buscar e editar cadastros de sócios existentes na base e criar novos| RF-03 |
+|Adicionar/Remover Dependentes| O administrador deve conseguir adicionar e remover dependentes aos sócios existentes| RF-04 |
+|Criar Parcelas| O administrador deve conseguir criar novas parcelas para pagamento| RF-05 |
+|Listar parcelas em Aberto por Sócio| O sistema deve listar na seção "Financeiro" todas as parcelas em aberto do sócio| RF-06 |
+|Gerar Extrato de Pagamentos do Sócio| O administrador deve conseguir gerar um extrato de pagamentos do sócio| RF-07 |
+|Apresentar lista de Sócios| O sistema deve apresentar uma lista com todos os sócios cadastrados na base| RF-08 |
+|Filtrar lista de Sócios| O administrador deve conseguir fazer filtros por nº da Cota, Condição ou Situação Financeira do Sócio na lista| RF-09 |
+|Ordenar lista de Sócios| O administrador deve conseguir ordenar a lista por nº da Cota ou Nome| RF-10 |
+|Gerar relatório de não inadimplentes| O administrador deve conseguir gerar um relatório com os usuários não inadimplentes| RF-11 |
 
 |RELACIONAMENTO| DESCRIÇÃO                                            |
 |--|-------------------------------------------------------|
@@ -85,7 +88,15 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 ### Representação Visual
 ![Figura 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e5-proj-ext-t1-clube-campestre/blob/50bcf7312c655378e5e7400df0a7512694f76141/docs/img/Diagrama%20de%20Casos%20de%20Uso.png)
 
-*Figura 1 – Diagrama de Casos de Uso* 
+*Figura 1 – Diagrama de Casos de Uso*
+
+## Diagrama de Fluxo
+
+Conforme pode ser visto, a Figura X mostra o diagrama de fluxo de interação do usuário pelas telas do sistema. Cada uma das telas deste fluxo é detalhada na seção de Wireframes que será desenvolvido.
+
+![Figura X](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/blob/d615943f5be0764f0f036b2dd85dbdeb0e184bdb/docs/img/Fluxograma%20de%20Usu%C3%A1rio.png)
+
+
 # Arquitetura da Solução
 
 <span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>
