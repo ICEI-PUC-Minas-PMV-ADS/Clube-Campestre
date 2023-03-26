@@ -28,11 +28,11 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-04 | Permitir que o administrador adicione dependentes ao cadastro dos sócios | MÉDIA |
 |RF-05 | Permitir que o administrador crie parcelas para pagamento dos sócios |ALTA |
 |RF-06 | Permitir que o administrador visualize uma lista com todos as parcelas em aberto de cada sócio | ALTA | 
-|RF-07 | Permitir que o administrador retire um extrato de pagamento por sócios| MÉDIA | 
+|RF-07 | Permitir que o administrador retire um extrato de pagamento por sócios| BAIXA | 
 |RF-08 | Permitir que o administrador visualize uma lista com todos os sócios do clube | ALTA | 
 |RF-09 | Permitir que o administrador faça filtros variados na lista de sócios | MÉDIA | 
 |RF-10 | Permitir que o administrador ordene a lista de sócios por nº da cota e nome | BAIXA |
-|RF-11 | Permitir que o administrador gere um relatório de não inadimplentes para entrada no clube | BAIXA |
+|RF-11 | Permitir que o administrador gere um relatório de não inadimplentes para entrada no clube | MÉDIA |
 
 
 ### Requisitos não Funcionais
