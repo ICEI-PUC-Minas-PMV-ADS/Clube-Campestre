@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
 namespace ClubeCampestre_WebAPI.Models
 {
+    [Table("socios")]
     public class Socio
     {
         [Key]
@@ -30,9 +32,11 @@ namespace ClubeCampestre_WebAPI.Models
         [Required]
         public DateTime DataDeAssociacao { get; set; }
         [Required]
-        public CondicaoDoSocio CondicaoDoSocio { get; set; }
+        public CondicaoDoSocio Condicao { get; set; }
         [Required]
         public SituacaoFinanceira SituacaoFinanceira { get; set; }
+
+        public ICollection<Mensalidade> Mensalidades { get; set; }
 
 
     }
