@@ -1,5 +1,8 @@
-﻿namespace ClubeCampestre_WebAPI.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ClubeCampestre_WebAPI.Models
 {
+    [Table("mensalidades")]
     public class Mensalidade
     {
         public int Id { get; set; }
