@@ -41,6 +41,8 @@ namespace ClubeCampestre_WebAPI.Models
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
 
+        public ICollection<Dependente> Dependentes { get; set; }
+
         public ICollection<Mensalidade> Mensalidades { get; set; }
 
 

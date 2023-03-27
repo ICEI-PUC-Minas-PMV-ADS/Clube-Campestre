@@ -4,6 +4,7 @@ using ClubeCampestre_WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClubeCampestre_WebAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230327031536_M04")]
+    partial class M04
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +27,11 @@ namespace ClubeCampestre_WebAPI.Migrations
 
             modelBuilder.Entity("ClubeCampestre_WebAPI.Models.Dependente", b =>
                 {
-                    b.Property<int>("SocioId")
+                    b.Property<int>("DependenteId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("DependenteId")                        
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DependenteId"));
 
                     b.Property<DateTime>("DataDeNascimento")
                         .HasColumnType("datetime2");
@@ -38,14 +41,16 @@ namespace ClubeCampestre_WebAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Parentesco")
-                        .HasColumnType("int");                    
+                        .HasColumnType("int");
 
-                    b.HasKey("SocioId", "DependenteId");
+                    b.Property<int>("SocioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DependenteId");
 
                     b.HasIndex("SocioId");
 
                     b.ToTable("dependentes");
-                    
                 });
 
             modelBuilder.Entity("ClubeCampestre_WebAPI.Models.Mensalidade", b =>
