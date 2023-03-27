@@ -22,6 +22,8 @@ namespace ClubeCampestre_WebAPI.Models
         public string Logradouro { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
+        [StringLength(2)]
+        public string Uf { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }
         [Required]
@@ -41,24 +43,17 @@ namespace ClubeCampestre_WebAPI.Models
 
     }
     public enum CondicaoDoSocio
-    {
-        [Display(Name = "Fundador")]
-        Fundador,
-        [Display(Name = "Proprietario")]
-        Proprietario,
-        [Display(Name = "Temporario")]
-        Temporario,
-        [Display(Name = "Inativo")]
+    {        
+        Fundador,        
+        Proprietario,        
+        Temporario,        
         Inativo
     }
 
     public enum SituacaoFinanceira
     {
-        [Display(Name = "Regular")]
-        Regular,
-        [Display(Name = "Debito")]
-        Debito,
-        [Display(Name = "Inadimplente")]
+        Regular,        
+        Debito,        
         Inadimplente
     }
 }
