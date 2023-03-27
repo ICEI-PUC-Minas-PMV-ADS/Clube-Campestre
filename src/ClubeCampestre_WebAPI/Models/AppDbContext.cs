@@ -9,5 +9,6 @@ namespace ClubeCampestre_WebAPI.Models
         }
         public DbSet<Socio> Socios { get; set; }
         public DbSet<Mensalidade> Mensalidades { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }

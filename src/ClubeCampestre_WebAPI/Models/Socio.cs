@@ -35,6 +35,9 @@ namespace ClubeCampestre_WebAPI.Models
         public CondicaoDoSocio Condicao { get; set; }
         [Required]
         public SituacaoFinanceira SituacaoFinanceira { get; set; }
+        [Required]
+        public int UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
 
         public ICollection<Mensalidade> Mensalidades { get; set; }
 
