@@ -6,7 +6,12 @@ Definição do problema e ideia de solução a partir da perspectiva do usuário
 
 ## Arquitetura e Tecnologias
 
-o	Descreva brevemente a arquitetura definida para o projeto e as tecnologias a serem utilizadas. Sugere-se a criação de um diagrama de componentes da solução.
+A arquitetura escolhida para a aplicação é a descentralizada de software distribuído. Será utilizada a linguagem de programação C# em todo o Backend da aplicação, constituido em uma API com rotas que atendam os requisitos do negócio. O armazenamento dos dados deve ser feito em banco de dados relacional Microsoft SQL Server e as telas do FrontEnd utilizam HTML, CSS, JS e ReactJS. Os Wireframes e Design de Interface são feitos por meio do Figma. Abaixo segue o Diagrama de arquitetura de relacionamento entre as partes do software:
+
+![Figura 0](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/blob/main/docs/img/ArquiteturadeSoftware.png)
+
+*Figura 0 – Arquitetura de Software Distribuido*
+
 
 ## Project Model Canvas
 
