@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ClubeCampestre_WebAPI.props" />
+</Project>
