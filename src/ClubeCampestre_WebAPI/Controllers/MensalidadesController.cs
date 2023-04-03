@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using ClubeCampestre_WebAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-
+ 
 
 namespace ClubeCampestre_WebAPI.Controllers
 {
@@ -34,18 +34,41 @@ namespace ClubeCampestre_WebAPI.Controllers
             _context.Mensalidades.Add(mensalidade);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("CriarMensalidade", new { id = mensalidade.Id }, mensalidade);
+            return CreatedAtAction("VisualziarMensalidade", new { id = mensalidade.Id }, mensalidade);
         }
 
        [HttpGet("{id}")]
-        public async Task<ActionResult> ListarMensalidadePorId(int id) {
+        public async Task<ActionResult> VisualizarMensalidade (int id) {
             var mensalidade = await _context.Mensalidades
-            .FirstOrDefaultAsync(s => s.Id == id);
+                .Include(t => t.MesAnoReferencia)
+                .Include(t => t.DataDeVencimento)
+                .Include(t => t.Valor)
+                .Include(t => t.DataDePagamento)
+                .Include(t => t.ValorPago)
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (mensalidade == null) return NotFound();
 
             return Ok(mensalidade);
         }
+
+[HttpPut("{id}")]
+        public async Task<ActionResult> Editar(int id, Mensalidade model)
+        {
+
+            if (id != model.Id) return BadRequest();
+
+            var modeloDb = await _context.Mensalidades.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (modeloDb == null) return NotFound();
+
+            _context.Mensalidades.Update(model);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
 
     }
 }
