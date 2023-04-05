@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src"
+    ""
   ],
+<<<<<<< HEAD
+=======
+  "SelectedNode": "\\ClubeCampestre_WebAPI.sln",
+>>>>>>> faefa98a1e1f4fb54282fefda5dcaf6f7577f891
   "PreviewInSolutionExplorer": false
 }

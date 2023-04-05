@@ -18,10 +18,10 @@ A tecnologia pode aprimorar as operações e os serviços de centros recreativos
 
 ## Justificativa
 
-Centros recreativos podem utilizar sistemas que para rastrear taxas de associação, monitorar o uso e automatizar processos de cobrança para reduzir o risco de contas não pagas. Baseado nisso, o desenvolvimento de uma solução que otimize a gestão dos sócios, incluindo: controle de cadastros e controle de pagamentos, otimizará o tempo despendido e a reduzirá o risco para erros. 
+Centros recreativos podem utilizar sistemas que para rastrear taxas de associação, monitorar o uso e automatizar processos de cobrança para reduzir o risco de contas não pagas. Baseado nisso, o desenvolvimento de uma solução que otimize a gestão dos sócios, incluindo: controle de cadastros e controle de pagamentos, otimizará o tempo despendido e reduzirá o risco de erros. 
 
 
-E um desafio desenvolver esse projeto , onde vamos poder criar um sistema  com tecnologias moderna para esse cliente , onde que atualmente o clube faz o seus controles com blocos de notas e carimbos. 
+É um desafio desenvolver esse projeto , onde vamos poder criar um sistema com tecnologias modernas para esse cliente, que atualmente faz o seus controles com blocos de notas e carimbos. 
 
 
 ## Relação com a Extensão Universitária
@@ -30,8 +30,7 @@ O desenvolvimento não permite uma nova ciência. mas uma nova cultura. Os avan�
 
 A extensão permite que a universidade se envolva com a comunidade, ofereça serviços e ajude a resolver problemas locais. Fornceem também, a chance dos estudantes aplicarem seus conhecimentos e habilidades em um contexto do mundo real e aprenderem com a experiência prática. A extensão universitária envolve a participação de estudantes e professores em projetos e programas que envolvem a comunidade. Esses projetos podem incluir atividades como prestação de serviços, educação comunitária, desenvolvimento econômico e social, entre outros.
 
-
-**Relacionar a situação-problema da organização com o impacto social esperado com a implantação do sistema sociotécnico.**
+A implementação da solução pode abrir portas para atrair outros clubes que também sofram dos mesmos problemas de gestão, se interessando pela proposta tecnológica como meio de otimizar seus processos gerenciais, criando uma rede amplamente extensível de clubes parceiros que utilizem a plataforma.
 
 ## Descrição do Parceiro
 
