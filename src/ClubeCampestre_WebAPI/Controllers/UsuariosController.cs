@@ -22,12 +22,13 @@ namespace ClubeCampestre_WebAPI.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> AdicionarUsuario(Usuario usuario) {
+        public async Task<ActionResult> AdicionarUsuario(Usuario usuario)
+        {
 
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("CriarUsuario", new { id = usuario.Id }, usuario);
+            return CreatedAtAction("ListarUsuarioPorId", new { id = usuario.Id }, usuario);
         }
 
         [HttpGet("{id}")]

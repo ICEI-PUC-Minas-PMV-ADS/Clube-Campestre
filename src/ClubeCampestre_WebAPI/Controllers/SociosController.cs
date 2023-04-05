@@ -19,7 +19,8 @@ namespace ClubeCampestre_WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> AdicionarSocio(Socio socio)
         {
-            var cotaJaExiste = ListarSocioPorCota(socio.Cota) != null;
+            var cotaJaExiste = await _context.Socios.FirstOrDefaultAsync(s => s.Cota == socio.Cota) != null;
+
             if (cotaJaExiste)
                 return StatusCode(StatusCodes.Status405MethodNotAllowed);
 
