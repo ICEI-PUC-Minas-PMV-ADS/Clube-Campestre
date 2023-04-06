@@ -1,37 +1,20 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
+    "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
+    "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
         "projectName": "ClubeCampestre_WebAPI",
-        "projectPath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
-        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "packagesPath": "C:\\Users\\carro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "C:\\Users\\ADRIANA\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\ADRIANA\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\ADRIANA\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
-        "projectName": "ClubeCampestre_WebAPI",
-        "projectPath": "C:\\Users\\ADRIANA\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
-        "packagesPath": "C:\\Users\\ADRIANA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADRIANA\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\ADRIANA\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> faefa98a1e1f4fb54282fefda5dcaf6f7577f891
+          "C:\\Users\\carro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.4, )"
@@ -95,11 +86,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> faefa98a1e1f4fb54282fefda5dcaf6f7577f891
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

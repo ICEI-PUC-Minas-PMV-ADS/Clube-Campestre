@@ -22,13 +22,22 @@ namespace ClubeCampestre_WebAPI.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> AdicionarUsuario(Usuario usuario)
-        {
+        public async Task<ActionResult> AdicionarUsuario(UsuarioDto usuario) { 
 
-            _context.Usuarios.Add(usuario);
+            Usuario novo = new Usuario() {
+
+                CodigoUsuario = usuario.CodigoUsuario,
+                Nome = usuario.Nome,
+                Email = usuario.Email,
+                CPF = usuario.CPF,
+                Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha),
+                TipoUsuario = usuario.TipoUsuario
+            };
+
+            _context.Usuarios.Add(novo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("ListarUsuarioPorId", new { id = usuario.Id }, usuario);
+            return CreatedAtAction("ListarUsuarioPorId", new { id = novo.Id }, novo);
         }
 
         [HttpGet("{id}")]
@@ -42,7 +51,7 @@ namespace ClubeCampestre_WebAPI.Controllers {
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> EditarUsuario(int id, Usuario usuario) {
+        public async Task<ActionResult> EditarUsuario(int id, UsuarioDto usuario) {
 
             if (id != usuario.Id) return BadRequest();
 
@@ -51,7 +60,14 @@ namespace ClubeCampestre_WebAPI.Controllers {
 
             if (modeloDb == null) return NotFound();
 
-            _context.Usuarios.Update(usuario);
+            modeloDb.CodigoUsuario = usuario.CodigoUsuario;
+            modeloDb.Nome = usuario.Nome;
+            modeloDb.Email = usuario.Email;
+            modeloDb.CPF = usuario.CPF;
+            modeloDb.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
+            modeloDb.TipoUsuario = usuario.TipoUsuario;
+
+            _context.Usuarios.Update(modeloDb);
             await _context.SaveChangesAsync();
 
             return NoContent();
