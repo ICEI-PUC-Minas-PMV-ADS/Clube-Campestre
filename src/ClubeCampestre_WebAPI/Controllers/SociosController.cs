@@ -35,6 +35,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         public async Task<ActionResult> ListarSociosAtivos()
         {
             var socios = await _context.Socios
+            .Include(t => t.Dependentes)
             .Where(s => s.Condicao != CondicaoDoSocio.Inativo)
             .ToListAsync();
 
