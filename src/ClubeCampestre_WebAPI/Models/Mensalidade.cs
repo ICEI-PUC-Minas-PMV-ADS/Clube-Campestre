@@ -2,7 +2,7 @@
 
 namespace ClubeCampestre_WebAPI.Models
 {
-    [Table("mensalidade")]
+    [Table("mensalidades")]
     public class Mensalidade
     {
         public int Id { get; set; }

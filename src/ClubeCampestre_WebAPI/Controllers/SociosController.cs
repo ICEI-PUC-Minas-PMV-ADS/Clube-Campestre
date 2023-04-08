@@ -36,6 +36,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         {
             var socios = await _context.Socios
             .Include(t => t.Dependentes)
+            .Include(m => m.Mensalidades)
             .Where(s => s.Condicao != CondicaoDoSocio.Inativo)
             .ToListAsync();
 

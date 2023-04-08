@@ -23,7 +23,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> ListarMensalidade() {
+        public async Task<ActionResult> ListarMensalidades() {
             var mensalidade = await _context.Mensalidades.ToListAsync();
 
             return Ok(mensalidade);
@@ -34,18 +34,13 @@ namespace ClubeCampestre_WebAPI.Controllers
             _context.Mensalidades.Add(mensalidade);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("VisualziarMensalidade", new { id = mensalidade.Id }, mensalidade);
+            return CreatedAtAction("VisualizarMensalidade", new { id = mensalidade.Id }, mensalidade);
         }
 
        [HttpGet("{id}")]
         public async Task<ActionResult> VisualizarMensalidade (int id) {
             var mensalidade = await _context.Mensalidades
-                .Include(t => t.MesAnoReferencia)
-                .Include(t => t.DataDeVencimento)
-                .Include(t => t.Valor)
-                .Include(t => t.DataDePagamento)
-                .Include(t => t.ValorPago)
-                .FirstOrDefaultAsync(c => c.Id == id);
+               .FirstOrDefaultAsync(c => c.Id == id);
 
             if (mensalidade == null) return NotFound();
 
@@ -53,7 +48,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
 [HttpPut("{id}")]
-        public async Task<ActionResult> Editar(int id, Mensalidade model)
+        public async Task<ActionResult> MarcarPagamento(int id, Mensalidade model)
         {
 
             if (id != model.Id) return BadRequest();
