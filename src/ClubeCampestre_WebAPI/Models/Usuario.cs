@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ClubeCampestre_WebAPI.Models {
 
@@ -17,6 +18,7 @@ namespace ClubeCampestre_WebAPI.Models {
         [Required]
         public string CPF { get; set; }
         [Required]
+        [JsonIgnore]
         public string Senha { get; set; }
         [Required]
         public TipoUsuario TipoUsuario { get; set; }
