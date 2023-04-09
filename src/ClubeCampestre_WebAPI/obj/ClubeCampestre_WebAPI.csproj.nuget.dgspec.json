@@ -1,20 +1,33 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
+=======
+    "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
+>>>>>>> fa4b01343ed0ea1d740cffb2b0bd9d88cce4d7ad
   },
   "projects": {
-    "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
+    "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
         "projectName": "ClubeCampestre_WebAPI",
+<<<<<<< HEAD
         "projectPath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
         "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
         "outputPath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "projectPath": "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "packagesPath": "C:\\Users\\ADRIANA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ADRIANA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> fa4b01343ed0ea1d740cffb2b0bd9d88cce4d7ad
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,7 +99,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> fa4b01343ed0ea1d740cffb2b0bd9d88cce4d7ad
         }
       }
     }
