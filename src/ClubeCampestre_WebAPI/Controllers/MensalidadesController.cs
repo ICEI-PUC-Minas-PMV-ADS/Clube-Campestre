@@ -47,7 +47,30 @@ namespace ClubeCampestre_WebAPI.Controllers
             return Ok(mensalidade);
         }
 
-[HttpPut("{id}")]
+        [HttpGet("{mensalidade}")]
+        public async Task<ActionResult> ListarExtratoPagamento(int pagamento)
+        {
+            var mensalidade = await _context.Mensalidades
+            .FirstOrDefaultAsync(s => s.ValorPago == pagamento);
+
+            if (mensalidade == null) return NotFound();
+
+            return Ok(mensalidade);
+        }
+
+        [HttpGet("{mensalidade}")]
+        public async Task<ActionResult> ListarContasAbertas(int pendente)
+        {
+            var mensalidade = await _context.Mensalidades
+             .FirstOrDefaultAsync(s => s.DataDePagamento == pendente);
+
+            if (mensalidade == null) return NotFound();
+
+            return Ok(mensalidade);
+        }
+
+
+        [HttpPut("{id}")]
         public async Task<ActionResult> MarcarPagamento(int id, Mensalidade model)
         {
 
