@@ -3803,16 +3803,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\gusta\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\ADRIANA\\.nuget\\packages\\": {}
->>>>>>> fa4b01343ed0ea1d740cffb2b0bd9d88cce4d7ad
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
       "projectName": "ClubeCampestre_WebAPI",
       "projectPath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
@@ -3821,16 +3816,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
-      "projectName": "ClubeCampestre_WebAPI",
-      "projectPath": "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
-      "packagesPath": "C:\\Users\\ADRIANA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADRIANA\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\ADRIANA\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> fa4b01343ed0ea1d740cffb2b0bd9d88cce4d7ad
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3902,11 +3887,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> fa4b01343ed0ea1d740cffb2b0bd9d88cce4d7ad
       }
     }
   }

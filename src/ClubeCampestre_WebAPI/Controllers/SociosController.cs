@@ -124,5 +124,33 @@ namespace ClubeCampestre_WebAPI.Controllers
             return NoContent();
 
         }
+
+
+        [HttpGet("{cota}/dependentes")]
+        public async Task<ActionResult> ListarDependentesPorCotaDoSocio(int cota)
+        {
+            var socio = await _context.Socios
+            .Include(t => t.Dependentes)
+            .FirstOrDefaultAsync(s => s.Cota == cota);
+
+            if (socio == null) return NotFound();            
+
+            return Ok(socio.Dependentes);
+        }
+
+        [HttpPost("{cota}/dependentes")]
+        public async Task<ActionResult> AdicionarDependentePorCotaDoSocio(int cota, Dependente dependente)
+        {
+            var socio = await _context.Socios
+           .Include(t => t.Dependentes)
+           .FirstOrDefaultAsync(s => s.Cota == cota);
+
+            dependente.SocioId = socio.Id;
+
+            _context.Dependentes.Add(dependente);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("ListarDependentePorId","Dependentes", new {id = dependente.DependenteId }, dependente);
+        }
     }
 }
