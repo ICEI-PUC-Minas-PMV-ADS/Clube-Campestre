@@ -251,3 +251,7 @@ C:\Users\ADRIANA\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\obj\Debu
 C:\Users\ADRIANA\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\obj\Debug\net6.0\ref\ClubeCampestre_WebAPI.dll
 C:\Users\carro\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\BCrypt.Net-Next.dll
 C:\Users\carro\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ADRIANA\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\BCrypt.Net-Next.dll
+C:\Users\ADRIANA\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\repos\ClubeCampestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\BCrypt.Net-Next.dll
+D:\repos\ClubeCampestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
