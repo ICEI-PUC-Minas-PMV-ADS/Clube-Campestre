@@ -8,10 +8,11 @@ using Microsoft.Extensions.Logging;
 using ClubeCampestre_WebAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
- 
+using Microsoft.AspNetCore.Authorization;
 
 namespace ClubeCampestre_WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
 
