@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ClubeCampestre_WebAPI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     [Route("api/[controller]")]
     [ApiController]
 

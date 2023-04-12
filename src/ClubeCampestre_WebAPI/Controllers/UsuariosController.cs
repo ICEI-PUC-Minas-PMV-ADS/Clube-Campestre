@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 
 namespace ClubeCampestre_WebAPI.Controllers {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase {

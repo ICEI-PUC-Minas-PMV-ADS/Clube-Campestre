@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClubeCampestre_WebAPI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     [Route("api/[controller]")]
     [ApiController]
     public class SociosController : ControllerBase

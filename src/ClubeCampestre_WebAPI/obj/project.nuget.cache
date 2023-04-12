@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G5fOEhuxtAm79tE/DC/B7TIb/HdWugQcrSM+VllBUvryq/Ibm3fSyDusrPdnY+JO9pu3tid0CtNCvwar9qJziw==",
+  "dgSpecHash": "GIpXbdKGeSlzhZGllyWHQOu8i3J9V6J5mEGUzPT0y3Bne1ES7JhLXwpI8h+3oc4Bjuu3QBYWlsYpwmHAACMu5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\carro\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\carro\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

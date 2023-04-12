@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
+    "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
+    "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
         "projectName": "ClubeCampestre_WebAPI",
-        "projectPath": "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "projectPath": "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
         "packagesPath": "C:\\Users\\carro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carro\\Source\\Repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\carro\\AppData\\Roaming\\NuGet\\NuGet.Config",
