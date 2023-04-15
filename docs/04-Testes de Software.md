@@ -13,4 +13,7 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 
 # Evidências de Testes de Software
 
-Apresente imagens e/ou vídeos que comprovam que um determinado teste foi executado, e o resultado esperado foi obtido. Normalmente são screenshots de telas, ou vídeos do software em funcionamento.
+|**Atividade(tela)**|**Ação**|**Resultado Esperado**|
+|-------------------|--------|----------------------|
+|Tela Login|Login Aceito | ![sucesso](https://user-images.githubusercontent.com/81272703/232234987-24c001b1-5571-4233-a4c1-8738388c671f.gif)|
+|Tela Login|Login Incorreto | ![usuarioIncorreto](https://user-images.githubusercontent.com/81272703/232235042-b90c5fd2-04e0-4540-9ff8-07779f611030.gif)|
