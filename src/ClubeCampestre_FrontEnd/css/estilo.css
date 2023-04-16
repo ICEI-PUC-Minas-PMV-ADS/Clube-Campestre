@@ -1,108 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;1,400&family=Poppins:wght@200;400;600&display=swap');
 
 *{
-margin:0 ;
+margin:0;
 padding: 0;
 box-sizing: border-box;
-font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
 }
 
-body{
-display: flex;
-justify-self: center;
-align-items: center;
-min-height: 100vh ;
-background: rgb(248, 246, 248);
+.box_menu{
+height: 100vh;
+width: 100%;
 }
 
-.navigation{
+.box_menu .sidebar_menu{
+ background:  #1b87ff;
+ height: 100vh;
+ width: 280px;
+ position: fixed;
+overflow: hidden;
+left: -280px;
+transition: all 0.3s linear;
+}
+
+.box_menu .sidebar_titulo{
+height: 60px;
 position: absolute;
-height: 500px;
-background: rgb(97, 115, 255);
-width: 300px;
-box-shadow: 10px 0 0;
-border-left: 10px solid #424242;
-overflow-x: hidden;
-transition: 0.5s;
+width: 100%;
 }
 
-.navigation:hover{
-width: 30px;
-}
-
-.navigation ul{
+.box_menu .sidebar_titulo a{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
     position: absolute;
-    top: 0;
+    left: 20px;
+    line-height: 60px;
+    }
+
+.sidebar_menu .menu{
+position: absolute;
+width: 100%;
+top:80px;
+}
+
+.sidebar_menu .menu li{
+margin: 10px;
+padding: 14px 20 px;
+border-radius: 10px;
+transition: 0.3s ;
+}
+
+.sidebar_menu .menu li:hover{
+background-color: #2ba4d9;
+}
+.sidebar_menu .menu i{
+    color: white;
+    font-size: 9px;
+    padding-right: 8px;
+
+}
+
+.sidebar_menu .menu a{
+    color: white;
+   text-decoration: none;
+   font-size:20px ;
+}
+
+.box_menu .menu-icon{
+color: white;
+font-size:30px ;
+font-weight: 700;
+position: absolute;
+left: 16px;
+line-height: 60px;
+cursor: pointer;
+}
+
+.sidebar_menu .btn_close{
+font-size: 25px;
+line-height: 60px;
+position: absolute;
+left: 240px;
+color: white;
+cursor: pointer;
+
+}
+
+
+#check:checked~ .sidebar_menu{
     left: 0;
-    width: 100%;
-    padding-left: 5px;
-    padding-top: 40px;
+  
 }
 
-.navigation ul li{
-    position: relative;
-    list-style: none;
-    width: 100%;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    }
-
-.navigation ul li a {
-        position: relative;
-        display: flex;
-        width: 100%;
-        text-decoration: none;
-        color:white ;
-      
-    }
-.navigation ul li a .icon{
-        position: relative;
-        display: block;
-        min-width: 60px;
-        height: 60 px;
-        text-align: center;
-        line-height: 70px;
-
-    }
-.navigation ul li a .icon ion-icon{
-        position: relative;
-    font-size: 1.5rem;
-    z-index:1 ;
-    }
-
-
-.navigation ul li a .title{
-    position: relative;
-    display: block;
-    padding-left: 10px;
-    height: 60px;
-    line-height:60px ;
-    white-space: nowrap;
+#check{
+    display: none;
 }
 
-.navigation ul li .active{
-    background: white;
-}
 
-.navigation ul li .active a::before {
-   content: '';
-   position: absolute;
-   top: -30px;
-   right: 0;
-   width: 30px;
-   height: 30px;
-   background: #fff;
-border-radius: 50%;
-box-shadow: 15px -15px 0 #fff;
-}
-
-.navigation ul li .active a::after {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    background: #fff;
- border-radius: 50%;
- box-shadow: 15px -15px 0 #fff;
- }
+    

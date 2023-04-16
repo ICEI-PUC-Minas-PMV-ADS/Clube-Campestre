@@ -4,46 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> menu </title> 
-    <link rel="stylesheet" href="estilo.css">
+    <title>Menu</title>
+ <link rel="stylesheet" href="estilo.css">
+   
 </head>
 
 <body>
-    <div class="navigation">
-    <ul>
-        <li class="list">
-            <a href="#">
-                <span class="icon"></span>
-                <span class="title">Gestão de usuários</span>
-            </a>
-        </li>
+    <div class="box_menu">
+    <input type="checkbox" id="check">
+         <div class="menu-icon">
+            <label for="check">
+                <i class="fa-regular fa-bars"></i>
+            </label>
+         </div> 
+         <div class="sidebar_menu">
+            <div class="sidebar_titulo">
+              <a href="#">Clube Recreativo Campestre</a>          
+            </div>
+        <div class="btn_close">
+            <label for="check">
+                <i class="fas fa-times"></i>
+            </label>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li> 
+                    <a href=""> Gestão de usuários</a>
+                    <i class="fa-solid fa-users"></i>
+                </li>
+                <li> 
+                    <a href=""> Cadastro de sócios</a>
+                    <i class="fa-regular fa-user-pen"></i>
+                </li>
+                <li> 
+                    <a href=""> Financeiro</a>
+                    <i class="fa-regular fa-circle-dollar"></i>
+                </li>
+             </ul>
+        </nav>
 
-        <li class="list">
-            <a href="#">
-                <span class="icon"></span>
-                <span class="title">Cadastro de sócios</span>
-            </a>
-        </li>
 
-        <li class="list">
-            <a href="#">
-                <span class="icon"></span>
-                <span class="litle">Financeiro</span>
-            </a>
-        </li>
-    </ul>
+         </div>
     </div>
-
-        
-    <script>
-        const list = document.querySelectorAll('.list');
-        function activeLink(){
-            list.forEach((item)=>
-            item.classList.remove('active'));
-            this.classList.add('active');
-        }
-        list.forEach((item)=>
-        item.addEventListener('click', activeLink));
-    </script>
 </body>
 </html>
