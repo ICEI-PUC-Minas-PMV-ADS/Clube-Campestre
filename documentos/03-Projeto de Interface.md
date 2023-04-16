@@ -9,7 +9,9 @@ Segue abaixo telas do projeto de interface
 
 ## Tela inicial
 Lista como os usuários cadastrados
+
 ![Gestão de usuários](https://user-images.githubusercontent.com/82919386/232349410-605b71de-8761-406d-a334-55787303a1e3.jpg)
+
 ![Gestão de usuários (1)](https://user-images.githubusercontent.com/82919386/232349616-6b2d2d8d-433e-464e-abde-c9a42131b88f.jpg)
 
 
@@ -18,8 +20,10 @@ Lista como os usuários cadastrados
 
 ## Tela do perfil cadastrado selecionado
 Visualização dos dados do usuário
+
 ![Tela dados do sócio](https://user-images.githubusercontent.com/82919386/232349535-522d7efc-7605-4b30-9a44-da2b084a95d0.jpg)
 
 ## Tela do perfil cadastrado selecionado
 Visualização dos dados financeiros
+
 ![Tela dados financeiros](https://user-images.githubusercontent.com/82919386/232349582-2779dc0a-c5ea-4ca7-b10f-496e15ff543b.jpg)
