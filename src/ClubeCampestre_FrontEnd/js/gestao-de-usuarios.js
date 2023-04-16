@@ -7,7 +7,8 @@ $(document).ready(function() {
         ajax: {
             url: `https://localhost:7013/api/Socios`,
             dataSrc: '',
-        },
+        },        
+        responsive: true,
         columns: [
             { data: 'cota' },
             { data: 'nome' },
@@ -15,13 +16,53 @@ $(document).ready(function() {
             { data: 'email' },
             { data: 'telefonePrincipal' },
             { data: 'dataDeAssociacao' },
-            { data: 'condicao'},
-            { data: 'situacaoFinanceira' },
+            { data: 'condicao',
+                render: function (data) {
+                    if(data == 0){
+                        return '<span>Fundador</span>'
+                    }
+                    else if(data == 1){
+                        return '<span>Proprietário</span>'
+                    }
+                    else if(data == 2){
+                        return '<span>Temporário</span>'
+                    }
+                    else if(data == 3){
+                        return '<span>Inativo</span>'
+                    }
+                } 
+            },
+            { data: 'situacaoFinanceira',
+                render: function (data) {
+                    if(data == 0){
+                        return '<span class="label_situacao_financeira label_regular">Regular</span>'
+                    }
+                    else if(data == 1){
+                        return '<span class="label_situacao_financeira label_debito">Débito</span>'
+                    }
+                    else if(data == 2){
+                        return '<span class="label_situacao_financeira label_inadimplente">Inadimplente</span>'
+                    }
+                } 
+            },
         ],
-        'columnDefs': [ {
-        'targets': [2,4], /* column index */
-        'orderable': false, /* true or false */
- }]
+        lengthMenu: [
+            [25, 50, 100, -1],
+            [25, 50, 100, 'Todos'],
+        ],
+            'columnDefs': [ {
+            'targets': [2,4], /* column index */
+            'orderable': false /* true or false */            
+        },
+        {
+            "targets": 7,
+            "className": "dt-center"
+        },
+        {
+            'targets': 5,
+            'render': DataTable.render.date(),
+        }],
+        
     }
     );
 

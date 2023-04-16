@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gestão de Usuários</title>
+    <title>Gestão de Sócios</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
@@ -13,17 +13,21 @@
   </head>
   <body>
       <div id="titulo_gestao_usuarios">
-        <i id="icon_titulo" style="font-size: 54px; color: #1b87ff;" class="bi bi-people-fill"></i>
-        <h1 id="texto_titulo">Gestão de Usuários</h1>  
+        <i id="icon_titulo" style="font-size: 54px; color: #776CFA;" class="bi bi-people-fill"></i>
+        <h1 id="texto_titulo">Gestão de Sócios</h1>  
       </div>
       <div id="secao_filtros" class="secao">
         <h4>Filtros</h4>
-        <div id="input_filtros">
-          <div id="cota" class="col-1 label_input">
-            <label for="num_cota" class="form-label">Cota</label>
-            <input type="text" class="form-control form-control-sm" id="num_cota" >    
-          </div>
-          <div id="condicao_socio" class="form-group col-4 label_input">
+        <div id="input_filtros" class="row">
+          <div id="cota" class="row col-auto label_input">
+            <div class="col-2">
+                <label for="num_cota" class="col-form-label col-form-label-sm form-label">Cota</label>
+            </div>
+            <div class="col-5">
+                <input type="text" id="num_cota" class="form-control form-control-sm">
+            </div>            
+          </div>   
+          <div id="condicao_socio" class="form-group col-5 label_input">
             <label for="" class="form-label">Condição</label>
             <select id="condicao_socio" class="form-select select_multiple" multiple="multiple">
               <option selected="selected" value="0">Fundador</option>
@@ -31,8 +35,8 @@
               <option selected="selected" value="2">Temporário</option>
             </select>  
           </div>    
-          <div id="situacao_financeira" class="form-group col-6 label_input">
-            <label class="form-label col-2">Situação Financeira</label>        
+          <div id="situacao_financeira" class="form-group col-5 label_input">
+            <label class="form-label col-4">Situação Financeira</label>        
             <select id="situacao_financeira" class="form-select select_multiple" multiple="multiple">
               <option selected="selected" value="0">Regular</option>
               <option selected="selected" value="1">Débito</option>
@@ -42,7 +46,7 @@
         </div>             
         <br>
         <div id="botoes_filtros" class="col-md-12">
-            <button class="btn btn-outline-danger btn-sm" type="reset" id="btnLimpar"> <i class="fa fa-eraser"></i> Limpar </button>
+            <button class="btn btn-outline-danger btn-sm" type="reset" id="btnLimpar"> <i class="bi bi-eraser-fill"></i> Limpar </button>
             <button class="btn btn-primary btn-sm" id="btnFiltrar"><i class="fa fa-filter"></i> Filtrar </button>
         </div>
       </div>
