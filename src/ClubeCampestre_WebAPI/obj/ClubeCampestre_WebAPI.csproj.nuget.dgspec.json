@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
+    "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
+    "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
         "projectName": "ClubeCampestre_WebAPI",
-        "projectPath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
-        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
+        "packagesPath": "C:\\Users\\carro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\carro\\source\\repos\\Clube-Campestre\\src\\ClubeCampestre_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\carro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
