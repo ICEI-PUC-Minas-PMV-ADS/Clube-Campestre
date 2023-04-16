@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+    
+}
+
+.conteudo{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudo form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login input {
+    margin-top: 10px;
+    background-color: #F6F6F6;
+    border-radius: 5px;
+}
+
+ .titulo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto  
+}
+
+.botao{
+    background-color: blueviolet;
+    margin-top: 10px;
+}
