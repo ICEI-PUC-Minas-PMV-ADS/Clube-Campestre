@@ -26,4 +26,5 @@ Visualização dos dados do usuário
 ## Tela do perfil cadastrado selecionado
 Visualização dos dados financeiros
 
-![Tela dados financeiros](https://user-images.githubusercontent.com/82919386/232349582-2779dc0a-c5ea-4ca7-b10f-496e15ff543b.jpg)
+![Tela dados financeiros (1)](https://user-images.githubusercontent.com/82919386/232349800-1beb6fac-35a3-4ad2-a72c-f9d3fbe5330b.jpg)
+
