@@ -63,10 +63,33 @@ body{
 .btn{
   margin-left: 10px;
 }
+#tabela_socios_ativos{
+    width: 100%;
+}
+
+.label_situacao_financeira {
+    border-radius: 16px;
+    padding: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #FFF;
+}
+
+.label_regular{
+    background-color: #26c126;
+}
+
+.label_debito{
+    background-color: gold;
+}
+
+.label_inadimplente{
+    background-color: #ff3434;
+}
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: #1b87ff;
-    border: 1px solid #1b87ff;
+    background-color: #776CFA;
+    border: 1px solid #776CFA;
     border-radius: 4px;
     cursor: default;
     float: left;
@@ -117,6 +140,6 @@ body{
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #1b87ff;
+    background-color: #776CFA;
     color: white;
 }

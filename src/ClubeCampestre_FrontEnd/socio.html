@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cadastro de Sócio</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="./css/socio.css">
+</head>
+<body>
+    <div id="titulo_gestao_usuarios">
+        <i id="icon_titulo" style="font-size: 54px; color: #776CFA;" class="bi bi-person-plus-fill"></i>
+        <h1 id="texto_titulo">Cadastro de Sócio</h1>  
+    </div>
+    <div id="secao_filtros" class="secao">
+        <div id="input_filtros">
+            <div id="cota" class="row col-auto label_input">
+                <div class="col-2">
+                    <label for="filtro_num_cota" class="col-form-label col-form-label-sm form-label"">Cota</label>
+                </div>
+                <div class="col-5">
+                    <input type="text" id="filtro_num_cota" class="form-control form-control-sm">
+                </div>            
+            </div>   
+            <div id="botoes_filtros" class="col-auto">
+                <button class="btn btn-outline-danger btn-sm" type="reset" id="btnLimpar" onclick="limparFormulario()"> <i class="bi bi-eraser-fill"></i> Limpar </button>
+                <button class="btn btn-primary btn-sm" id="btnFiltrar"><i class="fa fa-filter"></i> Filtrar </button>
+                <button class="btn btn-success btn-sm" id="btnSalvar"><i class="fa fa-floppy-o"></i> Salvar </button>
+            </div>               
+        </div>                     
+    </div>
+    <div id="secao_dados_pessoais" class="secao">
+        <h3>Dados Pessoais</h3>
+        <form id="cadastro_socio" class="campos-formulario row">  
+            <div class="row linha">
+                <div class="col-1" >
+                    <label for="num_cota" class="form-label">Cota</label>
+                    <input type="number" class="form-control" id="id_socio" hidden> 
+                    <input type="number" class="form-control" id="num_cota">    
+                </div>
+                <div class="col-4">
+                    <label for="nome_completo" class="form-label">Nome Completo</label>
+                    <input type="text" class="form-control" id="nome_completo" >    
+                </div>                
+                <div class="col-2">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" class="form-control" id="cpf" value="" >    
+                </div>
+                <div class="form-group col-2">
+                    <label for="dt_associacao" class="col-sm-3 form-label">Data de Associação</label>
+                    <div>
+                        <div class="input-group date" id="datepicker">
+                            <input type="text" id="dt_associacao" class="form-control data" autocomplete="off" >
+                            <span class="input-group-append">
+                                <span class="input-group-text bg-white d-block">
+                                    <i class="bi bi-calendar-week"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="condicao_socio_div" class="form-group col-3">
+                        <label for="condicao_socio" class="form-label">Condição</label>
+                        <select id="condicao_socio" class="form-select select">
+                            <option value=""></option>
+                            <option value=0>Fundador</option>
+                            <option value=1>Proprietário</option>
+                            <option value=2>Temporário</option>
+                        </select>  
+                    </div>            
+                </div>
+                <div class="row linha">                
+                    <div class="col-3">
+                        <label for="identidade" class="form-label">Identidade</label>
+                        <input type="text" class="form-control" id="identidade" value="" >    
+                    </div>
+                    <div class="form-group col-2">
+                        <label for="dt_nascimento" class="col-sm-3 form-label">Data de Nascimento</label>
+                        <div>
+                            <div class="input-group date" id="datepicker2">
+                                <input type="text" id="dt_nascimento" class="form-control data" autocomplete="off" >
+                                <span class="input-group-append">
+                                    <span class="input-group-text bg-white d-block">
+                                        <i class="bi bi-calendar-week"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row secao_inputs">
+                    <div class="col-2 ">
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text" class="form-control" id="cep" maxlength="8">
+                    </div>
+                </div>
+                <div class="row linha">
+                    <div class="col-3">
+                        <label for="logradouro" class="form-label">Logradouro</label>
+                        <input type="text" class="form-control" id="rua" maxlength="25">    
+                    </div>
+                    <div class="col-1">
+                        <label for="numero" class="form-label">Nº</label>
+                        <input type="text" class="form-control" id="numero" maxlength="6">    
+                    </div>
+                    <div class="col-3">
+                        <label for="bairro" class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" maxlength="50">    
+                    </div>
+                    <div class="col-3">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" maxlength="70">    
+                    </div>
+                    <div class="col-1">
+                        <label for="uf" class="form-label">UF</label>
+                        <input type="text" class="form-control" id="uf" maxlength="2">    
+                    </div>
+                    <div class="col-1">
+                        <label for="complemento" class="form-label">Complem.</label>
+                        <input type="text" class="form-control" id="complemento" maxlength="10">    
+                    </div>
+                </div>
+                <div class="row secao_inputs">
+                    <div class="col-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" >    
+                    </div>
+                    <div class="col-3">
+                        <label for="telefone_principal" class="form-label">Telefone Principal</label>
+                        <input type="text" class="form-control telefone" id="telefone_principal" >    
+                    </div>
+                    <div class="col-3">
+                        <label for="telefone_secundario" class="form-label">Telefone Secundário</label>
+                        <input type="text" class="form-control telefone" id="telefone_secundario" >    
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="secao_dependentes" class="secao">
+            <h4>Dependentes</h4>
+            <form id="cadastro_dependentes" class="campos-formulario">
+                <div id="campos_dependente" class="row">
+                    <div class="col-4">
+                        <label for="nome_completo" class="form-label"  autocomplete="off">Nome Completo</label>
+                        <input type="text" class="form-control" id="nome_dependente_adc" >    
+                    </div>
+                    <div class="form-group col-2">
+                        <label for="dt_nascimento_dependente_adc" class="col-sm-3 form-label">Data de Nascimento</label>
+                        <div>
+                            <div class="input-group date" id="datepicker2">
+                                <input type="text" id="dt_nascimento_dependente_adc" class="form-control data" autocomplete="off" >
+                                <span class="input-group-append">
+                                    <span class="input-group-text bg-white d-block">
+                                        <i class="bi bi-calendar-week"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="parentesco_dependente_adc_div" class="form-group col-3">
+                        <label for="parentesco_dependente_adc" class="form-label">Parentesco</label>
+                        <select id="parentesco_dependente_adc" class="form-select select">
+                            <option value=""></option>
+                            <option value=0>Conjuge</option>
+                            <option value=1>Pai</option>
+                            <option value=2>Mãe</option>
+                            <option value=3>Filho(a)</option>
+                            <option value=4>Outros</option>
+                        </select>  
+                    </div>
+                    <span class="col-auto btn btn-success" id="" onclick="adicionarDependentePorCotaDoSocio()">
+                        <i class="bi bi-plus-lg"></i>                       
+                    </span>                   
+                </div>
+            </form>
+            <div>
+                <table class="table table-sm table-striped" id="tabela_dependentes" onclick="">
+                    <thead>
+                            <tr>
+                                <th scope="col">Nº</th>
+                                <th scope="col">Nome Completo</th>
+                                <th scope="col">Data de Nascimento</th>
+                                <th scope="col">Parentesco</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela_dependentes_body">
+                        </tbody>
+                    </table>    
+                </div>
+          </div>
+          <div id="secao_financeiro" class="secao">
+              <h4>Financeiro</h4>
+              <div id="situacao_financeira" class="form-group col-3 label_input">
+                  <label class="form-label col-2">Situação Financeira</label>        
+                  <select id="situacao_financeira" class="form-select select">
+                      <option value=""></option>
+                      <option value="0">Regular</option>
+                      <option value="1">Débito</option>
+                      <option value="2">Inadimplente</option>
+                    </select>  
+                </div>
+            </div>            
+        <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.pt-BR.js"></script>
+        <script src="./js/socio.js"></script>
+        <script type="text/javascript"></script>
+    </body>
+</html>
