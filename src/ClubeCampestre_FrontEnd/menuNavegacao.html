@@ -1,50 +1,45 @@
+
+
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
- <link rel="stylesheet" href="estilo.css">
-   
-</head>
-
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+   </head>
 <body>
-    <div class="box_menu">
+  <div class="main_box">
     <input type="checkbox" id="check">
-         <div class="menu-icon">
-            <label for="check">
-                <i class="fa-regular fa-bars"></i>
-            </label>
-         </div> 
-         <div class="sidebar_menu">
-            <div class="sidebar_titulo">
-              <a href="#">Clube Recreativo Campestre</a>          
-            </div>
-        <div class="btn_close">
-            <label for="check">
-                <i class="fas fa-times"></i>
-            </label>
-        </div>
-        <nav class="menu">
-            <ul>
-                <li> 
-                    <a href="./gestao-de-usuarios.html"> Gestão de usuários</a>
-                    <i class="fa-solid fa-users"></i>
-                </li>
-                <li> 
-                    <a href="./socio.html"> Cadastro de sócios</a>
-                    <i class="fa-regular fa-user-pen"></i>
-                </li>
-                <li> 
-                    <a href=""> Financeiro</a>
-                    <i class="fa-regular fa-circle-dollar"></i>
-                </li>
-             </ul>
-        </nav>
-
-
-         </div>
+    <div class="btn_one">
+      <label for="check">
+        <i class="fas fa-bars"></i>
+      </label>
     </div>
-</body>
+    <div class="sidebar_menu">Clube Recreativo Campestre</div>
+        <div class="btn_two">
+          <label for="check">
+            <i class="fas fa-times"></i>
+          </label>
+        </div>
+      <div class="menu">
+        <ul>
+          <li><i class="fa-solid fa-user-plus"></i>
+            <a href="./gestao-de-usuarios.html">Gestão de usuário</a>
+          </li>
+          <li>
+            <i class="fas fa-users"></i>
+            <a href="./socio.html">Cadastro de sócios</a>
+          </li>
+          <li>
+            <i class="fas fa-circle-dollar"></i>
+            <a href="./gestao-de-usuarios.html">Financeiro</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </body>
+
 </html>
+ 
