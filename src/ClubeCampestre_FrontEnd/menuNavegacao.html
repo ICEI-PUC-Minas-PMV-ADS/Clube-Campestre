@@ -1,45 +1,47 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pet-br">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-   </head>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;1,400&family=Poppins:wght@200;400;600&display=swap"/>
+
+
+
 <body>
-  <div class="main_box">
-    <input type="checkbox" id="check">
-    <div class="btn_one">
-      <label for="check">
-        <i class="fas fa-bars"></i>
-      </label>
+<nav class="menulateral">
+    <div class="btn-expandir">
+        <i class="bi bi-list"></i>
+
     </div>
-    <div class="sidebar_menu">Clube Recreativo Campestre</div>
-        <div class="btn_two">
-          <label for="check">
-            <i class="fas fa-times"></i>
-          </label>
-        </div>
-      <div class="menu">
         <ul>
-          <li><i class="fa-solid fa-user-plus"></i>
-            <a href="./gestao-de-usuarios.html">Gestão de usuário</a>
+          <li class="item-menu">
+             <a href="./gestao-de-usuarios.html">
+                <span class="icon"><i class="bi bi-people-fill"></i></span>
+                <sapn class="txt-link">Gestão de sócios</span>
+            </a>
           </li>
-          <li>
-            <i class="fas fa-users"></i>
-            <a href="./socio.html">Cadastro de sócios</a>
+          <li class="item-menu">
+                <a href="./socio.html">
+                <span class="icon"><i class="bi bi-person-fill-add"></i></span>
+                <sapn class="txt-link">Cadastro de sócio</span>
+            </a>
           </li>
-          <li>
-            <i class="fas fa-circle-dollar"></i>
-            <a href="./gestao-de-usuarios.html">Financeiro</a>
+          <li class="item-menu">
+            <a href="./gestao-de-usuarios.html"> 
+                <span class="icon"><i class="bi bi-cash-coin"></i></span>
+                <sapn class="txt-link">Financeiro</span> 
+            </a>
           </li>
         </ul>
-      </div>
-    </div>
-  </div>
-  </body>
+</nav>
 
+</body>
 </html>
- 
