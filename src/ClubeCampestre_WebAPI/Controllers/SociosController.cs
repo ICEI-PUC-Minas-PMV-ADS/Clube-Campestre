@@ -19,6 +19,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> AdicionarSocio(Socio socio)
         {
             var cotaJaExiste = await _context.Socios.FirstOrDefaultAsync(s => s.Cota == socio.Cota) != null;
@@ -32,8 +33,19 @@ namespace ClubeCampestre_WebAPI.Controllers
             return CreatedAtAction("ListarSocioPorCota", new { cota = socio.Cota }, socio);
         }
 
+        [HttpPost("lista")]
+        [AllowAnonymous]
+        public async Task<ActionResult> AdicionarListaDeSocios(List<Socio> socios)
+        {
+            foreach(Socio socio in socios)
+            {
+                await AdicionarSocio(socio);       
+            }
+            return Ok();
+        }
 
-        [HttpGet]
+        [AllowAnonymous]
+        [HttpGet("listar")]
         public async Task<ActionResult> ListarSociosAtivos()
         {
             var socios = await _context.Socios
@@ -45,7 +57,48 @@ namespace ClubeCampestre_WebAPI.Controllers
             return Ok(socios);
         }
 
+        [AllowAnonymous]
+        [HttpPost("filtrar")]
+        public async Task<ActionResult> FiltrarListaDeSociosAtivos(FiltroSocios filtros)
+        {
+            var enumCondicoesDosSocios = Enum.GetValues(typeof(CondicaoDoSocio));
+            var enumSituacoesFinanceiras = Enum.GetValues(typeof(SituacaoFinanceira));
+
+            if (filtros.CondicoesDosSocios.Count == 0)
+            {
+                foreach (var condicao in enumCondicoesDosSocios)
+                {
+                    filtros.CondicoesDosSocios.Add((int)condicao);
+                }
+            }
+
+            if (filtros.SituacoesFinanceiras.Count == 0)
+            {
+                foreach (var situacao in enumSituacoesFinanceiras)
+                {
+                    filtros.SituacoesFinanceiras.Add((int)situacao);
+                }
+            }
+
+            if (filtros.CondicoesDosSocios.Count == enumCondicoesDosSocios.Length && filtros.SituacoesFinanceiras.Count == enumSituacoesFinanceiras.Length)
+            {
+                var socios = ListarSociosAtivos();
+                return Ok(socios);
+            }
+            else { 
+                var socios = await _context.Socios
+                .Include(t => t.Dependentes)
+                .Include(m => m.Mensalidades)
+                .Where(s => s.Condicao != CondicaoDoSocio.Inativo)
+                .Where(c => filtros.CondicoesDosSocios.Contains((int)c.Condicao))
+                .Where(f => filtros.SituacoesFinanceiras.Contains((int)f.SituacaoFinanceira))
+                .ToListAsync();
+                return Ok(socios);
+            }
+        }
+
         [HttpGet("{cota}")]
+        [AllowAnonymous]
         public async Task<ActionResult> ListarSocioPorCota(int cota)
         {
             var socio = await _context.Socios
@@ -58,6 +111,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPut("{cota}")]
+        [AllowAnonymous]
         public async Task<ActionResult> EditarSocio(int cota, Socio socio)
         {
 
@@ -129,6 +183,7 @@ namespace ClubeCampestre_WebAPI.Controllers
 
 
         [HttpGet("{cota}/dependentes")]
+        [AllowAnonymous]
         public async Task<ActionResult> ListarDependentesPorCotaDoSocio(int cota)
         {
             var socio = await _context.Socios
@@ -141,6 +196,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPost("{cota}/dependentes")]
+        [AllowAnonymous]
         public async Task<ActionResult> AdicionarDependentePorCotaDoSocio(int cota, Dependente dependente)
         {
             var socio = await _context.Socios
@@ -153,6 +209,35 @@ namespace ClubeCampestre_WebAPI.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("ListarDependentePorId","Dependentes", new {id = dependente.DependenteId }, dependente);
+        }
+
+        [HttpGet("{cota}/mensalidades")]
+        [AllowAnonymous]
+        public async Task<ActionResult> ListarMensalidadesPorCotaDoSocio(int cota)
+        {
+            var socio = await _context.Socios
+            .Include(t => t.Mensalidades)
+            .FirstOrDefaultAsync(s => s.Cota == cota);
+
+            if (socio == null) return NotFound();
+
+            return Ok(socio.Mensalidades);
+        }
+
+        [HttpPost("{cota}/mensalidades")]
+        [AllowAnonymous]
+        public async Task<ActionResult> AdicionarMensalidadePorCotaDoSocio(int cota, Mensalidade mensalidade)
+        {
+            var socio = await _context.Socios
+           .Include(t => t.Mensalidades)
+           .FirstOrDefaultAsync(s => s.Cota == cota);
+
+            mensalidade.SocioId = socio.Id;
+
+            _context.Mensalidades.Add(mensalidade);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("VisualizarMensalidade", "Mensalidades", new { id = mensalidade.Id }, mensalidade);
         }
     }
 }
