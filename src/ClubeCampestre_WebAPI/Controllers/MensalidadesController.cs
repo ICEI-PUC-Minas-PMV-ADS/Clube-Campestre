@@ -29,7 +29,8 @@ namespace ClubeCampestre_WebAPI.Controllers
 
             return Ok(mensalidade);
         }
-  [HttpPost]
+        [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> AdicionarMensalidade(Mensalidade mensalidade) {
 
             _context.Mensalidades.Add(mensalidade);
@@ -49,16 +50,16 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet("socios/{idSocio}/extrato")]
-        public async Task<ActionResult> ListarExtratoPagamento(int idSocio)
+        public async Task<ActionResult> GerarExtratoDePagamento(int idSocio)
         {
-            var mensalidade = await _context.Mensalidades
+            var mensalidades = await _context.Mensalidades
                 .Where(m => m.SocioId == idSocio)
                 .Where(m => m.DataDePagamento != null)
                 .ToListAsync();
 
-            if (mensalidade == null) return NotFound();
+            if (mensalidades == null) return NotFound();
 
-            return Ok(mensalidade);
+            return Ok(mensalidades);
         }
 
         [HttpGet("socios/{idSocio}/mensalidades")]

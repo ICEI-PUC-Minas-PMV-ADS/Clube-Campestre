@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ClubeCampestre_WebAPI.Models
 {
@@ -13,6 +14,7 @@ namespace ClubeCampestre_WebAPI.Models
         public float? ValorPago { get; set; }
 
         public int SocioId { get; set; }
+        [JsonIgnore]
         public Socio Socio { get; set; }
     }
 }
