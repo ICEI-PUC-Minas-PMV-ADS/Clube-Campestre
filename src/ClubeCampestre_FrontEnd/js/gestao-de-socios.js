@@ -5,8 +5,16 @@ $(document).ready(function() {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
         },
         ajax: {
-            url: `https://localhost:7013/api/Socios`,
+            type: "POST",
+            url: `https://localhost:7013/api/Socios/filtrar`,
+            contentType : "application/json",
+            dataType: "json",    
             dataSrc: '',
+            data: function(d) {
+                d.condicoesDosSocios = $("#condicao_socio").select2("val");
+                d.situacoesFinanceiras = $("#situacao_financeira").select2("val");
+                return JSON.stringify(d);
+            },
         },        
         responsive: true,
         columns: [
@@ -72,3 +80,15 @@ $('.select_multiple').select2({
 multiple: true,
 placeholder: "",
 });
+
+
+function filtrarListaDeSociosAtivos() {
+    var tabelaSocios = $('#tabela_socios_ativos').DataTable()
+    tabelaSocios.ajax.reload();
+}
+
+function resetarFiltros() {   
+    $("#condicao_socio").select2("val", 0)
+    $("#situacao_financeira").select2("val", 0);
+    $('#tabela_socios_ativos').DataTable().reload()
+}
