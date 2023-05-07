@@ -26,6 +26,7 @@ function limparFormulario() {
     $("#filtro_num_cota").val("");
     $("#cadastro_socio")[0].reset();
     $("#cadastro_dependentes")[0].reset();
+    $("#num_cota").prop("disabled", false)
     $('#tabela_dependentes').DataTable().clear().destroy()
 }
 
@@ -62,6 +63,8 @@ $(document).ready(function(){
 
 
 function adicionarSocio() {
+    var dtAssc = converterData($("#dt_associacao").val())
+    var dtNasc = converterData($("#dt_nascimento").val())
     $.ajax({
         type: "POST",
         url: `https://localhost:7013/api/Socios/`,
@@ -72,12 +75,12 @@ function adicionarSocio() {
         // },
         data: JSON.stringify({
             cota : parseInt($("#num_cota").val()),
-            dataDeAssociacao : $("#dt_associacao").val(),
+            dataDeAssociacao : dtAssc,
             nome : $("#nome_completo").val(),
             condicao : parseInt($("#condicao_socio").val()),
             cpf : $("#cpf").val(),
             identidade : $("#identidade").val(),
-            dataDeNascimento : $("#dt_nascimento").val(),            
+            dataDeNascimento : dtNasc,            
             cep : $("#cep").val(),
             logradouro : $("#rua").val(),
             numero : $("#numero").val(),
@@ -113,6 +116,24 @@ function adicionarSocio() {
 }
 
 function listarSocioPorCota(cota) {
+    $("#id_socio").val("..."),
+    $("#num_cota").val("..."),
+    $("#dt_associacao").val("..."),
+    $("#nome_completo").val("..."),
+    $("#condicao_socio").val("..."),
+    $("#cpf").val("..."),
+    $("#identidade").val("..."),
+    $("#dt_nascimento").val("..."),            
+    $("#cep").val("..."),
+    $("#rua").val("..."),
+    $("#numero").val("..."),
+    $("#bairro").val("..."),
+    $("#cidade").val("..."),
+    $("#uf").val("..."),
+    $("#complemento").val("..."),
+    $("#email").val("..."),
+    $("#telefone_principal").val("..."),
+    $("#telefone_secundario").val("...")
     $.ajax({
         type: "GET",
         url: `https://localhost:7013/api/Socios/${cota}`,
@@ -144,8 +165,9 @@ function listarSocioPorCota(cota) {
 
             /// Trazer os Dependentes do Sócio
             listarDependentesPorCotaDoSocio(cota)         
-            //listarMensalidadesPorCotaDoSocio(cota) 
+            listarMensalidadesPorCotaDoSocio(cota) 
 
+            $("#num_cota").prop("disabled", true)
             $("body").append(`
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <i class="bi bi-check-circle"></i>
@@ -328,6 +350,52 @@ function listarDependentesPorCotaDoSocio(cota) {
         }
         );
 }
+
+function listarMensalidadesPorCotaDoSocio(cota) {
+    $('#tabela_mensalidades').DataTable(
+        {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
+            },
+            ajax: {
+                url: `https://localhost:7013/api/Socios/${cota}/mensalidades`,
+                dataSrc: '',
+            },        
+            responsive: true,
+            searching: false,
+            info: false,
+            paging: false,
+            ordering: false,
+            columns: [
+                { data: 'mesAnoReferencia' },
+                { data: 'valor' },
+                { data: 'valorPago'},
+                { data: 'dataDeVencimento' },
+                { data: 'dataDePagamento' },
+                { data: '[dataDeVencimento,dataDePagamento]',
+                    render: function(data){
+                        if (data.dataDePagamento != null) {
+                            return '<span class="label_status_mensalidade label_paga">Pago</span>'
+                        }
+                        else {
+                            if (data.dataDeVencimento >= Date.now()) {
+                                return 'span class="label_status_mensalidade label_a_vencer">À Vencer</span>'
+                            }
+                            return '<span class="label_status_mensalidade label_vencida">Vencida</span>'                            
+                        }
+                    }
+                }            
+            ],
+            'columnDefs': [
+            {
+                'targets': [3,4],
+                'render': DataTable.render.date(),
+            },
+        ],                    
+        }
+        );
+}
+
 
 
 // ------------- VALIDAÇÃO DE CEP ------------ //

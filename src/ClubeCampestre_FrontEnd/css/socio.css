@@ -4,14 +4,17 @@ body{
     justify-content: flex-start;
     padding: 5%;
     padding-top: 50px;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
-#titulo_gestao_usuarios {
+#titulo_socio {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
+    font-family: "Montserrat";
+    font-weight: 700;
+    color: #002A48;
 }
 
 #icon_titulo{
@@ -26,10 +29,11 @@ body{
     align-self: center;
     border-radius: 8px;
     padding: 30px;
-    width: 80%;
-    box-shadow: 3px 2px 8px #2222;
+    width: 100%;
+    /*box-shadow: 3px 2px 8px #2222;*/
     margin: 10px;
     background-color: white;
+    border: solid 2px whitesmoke;
 }
 
 #input_filtros{
@@ -39,6 +43,22 @@ body{
     align-items: center;
 }
 
+/* #btnFiltrar{
+    background-color: rgba(119, 108, 250, 0.8);
+    border: solid 1px rgba(119, 108, 250, 0.8);
+} */
+
+.titulo_secao{
+    margin-top: 20px;
+    font-family: "Montserrat";
+    color: #002A48;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#secao_dados_pessoais{
+    margin: 0px 0 50px 0;
+}
 /* .label_input{
     display: flex;
     flex-direction: row;
@@ -51,10 +71,29 @@ body{
     font-weight: 500;
     white-space: nowrap;
     font-size: 1.03em;
+    font-family: "Montserrat";
+    color: #555555;
+}
+
+.form-control{
+    height: 40px;
+    padding: 16px;
+    border: solid 2px rgba(224, 224, 224, 0.75);
+    border-radius: 6px;
+}
+
+.input-group-text{
+    height: 40px;
+    border-radius: 0 6px 6px 0;
+    border: solid 2px rgba(224, 224, 224, 0.75);
 }
 
 .linha{
     margin-top: 15px;
+}
+
+.row > *{
+    padding-right: 0;
 }
 
 .secao_inputs{
@@ -106,6 +145,19 @@ body{
     border-color: #089539;
 }
 
+#btn_add_dependente, #btnGerarExtrato, #btn_gerar_extrato{
+    height: 40px;
+    background-color: rgba(119, 108, 250, 0.8);
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;    
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
 .btn-outline-danger {
     color: #ff3434;
     border-color: #ff3434;
@@ -117,12 +169,80 @@ body{
     border-color: #ff3434;
 }
 
-#campos_dependente{
+.lista{
+    align-self: center;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    background-color: white;
+    border: solid 2px rgba(224, 224, 224, 0.75);
+    margin-top: 35px;
+}
+
+table{
+    margin-top: 20px;
+}
+
+.nome_coluna{
+    font-family: "Montserrat";
+    font-weight: 500;
+}
+
+.campos-formulario{
     display: flex;
     align-items: flex-end;
     margin-top: 25px;
     margin-bottom: 35px;
 }
+
+.label_status_mensalidade {
+    border-radius: 16px;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 12px;
+    border: solid 1px;
+}
+
+.label_paga{
+    color: #26c126;
+    background-color: #f5fff9;
+    border-color: #26c126;
+}
+
+.label_a_vencer{
+    color: rgb(255, 200, 0);
+    background-color: #fffcf1;
+    border-color: gold;
+}
+
+.label_vencida{
+    color: #ff3434;
+    background-color: #fff8f8;
+    border-color: #ff3434;
+}
+
+
+.nav-underline {
+    --bs-nav-underline-gap: 0rem;
+    --bs-nav-underline-border-width: 0.125rem;
+    --bs-nav-underline-link-active-color: var(--bs-emphasis-color);
+    gap: var(--bs-nav-underline-gap);
+}
+
+.nav-underline .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: var(--bs-nav-underline-border-width) solid ;
+    color: #002A48;
+}
+
+.nav-underline .nav-link.active, .nav-underline .show>.nav-link {
+    font-weight: 800;
+    color:#002A48;
+    border-bottom-color: rgba(119, 108, 250, 0.8);
+    border-bottom-width: 6px;
+}
+
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #776CFA;
