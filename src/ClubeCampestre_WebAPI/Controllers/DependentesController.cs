@@ -32,6 +32,7 @@ namespace ClubeCampestre_WebAPI.Controllers {
         }
                      
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult> ListarDependentePorId(int id) {
             var dependente = await _context.Dependentes
             .FirstOrDefaultAsync(s => s.DependenteId == id);
@@ -42,6 +43,7 @@ namespace ClubeCampestre_WebAPI.Controllers {
         }
 
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult> EditarDependente(int id, Dependente dependente) {
 
             if (id != dependente.DependenteId) return BadRequest();
@@ -58,6 +60,7 @@ namespace ClubeCampestre_WebAPI.Controllers {
         }
 
         [HttpDelete("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult> RemoverDependente(int id) {
 
             var dependente = await _context.Dependentes.FindAsync(id);
