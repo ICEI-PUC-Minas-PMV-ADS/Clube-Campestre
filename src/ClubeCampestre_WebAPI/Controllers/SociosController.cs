@@ -25,7 +25,7 @@ namespace ClubeCampestre_WebAPI.Controllers
             var cotaJaExiste = await _context.Socios.FirstOrDefaultAsync(s => s.Cota == socio.Cota) != null;
 
             if (cotaJaExiste)
-                return StatusCode(StatusCodes.Status405MethodNotAllowed);
+                return BadRequest("Já existe um sócio cadastrado com cota informada.");
 
             _context.Socios.Add(socio);
             await _context.SaveChangesAsync();
@@ -103,9 +103,10 @@ namespace ClubeCampestre_WebAPI.Controllers
         {
             var socio = await _context.Socios
             .Include(t => t.Dependentes)
+            .Include(m => m.Mensalidades)
             .FirstOrDefaultAsync(s => s.Cota == cota);  
 
-            if (socio == null) return NotFound();
+            if (socio == null) return NotFound("Não foi encontrado nenhum sócio com a cota informada.");
 
             return Ok(socio);
         }
@@ -128,42 +129,37 @@ namespace ClubeCampestre_WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{cota}")]
-        public async Task<ActionResult> InativarSocio(int cota, Socio socio)
+        [HttpPut("{cota}/inativar")]
+        [AllowAnonymous]
+        public async Task<ActionResult> InativarSocio(int cota)
         {
-            if (cota != socio.Cota) return BadRequest();
+            Socio socio = _context.Socios.Where(s => s.Cota == cota).FirstOrDefault();
+
+            if (socio == null) return NotFound("Sócio não encontrado.");
 
             socio.Condicao = CondicaoDoSocio.Inativo;
-
-            var modeloDb = await _context.Socios.AsNoTracking()
-                .FirstOrDefaultAsync(c => c.Cota == cota);
-
-            if (modeloDb == null) return NotFound();
 
             _context.Socios.Update(socio);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok("Cota inativada com sucesso!");
         }
 
-        //[HttpPut("{cota}/condicao}")]
-        //public async Task<ActionResult> ReativarSocio(int cota, int condicao, Socio socio)
-        //{
+        [HttpPut("{cota}/ativar")]
+        [AllowAnonymous]
+        public async Task<ActionResult> ReativarSocio(int cota, int condicao)
+        {
+            Socio socio = _context.Socios.Where(s => s.Cota == cota).FirstOrDefault();
 
-        //    if (cota != socio.Cota) return BadRequest();
+            if (socio == null) return NotFound("Sócio não encontrado.");
 
-        //    socio.Condicao = (CondicaoDoSocio)condicao;
+            socio.Condicao = (CondicaoDoSocio)condicao;
 
-        //    var modeloDb = await _context.Socios.AsNoTracking()
-        //        .FirstOrDefaultAsync(c => c.Cota == cota);
+            _context.Socios.Update(socio);
+            await _context.SaveChangesAsync();
 
-        //    if (modeloDb == null) return NotFound();
-
-        //    _context.Socios.Update(socio);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
+            return Ok("Cota reativada com sucesso!");
+        }
 
 
         [HttpDelete("{id}")]
@@ -233,11 +229,69 @@ namespace ClubeCampestre_WebAPI.Controllers
            .FirstOrDefaultAsync(s => s.Cota == cota);
 
             mensalidade.SocioId = socio.Id;
+            mensalidade.Id = 0;
+
+            var mensalidadeJaCriada = await _context.Mensalidades.FirstOrDefaultAsync(m => (m.MesAnoReferencia == mensalidade.MesAnoReferencia && m.SocioId == mensalidade.SocioId)) != null;
+
+            if (mensalidadeJaCriada)
+            {
+                return BadRequest("Mensalidade já criada para o sócio informado");
+            }
 
             _context.Mensalidades.Add(mensalidade);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("VisualizarMensalidade", "Mensalidades", new { id = mensalidade.Id }, mensalidade);
+        }
+
+        [HttpPost("mensalidades/lista")]
+        [AllowAnonymous]
+        public async Task<ActionResult> AdicionarMensalidadesParaTodosOsSociosAtivos(List<Mensalidade> mensalidades)
+        {
+            var sociosAtivos = _context.Socios 
+            .Where(s => s.Condicao != CondicaoDoSocio.Inativo)
+            .ToList();
+
+            foreach (Mensalidade mensalidade in mensalidades)            {
+                foreach (var socio in sociosAtivos)
+                {
+                    await AdicionarMensalidadePorCotaDoSocio(socio.Cota, mensalidade);
+                }
+            }
+            return Ok("Mensalidades criadas para os sócios ativos do clube com sucesso.");
+        }
+
+        [HttpPut("situacao-financeira")]
+        [AllowAnonymous]
+        public async Task<ActionResult> AtualizarSituacaoFinanceiraDosSocios()
+        {
+            var sociosAtivos = _context.Socios
+            .Where(s => s.Condicao != CondicaoDoSocio.Inativo)
+            .ToList();
+
+            foreach (Socio socio in sociosAtivos)
+            {
+                var mensalidadesVencidas = _context.Mensalidades.Where(m => (m.SocioId == socio.Id && m.DataDePagamento == null && m.DataDeVencimento <= DateTime.Now));
+
+                if (mensalidadesVencidas.Count() == 0 || mensalidadesVencidas == null)
+                {
+                    socio.SituacaoFinanceira = SituacaoFinanceira.Regular;
+                }
+                else if (mensalidadesVencidas.Count() <= 2)
+                {
+                    socio.SituacaoFinanceira = SituacaoFinanceira.Debito;
+                }
+                else
+                {
+                    socio.SituacaoFinanceira = SituacaoFinanceira.Inadimplente;
+
+                }
+                _context.Socios.Update(socio);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Situação financeira dos sócios atualizada com sucesso!");
         }
     }
 }
