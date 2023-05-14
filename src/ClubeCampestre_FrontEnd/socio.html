@@ -17,11 +17,13 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="./js/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="./css/socio.css">
+    <link rel="stylesheet" href="./css/shared.css">
 </head>
-<body>
-    <div id="titulo_socio">
+<body>    
+    <div id="titulo_socio" class="titulo_pagina">
         <i id="icon_titulo" style="font-size: 54px; color: #002A48;" class="bi bi-person-plus-fill"></i>
         <h1 id="texto_titulo">Cadastro de Sócio</h1>  
     </div>
@@ -76,7 +78,7 @@
                                     <input type="text" id="dt_associacao" class="form-control data" autocomplete="off" >
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white d-block">
-                                            <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                            <i class="bi bi-calendar-week" style="color: #707070;"></i>
                                             </span>
                                         </span>
                                     </div>
@@ -89,6 +91,7 @@
                                     <option value=0>Fundador</option>
                                     <option value=1>Proprietário</option>
                                     <option value=2>Temporário</option>
+                                    <option hidden value=3>Inativo</option>
                                 </select>  
                             </div>            
                         </div>
@@ -104,7 +107,7 @@
                                         <input type="text" id="dt_nascimento" class="form-control data" autocomplete="off" >
                                         <span class="input-group-append">
                                             <span class="input-group-text bg-white d-block">
-                                                <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                                <i class="bi bi-calendar-week" style="color: #707070;"></i>
                                             </span>
                                         </span>
                                     </div>
@@ -161,6 +164,7 @@
                 </div>
                 <div id="secao_dependentes" class="">
                     <h4 class="titulo_secao">Dependentes</h4>
+                    <span class="sublinhado"></span>
                     <form id="cadastro_dependentes" class="">
                         <div id="campos_dependente" class="row campos-formulario">
                             <div class="col-4">
@@ -174,7 +178,7 @@
                                         <input type="text" id="dt_nascimento_dependente_adc" class="form-control data" autocomplete="off" >
                                         <span class="input-group-append">
                                             <span class="input-group-text bg-white d-block">
-                                                <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                                <i class="bi bi-calendar-week" style="color: #707070;"></i>
                                             </span>
                                         </span>
                                     </div>
@@ -194,13 +198,11 @@
                             <span class="col-1 btn btn-primary" id="btn_add_dependente" onclick="adicionarDependentePorCotaDoSocio()">
                                 <i class="bi bi-plus-lg" style="margin-right: 5px;"></i>
                                 Adicionar                 
-                            </span>                   
+                            </span>                 
                         </div>
                     </form>
                     <div>
-                        <div id="lista_dependentes" class="lista">
-                            <!-- <label class="form-label" for="">2 Dependentes cadastrados</label> -->
-                            
+                        <div id="lista_dependentes" class="lista">                           
                             <table class="table table-sm table" id="tabela_dependentes" onclick="">
                                 <thead>
                                         <tr>
@@ -218,39 +220,77 @@
                     </div>
                 </div>            
         </div>
+        <!--#region secaoFinanceiro  -->
         <div class="tab-pane fade" id="financeiro-pane" role="tabpanel" aria-labelledby="aba-financeiro" tabindex="0">
             <div id="secao_financeiro" class="">
-                <!-- <h4>Financeiro</h4> -->
                 <div class="row campos-formulario">
-                    <div id="situacao_financeira" class="form-group col-3">
+                    <div id="situacao_financeira_socio" class="form-group col-2">
                         <label class="form-label col-2">Situação Financeira</label>        
                         <select id="situacao_financeira" class="form-select select">
                             <option value=""></option>
                             <option value="0">Regular</option>
                             <option value="1">Débito</option>
                             <option value="2">Inadimplente</option>
-                          </select>  
+                        </select>  
                     </div>
-                    <div class="col-3">
-                        <label for="nome_completo" class="form-label">Gerar Extrato</label>
-                        <input type="text" class="form-control" autocomplete="off" id="nome_completo" >    
-                    </div>               
-                    <!-- <button class="col col-auto btn btn-success btn-md" id="btnGerarExtrato"><i class="fa fa-floppy-o"></i></button> -->
-                    <span class="col col-auto btn btn-primary" id="btn_gerar_extrato">
-                        <i class="bi bi-plus-lg" style="margin-right: 5px;"></i>
-                        Incluir Mensalidades                 
-                    </span> 
+                    <h4 class="titulo_secao">Mensalidades</h4>
+                    <form id="cadastro_mensalidades" class="">
+                        <div id="campos_mensalidade" class="row campos-formulario">
+                            <div id="mes_referencia_adc_div" class="form-group col-2">
+                                <label for="mes_mensalidade_adc" class="form-label">Mês/Ano Referência</label>
+                                <div>
+                                    <div class="input-group date" id="">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text left bg-white d-block">
+                                                <i class="bi bi-calendar-week" style="color: #707070;"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" id="ano_referencia_mensalidade" class="form-control ano" autocomplete="off" >
+                                    </div>
+                                </div>  
+                            </div>                           
+                            <div id="valor_mensalidade_adc_div" class="form-group col-2">
+                                <label for="valor_mensalidade" class="form-label">Valor</label>
+                                <div class="input-group">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text left bg-white d-block">
+                                            <strong style="color: #707070">R$</strong>
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" id="valor_mensalidade" >
+                                </div>
+                            </div>
+                            <div class="form-group col-2">
+                                <label for="dt_vencimento_mensalidade_adc" class="col-sm-3 form-label">Data de Vencimento</label>
+                                <div>
+                                    <div class="input-group date" id="datepicker2">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                                <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" id="dt_vencimento_mensalidade_adc" class="form-control data" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="col-1 btn btn-primary" id="btn_add_mensalidade" onclick="adicionarMensalidadePorCotaDoSocio()">
+                                <i class="bi bi-plus-lg" style="margin-right: 5px;"></i>
+                                Adicionar                 
+                            </span>                   
+                        </div>
+                    </form>
                 </div>
                   <div id="lista_mensalidades" class="lista">
                     <table id="tabela_mensalidades" class="table table-hover">
                         <thead>
                           <tr>
-                            <th>Mês/Ano Referência</th>
-                            <th>Valor Base</th>
-                            <th>Total Pago</th>
-                            <th>Data de Vencimento</th>                            
-                            <th>Data de Pagamento</th>                            
-                            <th>Status</th>
+                            <th scope="col" class="nome_coluna">Mês/Ano Referência</th>
+                            <th scope="col" class="nome_coluna">Valor Base</th>
+                            <th scope="col" class="nome_coluna">Total Pago</th>
+                            <th scope="col" class="nome_coluna">Data de Vencimento</th>                            
+                            <th scope="col" class="nome_coluna">Data de Pagamento</th>                            
+                            <th scope="col" class="nome_coluna">Status</th>
+                            <th scope="col" class="nome_coluna">Ação</th>
                           </tr>
                         </thead>
                         <tbody>              
@@ -259,9 +299,171 @@
                 </div> 
               </div> 
         </div>
+        <!--#endregion -->
     </div>
+    <!--#region modalEdicaoDependentes  -->
+    <div class="modal fade" id="modal_editar_dependente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Dependente</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="cadastro_dependentes" class="">
+                    <div id="campos_dependente" class="row campos-formulario">
+                        <div class="col-1">
+                            <label for="id_dependente_edit" class="form-label" autocomplete="off">Nº</label>
+                            <input type="text" class="form-control" id="id_dependente_edit" disabled>    
+                        </div>
+                        <div class="col-4">
+                            <label for="nome_dependente_edit" class="form-label"  autocomplete="off">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome_dependente_edit" >    
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="dt_nascimento_dependente_edit" class="col-sm-3 form-label">Data de Nascimento</label>
+                            <div>
+                                <div class="input-group date" id="datepicker2">
+                                    <input type="text" id="dt_nascimento_dependente_edit" class="form-control data" autocomplete="off" >
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-white d-block">
+                                            <i class="bi bi-calendar-week" style="color: #707070;"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="parentesco_dependente_adc_div" class="form-group col-3">
+                            <label for="parentesco_dependente_edit" class="form-label">Parentesco</label>
+                            <select id="parentesco_dependente_edit" class="form-select select">
+                                <option value=""></option>
+                                <option value=0>Conjuge</option>
+                                <option value=1>Pai</option>
+                                <option value=2>Mãe</option>
+                                <option value=3>Filho(a)</option>
+                                <option value=4>Outros</option>
+                            </select>  
+                        </div>                                       
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
+                <button class="btn btn-success btn-sm" onclick="editarDependente()"><i class="fa fa-floppy-o" ></i> Salvar </button>                              
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--#endregion -->
+    <!--#region modalExcluirDependente  -->
+    <div class="modal fade" id="modal_excluir_dependente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Dependente</input> </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir o dependente?</p>                    
+                <input type="text" class="form-control" id="id_dependente_exclusao" hidden>                       
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
+                <button class="btn btn-success btn-sm" onclick="excluirDependente()"><i class="fa fa-trash" ></i> Sim </button>              
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--#endregion -->
+    <!--#region modalBaixarParcela  -->
+    <div class="modal fade" id="modal_baixar_parcela" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Baixar Parcela</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="baixa_mensalidades" class="">
+                    <input type="text" class="form-control" id="id_mensalidade_baixa" hidden>
+                    <div id="campos_baixa_mensalidade" class="row campos-formulario">
+                        <div id="mes_referencia_baixa_div" class="form-group col-3">
+                            <label for="mes_ano_referencia_mensalidade_baixa" class="form-label">Mês/Ano Referência</label>
+                            <div>
+                                <div class="input-group date" id="">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                            <i class="bi bi-calendar-week" style="color: #707070;"></i>
+                                        </span>
+                                    </span>
+                                    <input type="text" id="mes_ano_referencia_mensalidade_baixa" class="form-control ano" autocomplete="off" >
+                                </div>
+                            </div>  
+                        </div>                           
+                        <div id="valor_mensalidade_baixa_div" class="form-group col-4">
+                            <label for="valor_mensalidade_baixa" class="form-label">Valor Base</label>
+                            <div class="input-group">
+                                <span class="input-group-append">
+                                    <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                        <strong style="color: #707070">R$</strong>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" id="valor_mensalidade_baixa" >
+                            </div>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="dt_vencimento_mensalidade_baixa" class="col-sm-3 form-label">Data de Vencimento</label>
+                            <div>
+                                <div class="input-group date" id="datepicker2">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                            <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                        </span>
+                                    </span>
+                                    <input type="text" id="dt_vencimento_mensalidade_baixa" class="form-control data" autocomplete="off" disabled>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="row campos-formulario">
+                        <div class="form-group col-4">
+                            <label for="dt_pagamento_mensalidade_baixa" class="col-sm-3 form-label">Data de Pagamento</label>
+                            <div>
+                                <div class="input-group date" id="datepicker2">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text left d-block">
+                                            <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                        </span>
+                                    </span>
+                                    <input type="text" id="dt_pagamento_mensalidade_baixa" class="form-control data" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="valor_mensalidade_baixa_div" class="form-group col-4">
+                            <label for="valor_mensalidade_pago_baixa" class="form-label">Total Pago</label>
+                            <div class="input-group">
+                                <span class="input-group-append">
+                                    <span class="input-group-text left bg-white d-block">
+                                        <strong style="color: #707070">R$</strong>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" id="valor_mensalidade_pago_baixa" >
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
+                <button class="btn btn-success btn-sm" onclick="baixarMensalidade()"><i class="bi bi-check-circle"></i> Baixar </button>                              
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--#endregion -->
         <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.pt-BR.js"></script>
         <script src="./js/socio.js"></script>
+        <script src="./js/shared.js"></script>
         <script type="text/javascript"></script>
     </body>
 </html>

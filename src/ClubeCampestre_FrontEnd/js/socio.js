@@ -5,29 +5,46 @@ function converterData(data) {
 }
 
 $("#btnFiltrar").click(function () {
+    $("#situacao_financeira").val("");
+    $("#cadastro_socio :input").prop("disabled",false);
+    $("#cadastro_dependentes :input").prop("disabled",false);
+    $("#cadastro_mensalidades :input").prop("disabled",false);
+    $("#dt_vencimento_mensalidade_adc").prop("disabled",true);
     $('#tabela_dependentes').DataTable().clear().destroy()
+    $('#tabela_mensalidades').DataTable().clear().destroy()
     var cota = $("#filtro_num_cota").val();
     if (cota !== null && cota !== undefined && cota !== "" && cota !== " ") {
         listarSocioPorCota(cota);
     }
     else{
-        $("body").append(`
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <i class="bi bi-exclamation-circle"></i>
-            <strong>Preencher o número da cota que deseja consultar.</strong>
-            <button type="button" class="btn-close" data-bs-target="#my-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    `)
+        criarAlerta("Preencher o número da cota que deseja consultar.","alert-warning")
     }
 }
 )
+
+// $("#aba-financeiro").click(function() {
+//     var tabelaMensalidades = $('#tabela_mensalidades').DataTable()
+//     tabelaMensalidades.ajax.reload();
+// })
 
 function limparFormulario() {    
     $("#filtro_num_cota").val("");
     $("#cadastro_socio")[0].reset();
     $("#cadastro_dependentes")[0].reset();
-    $("#num_cota").prop("disabled", false)
+    $("#situacao_financeira").val("");
+    $("#cadastro_socio :input").prop("disabled",false);
+    $("#cadastro_dependentes :input").prop("disabled",false);
+    $("#cadastro_mensalidades :input").prop("disabled",false);
+    $("#dt_vencimento_mensalidade_adc").prop("disabled",true);
     $('#tabela_dependentes').DataTable().clear().destroy()
+    $('#tabela_mensalidades').DataTable().clear().destroy()
+}
+
+function desabilitarCamposDoFormulario() {
+    $("#filtro_num_cota").val("");
+    $("#cadastro_socio :input").prop("disabled",true);
+    $("#cadastro_dependentes :input").prop("disabled",true);
+    $("#cadastro_mensalidades :input").prop("disabled",true);
 }
 
 $("#btnSalvar").click(function () {
@@ -54,11 +71,53 @@ $(function() {
     });       
 });
 
+$(function() {
+    $('#ano_referencia_mensalidade').datepicker({
+        format: 'mm/yyyy',
+        minViewMode: "months",
+        autoclose:true,
+        language: 'pt-BR'
+    });
+    $('#mes_ano_referencia_mensalidade_baixa').datepicker({
+        format: 'mm/yyyy',
+        minViewMode: "months",
+        autoclose:true,
+        language: 'pt-BR'
+    });     
+});
+
+$('#ano_referencia_mensalidade').change(function() {
+    const diaVencimento = 11
+    var mesAnoReferencia = $('#ano_referencia_mensalidade').val()
+    var [mesReferencia, anoReferencia] = mesAnoReferencia.split('/')    
+    mesReferencia = parseInt(mesReferencia);
+    anoReferencia = parseInt(anoReferencia);
+
+    var mesVencimento
+    var anoVencimento
+    if (mesReferencia < 12) {
+        mesVencimento = mesReferencia + 1;
+        anoVencimento = anoReferencia;
+    }
+    else{
+        mesVencimento = 1;
+        anoVencimento = anoReferencia + 1;
+    }
+
+    if (mesVencimento < 10) {
+        mesVencimento = `0${mesVencimento}`
+    }
+
+    $('#dt_vencimento_mensalidade_adc').val(`${diaVencimento}/${mesVencimento}/${anoVencimento}`)
+})
+
 $(document).ready(function(){
     $('#cpf').mask('000.000.000-00');
     $('#cep').mask('00.000-000');
     $('.data').mask('00/00/0000');
     $('.telefone').mask('(00) 00000-0000');
+    $('#valor_mensalidade').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
+    $('#valor_mensalidade_pago_baixa').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false}); 
 });
 
 
@@ -94,23 +153,11 @@ function adicionarSocio() {
             situacaoFinanceira : 0,
             usuarioId : 1
         }),
-        success: function (data) {
-            $("body").append(`
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="bi bi-check-circle"></i>
-                <strong>Cadastro do sócio criado com sucesso!</strong>
-                <button type="button" class="btn-close" data-bs-target="#my-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            `)      
+        success: function () {
+            criarAlerta("Cadastro do sócio criado com sucesso!","alert-success")              
         },
         error: function () {
-            $("body").append(`
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="bi bi-x-circle"></i>
-                <strong>Não foi possível cadastrar o sócio.</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        `)  
+            criarAlerta("Não foi possível cadastrar o sócio.","alert-danger")            
         }
     });
 }
@@ -133,7 +180,8 @@ function listarSocioPorCota(cota) {
     $("#complemento").val("..."),
     $("#email").val("..."),
     $("#telefone_principal").val("..."),
-    $("#telefone_secundario").val("...")
+    $("#telefone_secundario").val("..."),
+    $("#situacao_financeira").val("...")
     $.ajax({
         type: "GET",
         url: `https://localhost:7013/api/Socios/${cota}`,
@@ -161,29 +209,24 @@ function listarSocioPorCota(cota) {
             $("#complemento").val(data.complemento),
             $("#email").val(data.email),
             $("#telefone_principal").val(data.telefonePrincipal),
-            $("#telefone_secundario").val(data.telefoneSecundario)
+            $("#telefone_secundario").val(data.telefoneSecundario),
+            $("#situacao_financeira").val(data.situacaoFinanceira)
 
-            /// Trazer os Dependentes do Sócio
+            /// Trazer os Dependentes e Mensalidades do Sócio
             listarDependentesPorCotaDoSocio(cota)         
             listarMensalidadesPorCotaDoSocio(cota) 
 
             $("#num_cota").prop("disabled", true)
-            $("body").append(`
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="bi bi-check-circle"></i>
-                    <strong>Dados do sócio listados com sucesso!</strong>
-                    <button type="button" class="btn-close" data-bs-target="#my-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            `)            
+            $("#situacao_financeira").prop("disabled", true)
+
+            if (parseInt(data.condicao) == 3) {
+                desabilitarCamposDoFormulario()
+            }
+
+            criarAlerta("Dados do sócio listados com sucesso!","alert-success")            
         },
-        error: function () {
-            $("body").append(`
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <i class="bi bi-exclamation-circle"></i>
-                    <strong>Não foi encontrado nenhum sócio com a cota informada.</strong>
-                    <button type="button" class="btn-close" data-bs-target="#my-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            `)    
+        error: function (data) {
+            criarAlerta(data.responseText,"alert-warning")              
         }
     });
 }
@@ -221,24 +264,11 @@ function editarSocio(cota) {
             usuarioId : 1
         }),
         success: function () {
-            $("body").append(`
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="bi bi-check-circle"></i>
-                    <strong>Cadastro alterado com sucesso!</strong>
-                    <button type="button" class="btn-close" data-bs-target="#my-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                `)
+            criarAlerta("Cadastro alterado com sucesso!","alert-success")            
             limparFormulario();          
         },
         error: function () {
-            $("body").append(`
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="bi bi-x-circle"></i>
-                    <strong>Ocorreu um erro ao alterar dados do sócio</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            `)  
-            console.log("Erro a salvar alterações no registro do Socio!")
+            criarAlerta("Ocorreu um erro ao alterar dados do sócio.","alert-danger")
         }
     });
   }
@@ -261,31 +291,17 @@ function adicionarDependentePorCotaDoSocio() {
             parentesco : parseInt($("#parentesco_dependente_adc").val()),        
             dataDeNascimento : dtNascDependente    
         }),
-        success: function (data) {
-            $("body").append(`
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="bi bi-check-circle"></i>
-                <strong>Dependente adicionado com sucesso!</strong>
-                <button type="button" class="btn-close" data-bs-target="#my-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            `)
+        success: function () {
+            criarAlerta("Dependente adicionado com sucesso","alert-success")           
             // Funcao para recriar a tabela quando adicionar dependente
            var tabelaDependentes = $('#tabela_dependentes').DataTable()
            tabelaDependentes.ajax.reload();
         },
         error: function () {
-            $("body").append(`
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="bi bi-x-circle"></i>
-                <strong>Não foi possível adicionar o dependente.</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        `)  
+            criarAlerta("Não foi possível adicionar o dependente.","alert-danger")             
         }
     });
 }
-
-
 
 function listarDependentesPorCotaDoSocio(cota) {
     $('#tabela_dependentes').DataTable(
@@ -326,12 +342,12 @@ function listarDependentesPorCotaDoSocio(cota) {
                     } 
                 },
                 {
-                    render: function(){
+                    render: function(data, type, row, meta){
                         return `
-                        <button class="col-auto btn btn-outline-primary" id="botao_edit_dependente">
+                        <button class="col-auto btn btn-outline-primary" id="botao_edit_dependente" data-bs-toggle="modal" data-bs-target="#modal_editar_dependente" onclick="abrirModalEditarDependente(${row.dependenteId})">
                             <i class="fa fa-pencil" aria-hidden="true"></i>                       
                         </button>
-                        <button class="col-auto btn btn-outline-danger" id="botao_del_dependente">
+                        <button class="col-auto btn btn-outline-danger" id="botao_del_dependente"  data-bs-toggle="modal" data-bs-target="#modal_excluir_dependente" onclick="abrirModalExcluirDependente(${row.dependenteId})">
                             <i class="fa fa-trash" aria-hidden="true"></i>                       
                         </button>`
                     }
@@ -351,6 +367,111 @@ function listarDependentesPorCotaDoSocio(cota) {
         );
 }
 
+function abrirModalEditarDependente(dependenteId) {
+    $.ajax({
+        type: 'GET',
+        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        success: function(data) {
+            data.dataDeNascimento= new Date(data.dataDeNascimento).toLocaleDateString('pt-br');
+            $("#id_dependente_edit").val(data.dependenteId),
+            $("#nome_dependente_edit").val(data.nome),
+            $("#dt_nascimento_dependente_edit").val(data.dataDeNascimento),
+            $("#parentesco_dependente_edit").val(data.parentesco)
+        }
+    });
+}
+
+function editarDependente() {
+    var dependenteId = $("#id_dependente_edit").val()
+    var dtNasc = converterData($("#dt_nascimento_dependente_edit").val())
+    $.ajax({
+        type: "PUT",
+        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        contentType : "application/json",
+        dataType: "json",
+        // headers: {
+        //     'Authorization': `Bearer ${token}`
+        // },
+        data: JSON.stringify({
+            dependenteId : parseInt($("#id_dependente_edit").val()),
+            nome : $("#nome_dependente_edit").val(),
+            parentesco : parseInt($("#parentesco_dependente_edit").val()),
+            dataDeNascimento : dtNasc,            
+            socioId : parseInt($("#id_socio").val()),
+        }),
+        success: function () {
+            $("#modal_editar_dependente").modal("hide")
+            var tabelaDependentes = $('#tabela_dependentes').DataTable()
+            tabelaDependentes.ajax.reload(); 
+            criarAlerta("Dependente atualizado com sucesso!","alert-success")
+
+        },
+        error: function () {             
+            criarAlerta("Erro a salvar alterações no registro do Dpendente!","alert-danger")
+        }
+    });
+}
+
+function abrirModalExcluirDependente(dependenteId) {
+    $.ajax({
+        type: 'GET',
+        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        success: function(data) {
+            $("#id_dependente_exclusao").val(data.dependenteId)
+        }
+    });
+}
+
+function excluirDependente() {
+    var dependenteId = $("#id_dependente_exclusao").val()
+    $.ajax({
+        type: 'DELETE',
+        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        success: function() {
+            $("#modal_excluir_dependente").modal("hide")
+            criarAlerta("Dependente excluído com sucesso","alert-success")
+            var tabelaDependentes = $('#tabela_dependentes').DataTable()
+            tabelaDependentes.ajax.reload();        
+        }
+    });
+}
+
+function adicionarMensalidadePorCotaDoSocio() {
+    var cota = parseInt($("#num_cota").val());
+    var dtVencimento = converterData($("#dt_vencimento_mensalidade_adc").val())
+    var valorMensalidade = $("#valor_mensalidade").val().replace(",",".")
+    $.ajax({
+        type: "POST",
+        url: `https://localhost:7013/api/Socios/${cota}/mensalidades`,
+        contentType : "application/json",
+        dataType: "json",
+        // headers: {
+        //     'Authorization': `Bearer ${token}`
+        // },
+        data: JSON.stringify({
+            cota : parseInt($("#num_cota").val()), 
+            mesAnoReferencia: $("#ano_referencia_mensalidade").val(),           
+            valor: parseFloat(valorMensalidade),
+            dataDeVencimento : dtVencimento    
+        }),
+        success: function (data) {
+            console.log(data)
+            criarAlerta("Mensalidade criada com sucesso!","alert-success")
+            
+            // Funcao para recriar a tabela quando adicionar mensalidade
+            var tabelaMensalidades = $('#tabela_mensalidades').DataTable()
+            tabelaMensalidades.ajax.reload();
+        },
+        error: function (data) {
+            if (data.mesAnoReferencia == null || data.valor == null || data.dataDeVencimento == null) {
+                criarAlerta("Certifique-se de preencher todos os campos da mensalidade.","alert-warning") 
+            }else{
+                criarAlerta(data.responseText,"alert-danger")
+            }          
+        }
+    });
+}
+
 function listarMensalidadesPorCotaDoSocio(cota) {
     $('#tabela_mensalidades').DataTable(
         {
@@ -365,38 +486,56 @@ function listarMensalidadesPorCotaDoSocio(cota) {
             searching: false,
             info: false,
             paging: false,
-            ordering: false,
+            //ordering: false,
+            order: [[4,'asc']],
             columns: [
                 { data: 'mesAnoReferencia' },
                 { data: 'valor' },
                 { data: 'valorPago'},
                 { data: 'dataDeVencimento' },
                 { data: 'dataDePagamento' },
-                { data: '[dataDeVencimento,dataDePagamento]',
-                    render: function(data){
-                        if (data.dataDePagamento != null) {
-                            return '<span class="label_status_mensalidade label_paga">Pago</span>'
+                {
+                    render: function(data, type, row, meta){
+                        var dataAtual = new Date(Date.now()).toISOString()
+                        if (row.dataDePagamento != null) {
+                            return '<span class="label_status_mensalidade label_paga" value=3>Pago</span>'
                         }
                         else {
-                            if (data.dataDeVencimento >= Date.now()) {
-                                return 'span class="label_status_mensalidade label_a_vencer">À Vencer</span>'
-                            }
-                            return '<span class="label_status_mensalidade label_vencida">Vencida</span>'                            
+                            if (row.dataDeVencimento >= dataAtual) {
+                                return '<span class="label_status_mensalidade label_a_vencer" value=2>À Vencer</span>'
+                            }                         
+                            return '<span class="label_status_mensalidade label_vencida" value=1>Vencida</span>'                            
                         }
+                    }
+                },
+                {
+                    render: function(data, type, row, meta){
+                        if (row.dataDePagamento != null) {
+                            return `
+                                <button disabled class="col-auto btn btn-sm btn-primary"">
+                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>                       
+                                </button>`
+                        }
+                        return `
+                        <button class="col-auto btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal_baixar_parcela" onclick="abrirModalBaixarMensalidade(${row.id})">
+                            <i class="fa fa-check-square-o" aria-hidden="true"></i>                       
+                        </button>`
                     }
                 }            
             ],
             'columnDefs': [
-            {
-                'targets': [3,4],
-                'render': DataTable.render.date(),
-            },
-        ],                    
+                {
+                    'targets': [3,4],
+                    'render': DataTable.render.date(),
+                },
+                {
+                    'targets': [0, 1, 2, 3, 4, 5, 6], /* column index */
+                    'orderable': false /* true or false */            
+                },
+            ],                    
         }
-        );
+    );
 }
-
-
 
 // ------------- VALIDAÇÃO DE CEP ------------ //
 
