@@ -1,0 +1,383 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    padding-top: 50px;
+    background-color: g;
+}
+
+.titulo_pagina {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: "Montserrat";
+    font-weight: 700;
+    color: #002A48;
+}
+
+#icon_titulo{
+    margin-right: 15px;
+}
+  
+#texto_titulo{
+    margin-bottom: 0;
+}
+
+.secao{
+    align-self: center;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    /*box-shadow: 3px 2px 8px #2222;*/
+    margin: 10px;
+    background-color: white;
+    border: solid 2px whitesmoke;
+}
+
+.titulo_secao{
+    margin-top: 20px;
+    font-family: "Montserrat";
+    color: #002A48;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#titulo_parametrizacao{
+    margin-top: 0px;
+}
+
+.linha{
+    margin-top: 15px;
+}
+
+.row > *{
+    padding-right: 0;
+}
+
+.secao_inputs{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 50px;
+}
+
+#input_filtros{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#input_parametros{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    align-items: flex-end;
+}
+  
+.label_input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: 500;
+    white-space: nowrap;    
+    font-family: "Montserrat";
+    color: #555555;
+}
+  
+.form-label{
+  margin-right: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 1.03em;
+}
+
+input:disabled,select:disabled{
+    cursor: not-allowed;
+}
+
+.input-group-text{
+    height: 40px;
+    border-radius: 0 6px 6px 0;
+    border: solid 2px rgba(224, 224, 224, 0.75);
+}
+
+.input-group-text.left{
+    border-radius: 6px 0 0 6px;
+}
+
+#botoes_filtros{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+#botoes_parametros{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.btn{
+  margin-left: 10px;
+}
+
+#tabela_socios_ativos, #tabela_mensalidades_em_aberto{
+    width: 100% !important;
+}
+
+#btnFiltrar, #btnAtualizarSituacaoFinanceira, #btnCriarMensalidades{
+    background-color: #776CFA;
+    border:solid 1px #776CFA;
+    color: white;
+}
+
+#btnFiltrar:hover, #btnAtualizarSituacaoFinanceira:hover, #btnCriarMensalidades:hover{
+    background-color: #776CFA;
+    border: solid 1px #776CFA;
+    color: white;
+    box-shadow: inset -1px -1px 15px 1px #493ec4;
+}
+
+#btnLimpar{
+    background-color: white;
+    border: solid 1px #776CFA;
+    color: #776CFA;
+}
+
+#btnLimpar:hover{
+    background-color: #776CFA;
+    color: white;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #09c84c;
+    border-color: #09c84c;
+}
+
+.btn-success:hover {
+    color: #fff;
+    /*background-image: linear-gradient(to left, #09c84c, #089539);*/
+    background-color: #089539;
+    border-color: #089539;
+}
+
+.btn-outline-danger {
+    color: #ff3434;
+    border-color: #ff3434;
+}
+
+.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #ff3434;
+    border-color: #ff3434;
+}
+
+#valor_mensalidade_dependente_parametrizacao, #valor_mensalidade_parametrizacao{
+    margin-right: 15px;
+}
+
+.label_situacao_financeira, .label_status_mensalidade {
+    border-radius: 16px;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 12px;
+    border: solid 1px;
+}
+
+.label_regular, .label_paga{
+    color: #26c126;
+    background-color: #f5fff9;
+    border-color: #26c126;
+}
+
+.label_debito, .label_a_vencer{
+    color: rgb(255, 200, 0);
+    background-color: #fffcf1;
+    border-color: gold;
+}
+
+.label_inadimplente, .label_vencida{
+    color: #ff3434;
+    background-color: #fff8f8;
+    border-color: #ff3434;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #776CFA;
+    border: 1px solid #776CFA;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 0 5px;
+    color: #ffffff;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #FFF;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    color: #00F;
+}
+
+.select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    cursor: text;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: 1px solid #ced4da;
+    outline: 0;
+}
+
+.select2-dropdown {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    left: -100000px;
+    width: 100%;
+    z-index: 1051;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #e8e8e8;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #776CFA;
+    color: white;
+}
+
+.datepicker {
+    padding: 8px;
+    border-radius: 8px;
+    direction: ltr;
+}
+
+.datepicker .datepicker-switch:hover, .datepicker .next:hover, .datepicker .prev:hover, .datepicker tfoot tr th:hover {
+    background: #eee;
+}
+
+.datepicker .datepicker-switch, .datepicker .next, .datepicker .prev, .datepicker tfoot tr th {
+    cursor: pointer;
+}
+
+.datepicker .datepicker-switch {
+    border-radius: 8px;
+    width: 145px;
+}
+
+.datepicker .datepicker-switch:hover, .datepicker .next:hover, .datepicker .prev:hover, .datepicker tfoot tr th:hover {
+    background: #eee;
+}
+
+.datepicker .datepicker-switch:hover, .datepicker .next:hover, .datepicker .prev:hover, .datepicker tfoot tr th:hover {
+    background: #eee;
+}
+
+.datepicker .datepicker-switch, .datepicker .next, .datepicker .prev, .datepicker tfoot tr th {
+    cursor: pointer;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active:hover {
+    background-image: linear-gradient(to bottom,#08c,#776CFA);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+
+.datepicker table tr td.day.focused, .datepicker table tr td.day:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+.datepicker td, .datepicker th {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+}
+
+.alert {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    justify-content: space-evenly;
+    justify-self: flex-start;
+    flex-wrap: nowrap;
+    position: fixed;
+    margin-bottom: 1rem;
+    border: 1px solid transparent red;
+    border-radius: 6px;
+    height: 50px;
+    width: auto;
+    top: 50px;
+}
+
+.alert-success{
+    background-color: #f0fff5;
+    color: #09c84c;
+}
+
+.alert-danger{
+    background-color: #fdefef;
+    color: #ff3434;
+}
+
+.alert-warning{
+    background-color: #fffcf1;
+    color: gold;
+}
+
+.alert-dismissible .btn-close {
+    top: auto;
+    z-index: 2;
+}
+
+.alert > i {
+    margin-right: 10px;
+}
+
+.btn-close {
+    --bs-btn-close-color: gold;
+    --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+    --bs-btn-close-opacity: 0.5;
+    --bs-btn-close-hover-opacity: none;
+    --bs-btn-close-focus-shadow: none; 
+    --bs-btn-close-focus-opacity: none; 
+    --bs-btn-close-disabled-opacity: none; 
+    --bs-btn-close-white-filter: gold;
+    filter: var(--bs-btn-close-white-filter);
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: .25em .25em;
+    color: var(--bs-btn-close-color);
+    background: transparent var(--bs-btn-close-bg) center/1em auto no-repeat;
+    border: 0;
+    border-radius: .375rem;
+    opacity: var(--bs-btn-close-opacity);
+}
