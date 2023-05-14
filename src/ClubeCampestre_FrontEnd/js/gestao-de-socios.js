@@ -58,18 +58,20 @@ $(document).ready(function() {
             [25, 50, 100, -1],
             [25, 50, 100, 'Todos'],
         ],
-            'columnDefs': [ {
-            'targets': [2,4], /* column index */
-            'orderable': false /* true or false */            
-        },
-        {
-            "targets": 7,
-            "className": "dt-center"
-        },
-        {
-            'targets': 5,
-            'render': DataTable.render.date(),
-        }],
+        'columnDefs': [ 
+            {
+                'targets': [2,4], /* column index */
+                'orderable': false /* true or false */            
+            },
+            {
+                "targets": 7,
+                "className": "dt-center"
+            },
+            {
+                'targets': 5,
+                'render': DataTable.render.date(),
+            }
+    ],
         
     }
     );
