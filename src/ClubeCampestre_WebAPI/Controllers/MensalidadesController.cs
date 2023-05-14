@@ -28,6 +28,7 @@ namespace ClubeCampestre_WebAPI.Controllers
             var mensalidade = await _context.Mensalidades.ToListAsync();
 
             return Ok(mensalidade);
+
         }
         [HttpPost]
         [AllowAnonymous]
@@ -39,7 +40,8 @@ namespace ClubeCampestre_WebAPI.Controllers
             return CreatedAtAction("VisualizarMensalidade", new { id = mensalidade.Id }, mensalidade);
         }
 
-       [HttpGet("{id}")]
+        [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult> VisualizarMensalidade (int id) {
             var mensalidade = await _context.Mensalidades
                .FirstOrDefaultAsync(c => c.Id == id);
@@ -63,7 +65,7 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet("socios/{idSocio}/mensalidades")]
-        public async Task<ActionResult> ListarMensalidadesEmAberto(int idSocio)
+        public async Task<ActionResult> ListarMensalidadesEmAbertoDoSocio(int idSocio)
         {
             var mensalidadesEmAberto = await _context.Mensalidades
              .Where(m => m.SocioId == idSocio)
@@ -77,6 +79,7 @@ namespace ClubeCampestre_WebAPI.Controllers
 
 
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult> MarcarPagamento(int id, Mensalidade model)
         {
 
@@ -93,6 +96,16 @@ namespace ClubeCampestre_WebAPI.Controllers
             return NoContent();
         }
 
+        [AllowAnonymous]
+        [HttpGet("em-aberto")]
+        public async Task<ActionResult> ListarTodasAsMensalidadesEmAberto()
+        {
+            var mensalidades = await _context.Mensalidades
+            .Include(s => s.Socio)
+            .Where(m => m.DataDePagamento == null)
+            .ToListAsync();
 
+            return Ok(mensalidades);
+        }
     }
 }
