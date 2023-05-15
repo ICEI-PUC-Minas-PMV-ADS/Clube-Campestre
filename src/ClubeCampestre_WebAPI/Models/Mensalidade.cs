@@ -14,7 +14,7 @@ namespace ClubeCampestre_WebAPI.Models
         public float? ValorPago { get; set; }
 
         public int SocioId { get; set; }
-        [JsonIgnore]
+        
         public Socio Socio { get; set; }
     }
 }
