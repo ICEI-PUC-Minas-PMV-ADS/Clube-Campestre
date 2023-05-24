@@ -32,20 +32,20 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 |-------------------|--------|----------------------|
 |Tela Login|Login Aceito | ![sucesso](https://user-images.githubusercontent.com/81272703/232234987-24c001b1-5571-4233-a4c1-8738388c671f.gif)|
 |Tela Login|Login Incorreto | ![usuarioIncorreto](https://user-images.githubusercontent.com/81272703/232235042-b90c5fd2-04e0-4540-9ff8-07779f611030.gif)|
-|Tela Gestão de Sócios| Ordenação de Dados | https://user-images.githubusercontent.com/70529816/232366813-bc68a493-f085-4ef5-9bc7-057c0d7d7332.mp4 |
-|Tela Cadastro de Sócio| Listar Sócio por Cota | https://user-images.githubusercontent.com/70529816/232367460-67009ff6-12c9-4df8-9ce9-df872fdd7745.mp4|
-|Tela Cadastro de Sócio|Não preencher número da Cota e "Filtrar"|https://user-images.githubusercontent.com/70529816/232367728-56625496-b314-49d0-802c-0afc6f04ba57.mp4|
-|Tela Cadastro de Sócio| Sócio não Encontrado | https://user-images.githubusercontent.com/70529816/232367546-6b2b2ed0-b3e1-4046-b40e-66ec43ef67d3.mp4 |
-|Tela Cadastro de Sócio | Sócio Cadastrado com Sucesso| https://user-images.githubusercontent.com/70529816/232367069-008aa760-e631-4a3b-9585-618937baccc1.mp4 |
-|Tela Cadastro de Sócio|Falha no Cadastro do Sócio | https://user-images.githubusercontent.com/70529816/232367250-1e336114-17fd-4387-a960-f0e4d738e8a9.mp4 |
-|Tela Cadastro de Sócio|Editar Sócio com Sucesso | https://user-images.githubusercontent.com/70529816/232367339-2cb14cbd-08a0-4e24-a7f4-9470e413e135.mp4 |
-|Tela Cadastro de Sócio| Dependente Adicionado com Sucesso | https://user-images.githubusercontent.com/70529816/232367908-21e17790-c6c0-4cef-8c77-b6898edd3f01.mp4 |
-|Tela Cadastro de Sócio| Falha ao Adicionar Dependente | https://user-images.githubusercontent.com/70529816/232367947-a5268277-e317-4db7-adbe-2823879f2c76.mp4 |
-|Tela Cadastro de Sócio| Limpar formulário de Cadastro | https://user-images.githubusercontent.com/70529816/232368044-df50f2af-839f-4efc-b248-33087a121d7a.mp4|
-|Tela Cadastro de Sócio| Editar Dependente| https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/70529816/ba5f885b-7511-41b2-9c7b-9e8d1fc614bb |
-|Tela Cadastro de Sócio| Remover Dependente| https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/70529816/1f1f0498-052b-4dbb-b20b-ca03a0626534 |
-|Tela Cadastro de Sócio| Criar Mensalidade|https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/70529816/453be6a2-a2ba-4f70-a766-f02ef6018c03 |
-|Tela Cadastro de Sócio| Erro ao Criar Mensalidade - Campos obrigatórios| https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/70529816/a3c7af67-857a-4156-ad3c-4cca9fcc6a5c |
-|Tela Cadastro de Sócio| Erro ao Criar Mensalidade Duplicada| https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/70529816/91f2aa6a-0596-460f-8c51-88f74cc22cb8 |
-|Tela Cadastro de Sócio| Baixar Mensalidade| https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/70529816/65d468f8-81fb-4502-9ebf-8099a21a93ef |
-|Tela Cadastro de Sócio| Visualizar Mensalidades em aberto| https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/70529816/5fdbe1bf-ed1c-48ca-add7-6d262879cc29 |
+|Tela Gestão de Sócios| Ordenação de Dados | ![ordenaçao de dados](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/a8dcfe01-1122-45ac-b3bf-89eaae66caa9) |
+|Tela Cadastro de Sócio| Listar Sócio por Cota | ![Lista socio por cota](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/c52fbc5b-bcd0-44f6-a03b-2b8ee38be190)|
+|Tela Cadastro de Sócio|Não preencher número da Cota e "Filtrar"|![Não preencher número da Cota](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/d66fde26-de6d-49e6-b35e-2a792d2d5e61)|
+|Tela Cadastro de Sócio| Sócio não Encontrado | ![Sócio não Encontrado](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/1ffc8009-7ff9-47eb-a304-73edcedd2b24) |
+|Tela Cadastro de Sócio | Sócio Cadastrado com Sucesso| ![Sócio Cadastrado com Sucesso](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/1fdd4433-57e5-4de2-9ce1-8bec197b4899) |
+|Tela Cadastro de Sócio|Falha no Cadastro do Sócio | ![Falha no Cadastro do Sócio](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/b4a3c84e-62b4-4d19-aa8e-0602c4e31e0f) |
+|Tela Cadastro de Sócio|Editar Sócio com Sucesso | ![Editar Sócio com Sucesso](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/39b63df4-6926-4027-a2d8-100ba2cafaca) |
+|Tela Cadastro de Sócio| Dependente Adicionado com Sucesso |![Dependente Adicionado com Sucesso](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/3fe6648a-3c5e-4d49-9caf-eb04bf8aefcd) |
+|Tela Cadastro de Sócio| Falha ao Adicionar Dependente | ![Falha ao Adicionar Dependente](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/ed1f9de0-9a8b-4c41-a7b9-700612a3166c) |
+|Tela Cadastro de Sócio| Limpar formulário de Cadastro | ![Limpar formulário de Cadastro](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/0a3d75cc-c949-4419-af67-339d741cec91)|
+|Tela Cadastro de Sócio| Editar Dependente| ![Editar Dependente](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/46b912d0-98c3-4051-8c1c-e9eafb91c733) |
+|Tela Cadastro de Sócio| Remover Dependente| ![Remover Dependente](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/731c201f-35e5-4fb1-9ca8-5f3a2b61b23c) |
+|Tela Cadastro de Sócio| Criar Mensalidade|![Criar Mensalidade](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/c1b5c13b-4d19-4b7b-acd7-c082d2acfe55) |
+|Tela Cadastro de Sócio| Erro ao Criar Mensalidade - Campos obrigatórios| ![Erro ao Criar Mensalidade - Campos obrigatórios](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/ac6a4df7-2913-449c-96e4-71a425c23c9f) |
+|Tela Cadastro de Sócio| Erro ao Criar Mensalidade Duplicada| ![Erro ao Criar Mensalidade Duplicada](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/6c7f6b91-764d-48bf-a189-23f879ba5b56) |
+|Tela Cadastro de Sócio| Baixar Mensalidade| ![Baixar Mensalidade](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/b5319c75-2a0c-4645-b9e5-28aac9f97e23) |
+|Tela Cadastro de Sócio| Visualizar Mensalidades em aberto| ![Visualizar Mensalidades em aberto](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/cb9223a5-b7d7-4397-88af-3f3853d4e39d) |
