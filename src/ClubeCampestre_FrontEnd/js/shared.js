@@ -11,7 +11,7 @@ function criarAlerta(mensagem, tipo) {
             icon = "bi-x-circle"
             break;
     } 
-    $("body").append(`
+    $("#corpo-pagina").append(`
         <div class="alert ${tipo} alert-dismissible fade show" role="alert">
             <i class="bi ${icon}"></i>
             <strong>${mensagem}</strong>
@@ -27,58 +27,63 @@ function fecharAlerta() {
     }, 2000);
 }
 
-function abrirModalBaixarMensalidade(id) {
-    $.ajax({
-        type: 'GET',
-        url: `https://localhost:7013/api/Mensalidades/${id}`,
-        success: function(data) {
-            $("#modal_baixar_parcela").modal("show")
-            data.dataDeVencimento= new Date(data.dataDeVencimento).toLocaleDateString('pt-br');
-            $("#id_mensalidade_baixa").val(data.id),
-            $("#mes_ano_referencia_mensalidade_baixa").val(data.mesAnoReferencia).prop("disabled",true),
-            $("#valor_mensalidade_baixa").val(data.valor).prop("disabled",true),
-            $("#dt_vencimento_mensalidade_baixa").val(data.dataDeVencimento)
-        }
-    });
+function converterData(data) {
+    const [dia, mes, ano] = data.split('/')
+    var dataConvertida = new Date(+ano, +mes - 1, +dia, +00, +00, +00, +000)
+    return dataConvertida
 }
 
-function baixarMensalidade() {
-    var id = $("#id_mensalidade_baixa").val()
-    var dtPagam = converterData($("#dt_pagamento_mensalidade_baixa").val())
-    var dtVenc = converterData($("#dt_vencimento_mensalidade_baixa").val())
-    var totalPago = $("#valor_mensalidade_pago_baixa").val().replace(",",".")
-    $.ajax({
-        type: "PUT",
-        url: `https://localhost:7013/api/Mensalidades/${id}`,
-        contentType : "application/json",
-        dataType: "json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
-        data: JSON.stringify({
-            id : parseInt($("#id_mensalidade_baixa").val()),
-            mesAnoReferencia : $("#mes_ano_referencia_mensalidade_baixa").val(),
-            dataDeVencimento : dtVenc,
-            valor : $("#valor_mensalidade_baixa").val(),
-            dataDePagamento : dtPagam,
-            valorPago: totalPago,
-            socioId : parseInt($("#id_socio").val()),
-        }),
-        success: function () {
-            $("#modal_baixar_parcela").modal("hide")
-            var tabelaDependentes = $('#tabela_mensalidades').DataTable()
-            tabelaDependentes.ajax.reload(); 
-            criarAlerta("Parcela baixada com sucesso!","alert-success")
+$(function() {
+    $('#datepicker,#datepicker2').datepicker({
+            format: 'dd/mm/yyyy',
+        language: 'pt-BR'
+    });       
+});
 
-        },
-        error: function () {             
-            criarAlerta("Não foi possível baixar a Parcela.","alert-danger")
-        }
+$(function() {
+    $('#ano_referencia_mensalidade').datepicker({
+        format: 'mm/yyyy',
+        minViewMode: "months",
+        autoclose:true,
+        language: 'pt-BR'
     });
-}
+    $('#mes_ano_referencia_mensalidade_baixa').datepicker({
+        format: 'mm/yyyy',
+        minViewMode: "months",
+        autoclose:true,
+        language: 'pt-BR'
+    });     
+});
 
+$('#ano_referencia_mensalidade').change(function() {    
+    var diaVencimento = parseInt($("#dia_vencimento_parametrizacao").val());
+    var mesAnoReferencia = $('#ano_referencia_mensalidade').val()
+    var [mesReferencia, anoReferencia] = mesAnoReferencia.split('/')    
+    mesReferencia = parseInt(mesReferencia);
+    anoReferencia = parseInt(anoReferencia);
+
+    var mesVencimento
+    var anoVencimento
+    if (mesReferencia < 12) {
+        mesVencimento = mesReferencia + 1;
+        anoVencimento = anoReferencia;
+    }
+    else{
+        mesVencimento = 1;
+        anoVencimento = anoReferencia + 1;
+    }
+
+    if (mesVencimento < 10) {
+        mesVencimento = `0${mesVencimento}`
+    }
+
+    $('#dt_vencimento_mensalidade_adc').val(`${diaVencimento}/${mesVencimento}/${anoVencimento}`)
+})
 
 $('.select_multiple').select2({
     multiple: true,
     placeholder: "",
 });
+
+//$('.select2-selection__choice__remove').html('<i style="font-size: 14px" class="fa fa-remove">')
+

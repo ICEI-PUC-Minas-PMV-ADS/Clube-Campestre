@@ -1,10 +1,19 @@
 body{
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+#corpo-pagina{
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5%;
-    padding-top: 50px;
-    background-color: g;
+    padding: 2%;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 35px;
+    margin-left: 70px;
 }
 
 .titulo_pagina {
@@ -37,6 +46,16 @@ body{
     border: solid 2px whitesmoke;
 }
 
+.secao_tabela {
+    align-self: center;
+    border-radius: 8px;
+    width: 98%;
+    /* box-shadow: 3px 2px 8px #2222; */
+    margin: 10px;
+    background-color: white;
+    border: solid 2px whitesmoke;
+}
+
 .titulo_secao{
     margin-top: 20px;
     font-family: "Montserrat";
@@ -57,6 +76,10 @@ body{
     padding-right: 0;
 }
 
+.row{
+    align-items: flex-end;
+}
+
 .secao_inputs{
     display: flex;
     align-items: flex-end;
@@ -64,6 +87,14 @@ body{
 }
 
 #input_filtros{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#input_buscar_socio{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -89,8 +120,16 @@ body{
     font-family: "Montserrat";
     color: #555555;
 }
-  
-.form-label{
+
+.campos-formulario-mensalidades{
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+    margin-bottom: 35px;
+}
+
+.form-label, .nome_coluna{
+  font-family: "Montserrat";
   margin-right: 15px;
   font-weight: 500;
   white-space: nowrap;
@@ -129,21 +168,45 @@ input:disabled,select:disabled{
   margin-left: 10px;
 }
 
+button.dt-button {
+    border-radius: 4px;
+    border: 1px solid #938bf9;
+    color: white;
+    height: 35px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    background-color: #776CFA;
+    margin-bottom: 10px;
+}
+
+button.dt-button:hover {
+    border: 1px solid #938bf9 !important;
+    color: white;
+    background-color: #776CFA !important;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to right,#5729fc, #776CFA) !important;
+}
+
 #tabela_socios_ativos, #tabela_mensalidades_em_aberto{
     width: 100% !important;
 }
 
-#btnFiltrar, #btnAtualizarSituacaoFinanceira, #btnCriarMensalidades{
+#btnSalvar, #btnFiltrar, #btnAtualizarSituacaoFinanceira, #btnCriarMensalidades, #btn_add_mensalidade, #btn_add_dependente{
     background-color: #776CFA;
     border:solid 1px #776CFA;
     color: white;
 }
 
-#btnFiltrar:hover, #btnAtualizarSituacaoFinanceira:hover, #btnCriarMensalidades:hover{
+#btnSalvar:hover, #btnFiltrar:hover, #btnAtualizarSituacaoFinanceira:hover, #btnCriarMensalidades:hover, #btn_add_mensalidade:hover, #btn_add_dependente:hover{
     background-color: #776CFA;
     border: solid 1px #776CFA;
     color: white;
-    box-shadow: inset -1px -1px 15px 1px #493ec4;
+    box-shadow: inset -1px -1px 15px 1px #5729fc;
+}
+
+#btnBuscar:hover{
+    background-color: #f5f4ff;
+    cursor: pointer;
 }
 
 #btnLimpar{
@@ -166,8 +229,22 @@ input:disabled,select:disabled{
 .btn-success:hover {
     color: #fff;
     /*background-image: linear-gradient(to left, #09c84c, #089539);*/
-    background-color: #089539;
-    border-color: #089539;
+    background-color: #09c84c;
+    border-color: #09c84c;
+    box-shadow: inset -1px -1px 15px 1px #049f16;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #ff3434;
+    border-color: #ff3434;
+}
+
+.btn-danger:hover {
+    color: #fff;
+    background-color: #ff3434;
+    border-color: #ff3434;
+    box-shadow: inset -1px -1px 15px 1px #b20a0a;
 }
 
 .btn-outline-danger {
@@ -380,4 +457,33 @@ input:disabled,select:disabled{
     border: 0;
     border-radius: .375rem;
     opacity: var(--bs-btn-close-opacity);
+}
+
+table>thead{
+    background-color: #f9f9f9;
+}
+
+
+.active>.page-link, .page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: #776CFA;
+    border-color: #776CFA;
+    border-radius: 18px;
+    height: 35px;
+    width: 35px;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    font-size: var(--bs-pagination-font-size);
+    color: #776CFA;
+    text-decoration: none;
+    background-color: var(--bs-pagination-bg);
+    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    height: 35px;    
+    border-radius: 18px;
 }
