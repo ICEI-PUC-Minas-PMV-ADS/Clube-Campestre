@@ -5,27 +5,3 @@
     gap: var(--bs-nav-underline-gap);
 }
 
-.active>.page-link, .page-link.active {
-    z-index: 3;
-    color: var(--bs-pagination-active-color);
-    background-color: #776CFA;
-    border-color: #776CFA;
-    border-radius: 18px;
-    height: 35px;
-    width: 35px;
-}
-
-.page-link {
-    position: relative;
-    display: block;
-    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
-    font-size: var(--bs-pagination-font-size);
-    color: #776CFA;
-    text-decoration: none;
-    background-color: var(--bs-pagination-bg);
-    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    height: 35px;    
-    border-radius: 18px;
-}
-

@@ -1,0 +1,112 @@
+
+#sidebar{
+    background-color: #776CFA;
+    width: 50%;
+    min-width: 18%;
+    max-width: 18%;
+    height: 100%; /* 100% Full-height */
+    position: fixed; /* Stay in place */
+    top: 0;
+    left: 0; /* Place content 60px from the top */
+    transition: 0.5s;
+}
+
+#corpo-pagina {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding: 20px;
+  }
+
+/* 80px and its content aligned to centre. Pushing it off the screen with the
+   negative left margin
+*/
+#sidebar.active {
+    min-width: 70px;
+    max-width: 70px;        
+}
+
+#sidebar ul li a{     
+    font-family: 'Montserrat'; 
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    white-space: nowrap;
+}
+
+
+#sidebar.active ul li a{            
+    color: white;
+    justify-content: center;
+    padding: 0;
+}
+
+#sidebar ul li{
+    height: 50px;
+    border-radius: 8px;
+    border: solid 1px rgba(255,255,255,.1);
+    margin: 8px;    
+    color: white;  
+    display: flex;   
+    align-items: center;    
+}
+
+#sidebar ul li.active{ 
+    border: none;    
+    background-color: rgba(255,255,255,.2);  
+}
+
+#sidebar ul li:hover{
+    background-color: rgba(255,255,255,.1);  
+}
+
+#sidebar ul li a i{
+    margin-left: -3px;
+    font-size: 30px;
+}
+
+#sidebar.active ul li a i{
+    margin-left: 12px;
+}
+
+#sidebar .sidebar-header i {
+    color: white;
+    font-size: 30px;
+}
+
+#sidebar .sidebar-header h3 {
+    font-family: 'Montserrat'; 
+    font-weight: bold; 
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0;
+    white-space: nowrap;
+    display: none;
+}
+
+#sidebar.active .sidebar-header h3 {
+    display: none;
+}
+
+#sidebar .sidebar-header  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 35px 0 35px 0;
+}
+
+#sidebar .components li a span {
+    margin-left: 15px;
+}
+
+#sidebar.active .components li a span {
+    display: none;
+}
+
+#sidebarCollapse{
+    margin-left: 8px;
+    border: none;
+}
