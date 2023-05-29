@@ -1,6 +1,16 @@
 $(document).ready(function() {
     $('#tabela_socios_ativos').DataTable(
-    {
+        {
+        dom: 'Bfrtip',
+        buttons:[
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            },
+            'excel',
+            'print'
+        ],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
         },
@@ -71,7 +81,7 @@ $(document).ready(function() {
                 'targets': 5,
                 'render': DataTable.render.date(),
             }
-    ],
+        ],
         
     }
     );
