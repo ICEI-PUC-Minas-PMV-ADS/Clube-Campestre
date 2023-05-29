@@ -27,10 +27,24 @@ namespace ClubeCampestre_WebAPI.Controllers
             if (cotaJaExiste)
                 return BadRequest("Já existe um sócio cadastrado com cota informada.");
 
+            if (socio.Cota == 0)
+                socio.Cota = BuscarProximoNumeroDeCota();
+
             _context.Socios.Add(socio);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("ListarSocioPorCota", new { cota = socio.Cota }, socio);
+        }
+
+        private int BuscarProximoNumeroDeCota()
+        {
+            Socio ultimoSocio = _context.Socios
+                .OrderByDescending(s => s.Cota)
+                .FirstOrDefault();
+
+            int proximoNumeroDeCota = ultimoSocio.Cota + 1;
+            
+            return proximoNumeroDeCota;
         }
 
         [HttpPost("lista")]
@@ -129,54 +143,31 @@ namespace ClubeCampestre_WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpPut("{cota}/inativar")]
+        [HttpPut("{cota}/ativacao")]
         [AllowAnonymous]
-        public async Task<ActionResult> InativarSocio(int cota)
+        public async Task<ActionResult> AtivarOuInativarSocio(AtivacaoSocio objAtivacao)
         {
-            Socio socio = _context.Socios.Where(s => s.Cota == cota).FirstOrDefault();
+            Socio socio = _context.Socios.Where(s => s.Cota == objAtivacao.Cota).FirstOrDefault();
+            string acaoRealizada;
 
             if (socio == null) return NotFound("Sócio não encontrado.");
 
-            socio.Condicao = CondicaoDoSocio.Inativo;
+            if (objAtivacao.IdcAtivacao == 0)
+            {
+                socio.Condicao = CondicaoDoSocio.Inativo;
+                acaoRealizada = "Inativada";
+            }
+            else
+            {
+                socio.Condicao = (CondicaoDoSocio)objAtivacao.Condicao;
+                acaoRealizada = "Reativada";
+            }
 
             _context.Socios.Update(socio);
             await _context.SaveChangesAsync();
 
-            return Ok("Cota inativada com sucesso!");
+            return Ok($"Cota {acaoRealizada} com sucesso!");
         }
-
-        [HttpPut("{cota}/ativar")]
-        [AllowAnonymous]
-        public async Task<ActionResult> ReativarSocio(int cota, int condicao)
-        {
-            Socio socio = _context.Socios.Where(s => s.Cota == cota).FirstOrDefault();
-
-            if (socio == null) return NotFound("Sócio não encontrado.");
-
-            socio.Condicao = (CondicaoDoSocio)condicao;
-
-            _context.Socios.Update(socio);
-            await _context.SaveChangesAsync();
-
-            return Ok("Cota reativada com sucesso!");
-        }
-
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> RemoverSocio(int id)
-        {
-
-            var socio = await _context.Socios.FindAsync(id);
-
-            if (socio == null) return NotFound();
-
-            _context.Socios.Remove(socio);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-
-        }
-
 
         [HttpGet("{cota}/dependentes")]
         [AllowAnonymous]
