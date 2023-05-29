@@ -4,173 +4,281 @@
   <head>
     <title>Gestão Financeira</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/menuDeNavegacao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
-</head>
-
-<body>
-    <div id="titulo_financeiro" class="titulo_pagina">
-        <i id="icon_titulo" style="font-size: 45px; color: #002A48;" class="bi bi-cash-stack"></i>
-        <h1 id="texto_titulo">Financeiro</h1>  
-    </div>
-    <div id="secao_filtros" class="secao">
-        <h4 id="titulo_parametrizacao" class="titulo_secao">Parametrização</h4>
-        <div id="input_parametros" class="col-12 linha">
-            <div id="valor_mensalidade_parametrizacao_div" class="form-group col-2">
-                <label for="valor_mensalidade_parametrizacao" class="form-label">Valor da Mensalidade</label>
-                <div class="input-group">
-                    <span class="input-group-append">
-                        <span class="input-group-text left bg-white d-block">
-                            <strong style="color: #707070">R$</strong>
-                        </span>
-                    </span>
-                    <input type="text" class="form-control" id="valor_mensalidade_parametrizacao" disabled>
-                </div>
-            </div>
-            <div id="valor_mensalidade_dependente_parametrizacao_div" class="form-group col-2">
-                <label for="valor_mensalidade_dependente_parametrizacao" class="form-label">Valor por Dependente</label>
-                <div class="input-group">
-                    <span class="input-group-append">
-                        <span class="input-group-text left bg-white d-block">
-                            <strong style="color: #707070">R$</strong>
-                        </span>
-                    </span>
-                    <input type="text" class="form-control" id="valor_mensalidade_dependente_parametrizacao" disabled>
-                </div>
-            </div>                
-            <div class="col-auto">
-                <label for="dia_vencimento_parametrizacao" class="form-label">Dia de Vencimento</label>
-                <div class="input-group date" id="">
-                    <span class="input-group-append">
-                        <span class="input-group-text left bg-white d-block">
-                            <i class="bi bi-calendar-week" style="color: #707070;"></i>
-                        </span>
-                    </span>
-                    <input type="number" class="form-control" autocomplete="off" id="dia_vencimento_parametrizacao" min="1" max="31" disabled >    
-                </div>
-            </div>     
-            <button class="col-auto btn btn-outline-primary" type="reset" id="btnEditar" onclick="resetarFiltros()"><i class="fa fa-pencil"></i></button>
-            <button class="col-auto btn btn-success" id="btnSalvar" onclick=""><i class="fa fa-floppy-o"></i></button>
-            <button class="col-auto btn" type="reset" id="btnCriarMensalidades" onclick=""><i class="bi bi-plus-lg"></i> Criar Mensalidades </button>
-            <button class="col-auto btn" id="btnAtualizarSituacaoFinanceira" onclick=""><i class="bi bi-arrow-repeat"></i> Atualizar Situação Financeira dos Sócios </button>
-        </div>             
-      </div>
-      <div id="lista_socios" class="secao">
-          <table id="tabela_mensalidades_em_aberto" class="table table-hover">
-              <thead>
-                  <tr>
-                      <th>Cota</th>
-                      <th>Nome</th>
-                      <th>CPF</th>
-                      <th>Situação Financeira</th>
-                      <th>Mês/Ano Referência</th>
-                      <th>Valor Base</th>
-                      <th>Data de Vencimento</th>
-                      <th>Status</th>
-                      <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>              
-                </tbody>
-            </table>
-        </div>
-    <!--#region modalBaixarParcela  -->
-    <div class="modal fade" id="modal_baixar_parcela" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Baixar Parcela</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="baixa_mensalidades" class="">
-                    <input type="text" class="form-control" id="id_mensalidade_baixa" hidden>
-                    <div id="campos_baixa_mensalidade" class="row campos-formulario">
-                        <div id="mes_referencia_baixa_div" class="form-group col-3">
-                            <label for="mes_ano_referencia_mensalidade_baixa" class="form-label">Mês/Ano Referência</label>
-                            <div>
-                                <div class="input-group date" id="">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text left d-block" style="background-color: #e9ecef">
-                                            <i class="bi bi-calendar-week" style="color: #707070;"></i>
-                                        </span>
-                                    </span>
-                                    <input type="text" id="mes_ano_referencia_mensalidade_baixa" class="form-control ano" autocomplete="off" >
-                                </div>
-                            </div>  
-                        </div>                           
-                        <div id="valor_mensalidade_baixa_div" class="form-group col-4">
-                            <label for="valor_mensalidade_baixa" class="form-label">Valor Base</label>
-                            <div class="input-group">
-                                <span class="input-group-append">
-                                    <span class="input-group-text left d-block" style="background-color: #e9ecef">
-                                        <strong style="color: #707070">R$</strong>
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" id="valor_mensalidade_baixa" >
-                            </div>
-                        </div>
-                        <div class="form-group col-4">
-                            <label for="dt_vencimento_mensalidade_baixa" class="col-sm-3 form-label">Data de Vencimento</label>
-                            <div>
-                                <div class="input-group date" id="datepicker2">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text left d-block" style="background-color: #e9ecef">
-                                            <i class="bi bi-calendar-week" style="color: #555555;"></i>
-                                        </span>
-                                    </span>
-                                    <input type="text" id="dt_vencimento_mensalidade_baixa" class="form-control data" autocomplete="off" disabled>
-                                </div>
-                            </div>
-                        </div>                
-                    </div>
-                    <div class="row campos-formulario">
-                        <div class="form-group col-4">
-                            <label for="dt_pagamento_mensalidade_baixa" class="col-sm-3 form-label">Data de Pagamento</label>
-                            <div>
-                                <div class="input-group date" id="datepicker2">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text left d-block">
-                                            <i class="bi bi-calendar-week" style="color: #555555;"></i>
-                                        </span>
-                                    </span>
-                                    <input type="text" id="dt_pagamento_mensalidade_baixa" class="form-control data" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div id="valor_mensalidade_baixa_div" class="form-group col-4">
-                            <label for="valor_mensalidade_pago_baixa" class="form-label">Total Pago</label>
-                            <div class="input-group">
-                                <span class="input-group-append">
-                                    <span class="input-group-text left bg-white d-block">
-                                        <strong style="color: #707070">R$</strong>
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" id="valor_mensalidade_pago_baixa" >
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
-                <button class="btn btn-success btn-sm" onclick="baixarMensalidade()"><i class="bi bi-check-circle"></i> Baixar </button>                              
-            </div>
-          </div>
-        </div>
-    </div>
-    <!--#endregion -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="./css/socio.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/shared.css">
+</head>
+
+<body onload="carregarMenuDeNavegacao(3)">
+    <div id="corpo-pagina">        
+        <div id="titulo_financeiro" class="titulo_pagina">
+            <i id="icon_titulo" style="font-size: 45px; color: #002A48;" class="bi bi-cash-stack"></i>
+            <h1 id="texto_titulo">Financeiro</h1>  
+        </div>
+        <div id="secao_filtros" class="secao">
+            <h4 id="titulo_parametrizacao" class="titulo_secao">Parametrização</h4>
+            <div id="input_parametros" class="col-12 linha">
+                <input type="text" class="form-control" id="id_parametros" hidden>
+                <div id="valor_mensalidade_parametrizacao_div" class="form-group col-2">
+                    <label for="valor_mensalidade_parametrizacao" class="form-label">Valor da Mensalidade</label>
+                    <div class="input-group">
+                        <span class="input-group-append">
+                            <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                <strong style="color: #707070">R$</strong>
+                            </span>
+                        </span>
+                        <input type="text" class="form-control maskMoney" id="valor_mensalidade_parametrizacao" disabled>
+                    </div>
+                </div>
+                <div id="valor_mensalidade_dependente_parametrizacao_div" class="form-group col-2">
+                    <label for="valor_mensalidade_dependente_parametrizacao" class="form-label">Valor por Dependente</label>
+                    <div class="input-group">
+                        <span class="input-group-append">
+                            <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                <strong style="color: #707070">R$</strong>
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" id="valor_mensalidade_dependente_parametrizacao" disabled>
+                    </div>
+                </div>                
+                <div class="col-auto">
+                    <label for="dia_vencimento_parametrizacao" class="form-label">Dia de Vencimento</label>
+                    <div class="input-group date" id="">
+                        <span class="input-group-append">
+                            <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                <i class="bi bi-calendar-week" style="color: #707070;"></i>
+                            </span>
+                        </span>
+                        <input type="number" class="form-control" autocomplete="off" id="dia_vencimento_parametrizacao" min="1" max="31" disabled >    
+                    </div>
+                </div>     
+                <button class="col-auto btn btn-outline-primary" id="btnEditar" onclick="editarParametrosFinanceiros()"><i class="fa fa-pencil"></i></button>
+                <button class="col-auto btn btn-outline-danger" id="btnCancelarEdicao" onclick="cancelarEdicaoParametrosFinanceiros()"><i class="fa fa-remove"></i></button>
+                <button class="col-auto btn btn-success" id="btnSalvarParametros" onclick="atualizarParametrosFinanceiros()"><i class="fa fa-floppy-o"></i></button>
+                <button class="col-auto btn" id="btnCriarMensalidades" data-bs-toggle="modal" data-bs-target="#modal_ciar_mensalidades" onclick="abrirModalCriarMensalidades()"><i class="bi bi-plus-lg"></i> Criar Mensalidades </button>
+                <button class="col-auto btn" id="btnAtualizarSituacaoFinanceira" onclick="AtualizarSituacaoFinanceiraDosSocios()"><i class="bi bi-arrow-repeat"></i> Atualizar Situação Financeira</button>
+            </div>             
+          </div>
+          <div id="lista_socios" class="secao">
+              <table id="tabela_mensalidades_em_aberto" class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th class="nome_coluna">Cota</th>
+                          <th class="nome_coluna">Nome</th>
+                          <th class="nome_coluna">CPF</th>
+                          <th class="nome_coluna">Situação Financeira</th>
+                          <th class="nome_coluna">Mês/Ano Referência</th>
+                          <th class="nome_coluna">Valor Base</th>
+                          <th class="nome_coluna">Data de Vencimento</th>
+                          <th class="nome_coluna">Status</th>
+                          <th class="nome_coluna">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>              
+                    </tbody>
+                </table>
+            </div>
+        <!--#region modalBaixarParcela  -->
+        <div class="modal fade" id="modal_baixar_parcela" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Baixar Parcela</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="baixa_mensalidades" class="">
+                        <input type="text" class="form-control" id="id_mensalidade_baixa" hidden>
+                        <input type="text" class="form-control" id="id_socio" hidden>
+                        <div id="campos_baixa_mensalidade" class="row campos-formulario">
+                            <div id="mes_referencia_baixa_div" class="form-group col-3">
+                                <label for="mes_ano_referencia_mensalidade_baixa" class="form-label">Mês/Ano Referência</label>
+                                <div>
+                                    <div class="input-group date" id="">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                                <i class="bi bi-calendar-week" style="color: #707070;"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" id="mes_ano_referencia_mensalidade_baixa" class="form-control ano" autocomplete="off" >
+                                    </div>
+                                </div>  
+                            </div>                           
+                            <div id="valor_mensalidade_baixa_div" class="form-group col-4">
+                                <label for="valor_mensalidade_baixa" class="form-label">Valor Base</label>
+                                <div class="input-group">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                            <strong style="color: #707070">R$</strong>
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" id="valor_mensalidade_baixa" >
+                                </div>
+                            </div>
+                            <div class="form-group col-4">
+                                <label for="dt_vencimento_mensalidade_baixa" class="col-sm-3 form-label">Data de Vencimento</label>
+                                <div>
+                                    <div class="input-group date" id="datepicker2">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                                <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" id="dt_vencimento_mensalidade_baixa" class="form-control data" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                        <div class="row campos-formulario">
+                            <div class="form-group col-4">
+                                <label for="dt_pagamento_mensalidade_baixa" class="col-sm-3 form-label">Data de Pagamento</label>
+                                <div>
+                                    <div class="input-group date" id="datepicker2">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text left d-block">
+                                                <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" id="dt_pagamento_mensalidade_baixa" class="form-control data" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="valor_mensalidade_baixa_div" class="form-group col-4">
+                                <label for="valor_mensalidade_pago_baixa" class="form-label">Total Pago</label>
+                                <div class="input-group">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text left bg-white d-block">
+                                            <strong style="color: #707070">R$</strong>
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" id="valor_mensalidade_pago_baixa" >
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
+                    <button class="btn btn-success btn-sm" onclick="baixarMensalidade()"><i class="bi bi-check-circle"></i> Baixar </button>                              
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--#endregion -->
+        <!--#region modalCriarMensalidades  -->
+         <div class="modal fade" id="modal_ciar_mensalidades" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Criar Mensalidades</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="criacao_mensalidades" class="">
+                        <div id="campos_mensalidade" class="row campos-formulario-mensalidades">
+                            <div id="mes_referencia_adc_div" class="form-group col-3">
+                                <label for="mes_mensalidade_adc" class="form-label">Mês/Ano Referência</label>
+                                <div>
+                                    <div class="input-group date" id="">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text left bg-white d-block">
+                                                <i class="bi bi-calendar-week" style="color: #707070;"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" id="ano_referencia_mensalidade" class="form-control ano" autocomplete="off" >
+                                    </div>
+                                </div>  
+                            </div>                           
+                            <div id="valor_mensalidade_adc_div" class="form-group col-3">
+                                <label for="valor_mensalidade" class="form-label">Valor</label>
+                                <div class="input-group">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                            <strong style="color: #707070">R$</strong>
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" id="valor_mensalidade" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="dt_vencimento_mensalidade_adc" class="col-sm-3 form-label">Data de Vencimento</label>
+                                <div>
+                                    <div class="input-group date" id="datepicker2">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text left d-block" style="background-color: #e9ecef">
+                                                <i class="bi bi-calendar-week" style="color: #555555;"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" id="dt_vencimento_mensalidade_adc" class="form-control data" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="col-auto btn" id="btn_add_mensalidade" style="width: 110px;" onclick="adicionarMensalidadeGrid()"><i class="bi bi-plus-lg"></i> Adicionar </span>  
+                            </div>
+                        </form>
+                        <div class="secao_tabela" >
+                            <table id="tabela_criar_mensalidades" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Mês/Ano Referência</th>
+                                        <th>Valor</th>
+                                        <th>Data de Vencimento</th>
+                                        <th></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody id="tabela_criar_mensalidades_body">              
+                                  </tbody>
+                              </table>
+                        </div>                       
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
+                    <button class="btn btn-success btn-sm" onclick="adicionarMensalidadesParaTodosOsSociosAtivos()"><i class="bi bi-check-circle"></i> Criar </button>                              
+                </div>
+              </div>
+            </div>
+        </div>
+         <!--#endregion --> 
+        <!--#region modalAtualizandoSitFinanceiraSocios  -->
+        <div class="modal" id="modal_atualizar_situacao_financeira" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="uploadingLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border text-primary m-4" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>
+                        <div class="loader-txt">
+                            <p>Atualizando Situação Financeira dos Sócios</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--#endregion -->
+    </div>
+    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.pt-BR.js"></script>
     <script src="./js/financeiro.js"></script>
+    <script src="./js/mensalidadesController.js"></script>
+    <script src="./js/parametrosFinanceirosController.js"></script>
     <script src="./js/shared.js"></script>
+    <script type="text/javascript"></script>
 </body>
 </html>
