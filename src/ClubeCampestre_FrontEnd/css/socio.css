@@ -19,9 +19,13 @@
     border-radius: 6px;
 }
 
+.form-select{
+    height: 40px;
+    border: solid 2px rgba(224, 224, 224, 0.75);
+}
+
 #btn_add_dependente, #btn_add_mensalidade{
     height: 40px;
-    background-color: rgba(119, 108, 250, 0.8);
     border-radius: 6px;
     border: none;
     font-size: 16px;    
@@ -30,6 +34,15 @@
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: row;
+}
+
+.botaoAdicionar.disabled{
+    background-color: #776CFA;
+    cursor: not-allowed;
+}
+
+#btnReativarSocio, #btnInativarSocio{
+    margin: 1px;
 }
 
 .lista{
@@ -47,15 +60,9 @@ table{
     width: 100% !important;
 }
 
-.nome_coluna{
-    font-family: "Montserrat";
-    font-weight: 500;
-}
-
 .campos-formulario{
     display: flex;
     align-items: flex-end;
-    margin-bottom: 35px;
 }
 
 .nav-underline {
@@ -70,6 +77,7 @@ table{
     padding-left: 0;
     border-bottom: var(--bs-nav-underline-border-width) solid ;
     color: #002A48;
+    transition: 0.5s;
 }
 
 .nav-underline .nav-link.active, .nav-underline .show>.nav-link {
@@ -77,4 +85,5 @@ table{
     color:#002A48;
     border-bottom-color: rgba(119, 108, 250, 0.8);
     border-bottom-width: 6px;
+    transition: 0.5s;
 }
