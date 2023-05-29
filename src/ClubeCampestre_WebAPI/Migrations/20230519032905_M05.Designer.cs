@@ -4,6 +4,7 @@ using ClubeCampestre_WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClubeCampestre_WebAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230519032905_M05")]
+    partial class M05
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,33 +84,6 @@ namespace ClubeCampestre_WebAPI.Migrations
                     b.HasIndex("SocioId");
 
                     b.ToTable("mensalidades");
-                });
-
-            modelBuilder.Entity("ClubeCampestre_WebAPI.Models.ParametroFinanceiro", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DiaDeVencimento")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.Property<float>("ValorDaMensalidade")
-                        .HasColumnType("real");
-
-                    b.Property<float>("ValorPorDependente")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("parametros_financeiros");
                 });
 
             modelBuilder.Entity("ClubeCampestre_WebAPI.Models.Socio", b =>
@@ -243,17 +219,6 @@ namespace ClubeCampestre_WebAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Socio");
-                });
-
-            modelBuilder.Entity("ClubeCampestre_WebAPI.Models.ParametroFinanceiro", b =>
-                {
-                    b.HasOne("ClubeCampestre_WebAPI.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("ClubeCampestre_WebAPI.Models.Socio", b =>
