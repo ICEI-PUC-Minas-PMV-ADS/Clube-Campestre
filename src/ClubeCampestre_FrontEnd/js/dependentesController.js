@@ -3,7 +3,7 @@ function adicionarDependentePorCotaDoSocio() {
     var dtNascDependente = converterData($("#dt_nascimento_dependente_adc").val())
     $.ajax({
         type: "POST",
-        url: `https://localhost:7013/api/Socios/${cota}/dependentes`,
+        url: `${BASE_URL}/Socios/${cota}/dependentes`,
         contentType : "application/json",
         dataType: "json",
         // headers: {
@@ -34,7 +34,7 @@ function listarDependentesPorCotaDoSocio(cota) {
                 url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
             },
             ajax: {
-                url: `https://localhost:7013/api/Socios/${cota}/dependentes`,
+                url: `${BASE_URL}/Socios/${cota}/dependentes`,
                 dataSrc: '',
             },        
             responsive: true,
@@ -94,7 +94,7 @@ function listarDependentesPorCotaDoSocio(cota) {
 function abrirModalEditarDependente(dependenteId) {
     $.ajax({
         type: 'GET',
-        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        url: `${BASE_URL}/Dependentes/${dependenteId}`,
         success: function(data) {
             data.dataDeNascimento= new Date(data.dataDeNascimento).toLocaleDateString('pt-br');
             $("#id_dependente_edit").val(data.dependenteId),
@@ -110,7 +110,7 @@ function editarDependente() {
     var dtNasc = converterData($("#dt_nascimento_dependente_edit").val())
     $.ajax({
         type: "PUT",
-        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        url: `${BASE_URL}/Dependentes/${dependenteId}`,
         contentType : "application/json",
         dataType: "json",
         // headers: {
@@ -139,7 +139,7 @@ function editarDependente() {
 function abrirModalExcluirDependente(dependenteId) {
     $.ajax({
         type: 'GET',
-        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        url: `${BASE_URL}/Dependentes/${dependenteId}`,
         success: function(data) {
             $("#id_dependente_exclusao").val(data.dependenteId)
         }
@@ -150,7 +150,7 @@ function excluirDependente() {
     var dependenteId = $("#id_dependente_exclusao").val()
     $.ajax({
         type: 'DELETE',
-        url: `https://localhost:7013/api/Dependentes/${dependenteId}`,
+        url: `${BASE_URL}/Dependentes/${dependenteId}`,
         success: function() {
             $("#modal_excluir_dependente").modal("hide")
             criarAlerta("Dependente excluído com sucesso","alert-success")

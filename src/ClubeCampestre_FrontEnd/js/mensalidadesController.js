@@ -4,7 +4,7 @@ function adicionarMensalidadePorCotaDoSocio() {
     var valorMensalidade = $("#valor_mensalidade").val().replace(",",".")
     $.ajax({
         type: "POST",
-        url: `https://localhost:7013/api/Socios/${cota}/mensalidades`,
+        url: `${BASE_URL}/Socios/${cota}/mensalidades`,
         contentType : "application/json",
         dataType: "json",
         // headers: {
@@ -41,7 +41,7 @@ function listarMensalidadesPorCotaDoSocio(cota) {
                 url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
             },
             ajax: {
-                url: `https://localhost:7013/api/Socios/${cota}/mensalidades`,
+                url: `${BASE_URL}/Socios/${cota}/mensalidades`,
                 dataSrc: '',
             },        
             responsive: true,
@@ -178,7 +178,7 @@ function adicionarMensalidadesParaTodosOsSociosAtivos() {
     
     $.ajax({
         type: "POST",
-        url: `https://localhost:7013/api/Socios/mensalidades/lista`,
+        url: `${BASE_URL}/Socios/mensalidades/lista`,
         contentType : "application/json",
         // headers: {
         //     'Authorization': `Bearer ${token}`
@@ -202,7 +202,7 @@ function adicionarMensalidadesParaTodosOsSociosAtivos() {
 function abrirModalBaixarMensalidade(id,socioId) {
     $.ajax({
         type: 'GET',
-        url: `https://localhost:7013/api/Mensalidades/${id}`,
+        url: `${BASE_URL}/Mensalidades/${id}`,
         success: function(data) {
             $("#modal_baixar_parcela").modal("show")
             data.dataDeVencimento= new Date(data.dataDeVencimento).toLocaleDateString('pt-br');
@@ -222,7 +222,7 @@ function baixarMensalidade() {
     var totalPago = $("#valor_mensalidade_pago_baixa").val().replace(",",".")
     $.ajax({
         type: "PUT",
-        url: `https://localhost:7013/api/Mensalidades/${id}`,
+        url: `${BASE_URL}/Mensalidades/${id}`,
         contentType : "application/json",
         dataType: "json",
         // headers: {

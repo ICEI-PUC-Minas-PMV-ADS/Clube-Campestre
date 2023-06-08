@@ -15,7 +15,7 @@ $(document).ready(function() {
         },
         ajax: {
             type: "GET",
-            url: `https://localhost:7013/api/Mensalidades/em-aberto`,
+            url: `${BASE_URL}/Mensalidades/em-aberto`,
             contentType : "application/json",
             dataType: "json",    
             dataSrc: '',
@@ -122,7 +122,7 @@ function abirModalImportarArquivo() {
 function AtualizarSituacaoFinanceiraDosSocios() {
     $.ajax({
         type: "PUT",
-        url: `https://localhost:7013/api/Socios/situacao-financeira`,
+        url: `${BASE_URL}/Socios/situacao-financeira`,
         contentType : "application/json",
         // headers: {
         //     'Authorization': `Bearer ${token}`

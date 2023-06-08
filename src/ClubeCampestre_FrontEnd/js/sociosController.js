@@ -3,7 +3,7 @@ function adicionarSocio() {
     var dtNasc = converterData($("#dt_nascimento").val())
     $.ajax({
         type: "POST",
-        url: `https://localhost:7013/api/Socios/`,
+        url: `${BASE_URL}/Socios/`,
         contentType : "application/json",
         dataType: "json",
         // headers: {
@@ -14,7 +14,7 @@ function adicionarSocio() {
             dataDeAssociacao : dtAssc,
             nome : $("#nome_completo").val(),
             condicao : parseInt($("#condicao_socio").val()),
-            cpf : $("#cpf").val(),
+            cpf : $("#cpf").val().replace(/\D/g, ''),
             identidade : $("#identidade").val(),
             dataDeNascimento : dtNasc,            
             cep : $("#cep").val(),
@@ -31,8 +31,8 @@ function adicionarSocio() {
             usuarioId : 1
         }),
         success: function (data) {
-            criarAlerta("Cadastro do sócio criado com sucesso!","alert-success")
             listarSocioPorCota(data.cota)
+            criarAlerta("Cadastro do sócio criado com sucesso!","alert-success")
         },
         error: function () {
             criarAlerta("Não foi possível cadastrar o sócio.","alert-danger")            
@@ -62,7 +62,7 @@ function listarSocioPorCota(cota) {
     $("#situacao_financeira").val("...")
     $.ajax({
         type: "GET",
-        url: `https://localhost:7013/api/Socios/${cota}`,
+        url: `${BASE_URL}/Socios/${cota}`,
         contentType : "application/json",
         // headers: {
         //     'Authorization': `Bearer ${token}`
@@ -120,7 +120,7 @@ function editarSocio(cota) {
     var dtNasc = converterData($("#dt_nascimento").val())
     $.ajax({
         type: "PUT",
-        url: `https://localhost:7013/api/Socios/${cota}`,
+        url: `${BASE_URL}/Socios/${cota}`,
         contentType : "application/json",
         dataType: "json",
         // headers: {
@@ -132,7 +132,7 @@ function editarSocio(cota) {
             dataDeAssociacao : dtAssc,
             nome : $("#nome_completo").val(),
             condicao : parseInt($("#condicao_socio").val()),
-            cpf : $("#cpf").val(),
+            cpf : $("#cpf").val().replace(/\D/g, ''),
             identidade : $("#identidade").val(),            
             dataDeNascimento : dtNasc,            
             cep : $("#cep").val(),
@@ -161,7 +161,7 @@ function editarSocio(cota) {
     var cota = parseInt($("#num_cota").val());
     $.ajax({
         type: "PUT",
-        url: `https://localhost:7013/api/Socios/${cota}/ativacao`,
+        url: `${BASE_URL}/Socios/${cota}/ativacao`,
         contentType: "application/json",
         // headers: {
         //     'Authorization': `Bearer ${token}`
@@ -179,8 +179,4 @@ function editarSocio(cota) {
             criarAlerta(data,"alert-danger")
         }
     });
-  }
-
-  function reativarSocio() {
-    
   }

@@ -1,0 +1,1 @@
+window.BASE_URL = 'https://localhost:7013/api';
