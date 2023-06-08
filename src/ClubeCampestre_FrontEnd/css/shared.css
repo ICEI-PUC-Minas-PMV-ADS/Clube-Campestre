@@ -64,8 +64,12 @@ body{
     font-weight: 600;
 }
 
-#titulo_parametrizacao{
+#titulo_parametrizacao, #titulo_mensalidades_em_aberto{
     margin-top: 0px;
+}
+
+#titulo_mensalidades_em_aberto{
+    margin-bottom: 20px;
 }
 
 .linha{
@@ -77,12 +81,12 @@ body{
 }
 
 .row{
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .secao_inputs{
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     margin-top: 50px;
 }
 
@@ -191,16 +195,16 @@ button.dt-button:hover {
     width: 100% !important;
 }
 
-#btnSalvar, #btnFiltrar, #btnAtualizarSituacaoFinanceira, #btnCriarMensalidades, #btn_add_mensalidade, #btn_add_dependente{
+.botao-padrao{
     background-color: #776CFA;
     border:solid 1px #776CFA;
     color: white;
 }
 
-#btnSalvar:hover, #btnFiltrar:hover, #btnAtualizarSituacaoFinanceira:hover, #btnCriarMensalidades:hover, #btn_add_mensalidade:hover, #btn_add_dependente:hover{
-    background-color: #776CFA;
+.botao-padrao:hover, .botao-padrao:active{
+    background-color: #776CFA !important;
     border: solid 1px #776CFA;
-    color: white;
+    color: white !important;
     box-shadow: inset -1px -1px 15px 1px #5729fc;
 }
 
@@ -258,8 +262,30 @@ button.dt-button:hover {
     border-color: #ff3434;
 }
 
-#valor_mensalidade_dependente_parametrizacao, #valor_mensalidade_parametrizacao{
+#valor_convite_parametrizacao, #valor_mensalidade_parametrizacao{
     margin-right: 15px;
+}
+
+.modal-content{
+    border: none;
+}
+
+.form-control.file{
+    padding: .375rem .75rem;
+    display: inline;   
+    width: 85%; 
+}
+
+#corpo-modal-arquivo{
+    padding: 5%;
+}
+
+#titulo_modal_arquivo{
+    margin-bottom: 25px;
+}
+
+#processar_arquivo{
+    margin-top: 25px;
 }
 
 .label_situacao_financeira, .label_status_mensalidade {
@@ -267,25 +293,27 @@ button.dt-button:hover {
     padding: 6px;
     font-weight: bold;
     font-size: 12px;
-    border: solid 1px;
+    border: none;
 }
 
 .label_regular, .label_paga{
-    color: #26c126;
-    background-color: #f5fff9;
-    border-color: #26c126;
+    background-color: #d7ffe7;
+    color: #07b443;
+}
+
+.label_paga{
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .label_debito, .label_a_vencer{
-    color: rgb(255, 200, 0);
-    background-color: #fffcf1;
-    border-color: gold;
+    background-color: #fff496;
+    color: #c17400;
 }
 
 .label_inadimplente, .label_vencida{
+    background-color: #ffe7e7;
     color: #ff3434;
-    background-color: #fff8f8;
-    border-color: #ff3434;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
@@ -407,26 +435,27 @@ button.dt-button:hover {
     flex-wrap: nowrap;
     position: fixed;
     margin-bottom: 1rem;
-    border: 1px solid transparent red;
+    border: none;
     border-radius: 6px;
     height: 50px;
     width: auto;
     top: 50px;
+    z-index: 1100;
 }
 
 .alert-success{
-    background-color: #f0fff5;
-    color: #09c84c;
+    background-color: #d7ffe7;
+    color: #04d14c;
 }
 
 .alert-danger{
-    background-color: #fdefef;
+    background-color: #ffe7e7;
     color: #ff3434;
 }
 
 .alert-warning{
-    background-color: #fffcf1;
-    color: gold;
+    background-color: #fff384;
+    color: #ce9e00;
 }
 
 .alert-dismissible .btn-close {
@@ -459,10 +488,22 @@ button.dt-button:hover {
     opacity: var(--bs-btn-close-opacity);
 }
 
+
+.consultar_cota{
+    color: #776CFA;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 table>thead{
     background-color: #f9f9f9;
 }
 
+input:focus, select:focus{
+    border: solid 2px #776CFA !important;
+    box-shadow: none !important;
+}
 
 .active>.page-link, .page-link.active {
     z-index: 3;

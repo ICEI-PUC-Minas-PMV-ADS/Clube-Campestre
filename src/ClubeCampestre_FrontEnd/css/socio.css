@@ -34,6 +34,7 @@
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: row;
+    align-self: flex-end;
 }
 
 .botaoAdicionar.disabled{

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="./css/socio.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/shared.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./js/menuDeNavegacao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
@@ -20,11 +22,7 @@
     <script src="./js/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="./css/socio.css">
-    <link rel="stylesheet" href="./css/sidebar.css">
-    <link rel="stylesheet" href="./css/shared.css">
 </head>
-
 <body onload="carregarMenuDeNavegacao(3)">
     <div id="corpo-pagina">        
         <div id="titulo_financeiro" class="titulo_pagina">
@@ -46,15 +44,15 @@
                         <input type="text" class="form-control maskMoney" id="valor_mensalidade_parametrizacao" disabled>
                     </div>
                 </div>
-                <div id="valor_mensalidade_dependente_parametrizacao_div" class="form-group col-2">
-                    <label for="valor_mensalidade_dependente_parametrizacao" class="form-label">Valor por Dependente</label>
+                <div id="valor_convite_parametrizacao_div" class="form-group col-2">
+                    <label for="valor_convite_parametrizacao" class="form-label">Valor do Convite</label>
                     <div class="input-group">
                         <span class="input-group-append">
                             <span class="input-group-text left d-block" style="background-color: #e9ecef">
                                 <strong style="color: #707070">R$</strong>
                             </span>
                         </span>
-                        <input type="text" class="form-control" id="valor_mensalidade_dependente_parametrizacao" disabled>
+                        <input type="text" class="form-control" id="valor_convite_parametrizacao" disabled>
                     </div>
                 </div>                
                 <div class="col-auto">
@@ -68,32 +66,35 @@
                         <input type="number" class="form-control" autocomplete="off" id="dia_vencimento_parametrizacao" min="1" max="31" disabled >    
                     </div>
                 </div>     
-                <button class="col-auto btn btn-outline-primary" id="btnEditar" onclick="editarParametrosFinanceiros()"><i class="fa fa-pencil"></i></button>
-                <button class="col-auto btn btn-outline-danger" id="btnCancelarEdicao" onclick="cancelarEdicaoParametrosFinanceiros()"><i class="fa fa-remove"></i></button>
-                <button class="col-auto btn btn-success" id="btnSalvarParametros" onclick="atualizarParametrosFinanceiros()"><i class="fa fa-floppy-o"></i></button>
-                <button class="col-auto btn" id="btnCriarMensalidades" data-bs-toggle="modal" data-bs-target="#modal_ciar_mensalidades" onclick="abrirModalCriarMensalidades()"><i class="bi bi-plus-lg"></i> Criar Mensalidades </button>
-                <button class="col-auto btn" id="btnAtualizarSituacaoFinanceira" onclick="AtualizarSituacaoFinanceiraDosSocios()"><i class="bi bi-arrow-repeat"></i> Atualizar Situação Financeira</button>
-            </div>             
+                <button type="button" class="col-auto btn btn-outline-primary" id="btnEditar" onclick="editarParametrosFinanceiros()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar parâmetros"><i class="fa fa-pencil"></i></button>
+                <button type="button" class="col-auto btn btn-outline-danger" id="btnCancelarEdicao" onclick="cancelarEdicaoParametrosFinanceiros()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar edição"><i class="fa fa-remove"></i></button>
+                <button type="button" class="col-auto btn btn-success" id="btnSalvarParametros" onclick="atualizarParametrosFinanceiros()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Salvar parâmetros"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                <button type="button" class="col-auto btn botao-padrao" id="btnCriarMensalidades" data-bs-toggle="modal" data-bs-target="#modal_ciar_mensalidades" onclick="abrirModalCriarMensalidades()"><i class="bi bi-plus-lg"></i> Criar Mensalidades </button>
+                <button type="button" class="col-auto btn botao-padrao" id="btnAtualizarSituacaoFinanceira" onclick="AtualizarSituacaoFinanceiraDosSocios()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Atualizar situação financeira de todos os sócios ativos"><i class="bi bi-arrow-repeat"></i> Atualizar Situação Financeira</button>
+                <button type="button" class="col-auto btn botao-padrao" id="btnAbrirModalImportarArquivo" onclick="abirModalImportarArquivo()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Importar arquivo do banco para baixar mensalidades"><i class="bi bi-upload"></i> Importar arquivo Sicoob</button>
+            </div>  
           </div>
           <div id="lista_socios" class="secao">
-              <table id="tabela_mensalidades_em_aberto" class="table table-hover">
-                  <thead>
-                      <tr>
-                          <th class="nome_coluna">Cota</th>
-                          <th class="nome_coluna">Nome</th>
-                          <th class="nome_coluna">CPF</th>
-                          <th class="nome_coluna">Situação Financeira</th>
-                          <th class="nome_coluna">Mês/Ano Referência</th>
-                          <th class="nome_coluna">Valor Base</th>
-                          <th class="nome_coluna">Data de Vencimento</th>
-                          <th class="nome_coluna">Status</th>
-                          <th class="nome_coluna">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>              
-                    </tbody>
-                </table>
-            </div>
+            <h4 id="titulo_mensalidades_em_aberto" class="titulo_secao">Mensalidades em Aberto</h4>
+            
+            <table id="tabela_mensalidades_em_aberto" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="nome_coluna">Cota</th>
+                        <th class="nome_coluna">Nome</th>
+                        <th class="nome_coluna">CPF</th>
+                        <th class="nome_coluna">Situação Financeira</th>
+                        <th class="nome_coluna">Mês/Ano Referência</th>
+                        <th class="nome_coluna">Valor Base</th>
+                        <th class="nome_coluna">Data de Vencimento</th>
+                        <th class="nome_coluna">Status</th>
+                        <th class="nome_coluna">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>              
+                </tbody>
+            </table>
+        </div>
         <!--#region modalBaixarParcela  -->
         <div class="modal fade" id="modal_baixar_parcela" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -229,7 +230,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="col-auto btn" id="btn_add_mensalidade" style="width: 110px;" onclick="adicionarMensalidadeGrid()"><i class="bi bi-plus-lg"></i> Adicionar </span>  
+                            <span class="col-auto btn botao-padrao" id="btn_add_mensalidade" style="width: 110px;" onclick="adicionarMensalidadeGrid()"><i class="bi bi-plus-lg"></i> Adicionar </span>  
                             </div>
                         </form>
                         <div class="secao_tabela" >
@@ -254,31 +255,13 @@
               </div>
             </div>
         </div>
-         <!--#endregion --> 
-        <!--#region modalAtualizandoSitFinanceiraSocios  -->
-        <div class="modal" id="modal_atualizar_situacao_financeira" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="uploadingLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-body text-center">
-                        <div class="d-flex justify-content-center">
-                            <div class="spinner-border text-primary m-4" role="status">
-                              <span class="visually-hidden">Loading...</span>
-                            </div>
-                          </div>
-                        <div class="loader-txt">
-                            <p>Atualizando Situação Financeira dos Sócios</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--#endregion -->
+         <!--#endregion -->        
     </div>
-    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.pt-BR.js"></script>
+    <script src="./apiConfig.js"></script>
     <script src="./js/financeiro.js"></script>
     <script src="./js/mensalidadesController.js"></script>
     <script src="./js/parametrosFinanceirosController.js"></script>
+    <script src="./js/arquivoCNABController.js"></script>
     <script src="./js/shared.js"></script>
-    <script type="text/javascript"></script>
 </body>
 </html>
