@@ -6,6 +6,16 @@ $(document).ready(function() {
     $("#btnReativarSocio, #btnInativarSocio").hide()
 })
 
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const cotaSocio = urlParams.get('cota'); 
+    
+    if (cotaSocio) {
+        listarSocioPorCota(cotaSocio)       
+    }  
+
+})
+
 $("#btnFiltrar").click(function () {
     buscarSocioPorCota()
 }
@@ -17,15 +27,15 @@ $("#filtro_num_cota").blur(function () {
 )
 
 function buscarSocioPorCota() {
-    $("#cadastro_socio :input, #cadastro_dependentes :input").prop("disabled",false);
-    $('#tabela_dependentes, #tabela_mensalidades').DataTable().clear().destroy()
-    $("#btnReativarSocio, #btnInativarSocio").hide()
     var cota = $("#filtro_num_cota").val();
     if (cota !== null && cota !== undefined && cota !== "" && cota !== " ") {
+        $("#cadastro_socio :input, #cadastro_dependentes :input").prop("disabled",false);
+        $('#tabela_dependentes, #tabela_mensalidades').DataTable().clear().destroy()
+        $("#btnReativarSocio, #btnInativarSocio").hide()
         listarSocioPorCota(cota);
     }
     else{
-        criarAlerta("Preencher o número da cota que deseja consultar.","alert-warning")
+        criarAlerta("Preencha o número da cota que deseja consultar.","alert-warning")
     }
 }
 
@@ -72,6 +82,29 @@ $(document).ready(function(){
     $('#valor_mensalidade').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
     $('#valor_mensalidade_pago_baixa').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false}); 
 });
+
+
+
+
+(() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+
 
 // ------------- VALIDAÇÃO DE CEP ------------ //
 

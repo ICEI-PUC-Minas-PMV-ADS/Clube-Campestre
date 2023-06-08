@@ -27,9 +27,35 @@ function fecharAlerta() {
     }, 2000);
 }
 
+function abirModalLoader(mensagem) {
+    $("#corpo-pagina").append(`
+        <div class="modal" id="modal_carregando" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="uploadingLabel">
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border text-primary m-4" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>
+                        <div class="loader-txt">
+                            <p>${mensagem}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `)
+    $("#modal_carregando").modal('show')
+}
+
+function fecharModalLoader() {
+    $("#modal_carregando").modal('hide')
+}
+
 function converterData(data) {
     const [dia, mes, ano] = data.split('/')
-    var dataConvertida = new Date(+ano, +mes - 1, +dia, +00, +00, +00, +000)
+    var dataConvertida = new Date(+ano, +mes - 1, +dia, -03, +00, +00, +000)
     return dataConvertida
 }
 
@@ -39,6 +65,9 @@ $(function() {
         language: 'pt-BR'
     });       
 });
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 $(function() {
     $('#ano_referencia_mensalidade').datepicker({
@@ -79,6 +108,11 @@ $('#ano_referencia_mensalidade').change(function() {
 
     $('#dt_vencimento_mensalidade_adc').val(`${diaVencimento}/${mesVencimento}/${anoVencimento}`)
 })
+
+
+function consultarCadastroDoSocio(cota) {
+    window.location.href = `socio.html?cota=${cota}`;
+}
 
 $('.select_multiple').select2({
     multiple: true,

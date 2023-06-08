@@ -28,7 +28,11 @@ $(document).ready(function() {
         },        
         responsive: true,
         columns: [
-            { data: 'cota' },
+            { data: 'cota',
+                render: function (data) {
+                    return `<a class="consultar_cota" onclick="consultarCadastroDoSocio(${data})">${data}</a>`
+                }
+            },
             { data: 'nome' },
             { data: 'cpf' },
             { data: 'email' },
@@ -65,8 +69,8 @@ $(document).ready(function() {
             },
         ],
         lengthMenu: [
-            [25, 50, 100, -1],
-            [25, 50, 100, 'Todos'],
+            [50, 100, 150, -1],
+            [50, 100, 150, 'Todos'],
         ],
         'columnDefs': [ 
             {
