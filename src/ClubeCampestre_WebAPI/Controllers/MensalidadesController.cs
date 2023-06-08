@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ClubeCampestre_WebAPI.Models;
+using ClubeCampestre_WebAPI.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
@@ -18,9 +19,11 @@ namespace ClubeCampestre_WebAPI.Controllers
 
     public class MensalidadesController : ControllerBase {
            private readonly AppDbContext _context;
+           private readonly SociosController _sociosController;
 
         public MensalidadesController(AppDbContext context){
-                    _context = context;
+            _context = context;
+            _sociosController = new SociosController(context);
         }
 
         [HttpGet]
@@ -77,10 +80,21 @@ namespace ClubeCampestre_WebAPI.Controllers
             return Ok(mensalidadesEmAberto);
         }
 
+        [AllowAnonymous]
+        [HttpGet("em-aberto")]
+        public async Task<ActionResult> ListarTodasAsMensalidadesEmAberto()
+        {
+            var mensalidades = await _context.Mensalidades
+            .Include(s => s.Socio)
+            .Where(m => m.DataDePagamento == null)
+            .ToListAsync();
+
+            return Ok(mensalidades);
+        }
 
         [HttpPut("{id}")]
         [AllowAnonymous]
-        public async Task<ActionResult> MarcarPagamento(int id, Mensalidade model)
+        public async Task<ActionResult> BaixarMensalidade(int id, Mensalidade model)
         {
 
             if (id != model.Id) return BadRequest();
@@ -96,16 +110,27 @@ namespace ClubeCampestre_WebAPI.Controllers
             return NoContent();
         }
 
+        [HttpPut("baixar/{cpf}/{dataDeVencimento}/{valor}")]
         [AllowAnonymous]
-        [HttpGet("em-aberto")]
-        public async Task<ActionResult> ListarTodasAsMensalidadesEmAberto()
-        {
-            var mensalidades = await _context.Mensalidades
-            .Include(s => s.Socio)
-            .Where(m => m.DataDePagamento == null)
-            .ToListAsync();
+        public string BaixarMensalidadePorCPFValorEDataDeVencimento(string cpf, DateTime dataDeVencimento, decimal valor, DateTime dataDePagamento, decimal valorPago)
+        {            
+            cpf = cpf.Substring(3, 11);
+            var idSocio = _sociosController.ListarIdDoSocioPorCpf(cpf);
 
-            return Ok(mensalidades);
+            var mensalidadeBaixada = _context.Mensalidades
+                .Where(m => m.SocioId == idSocio)
+                .Where(m => m.DataDeVencimento == dataDeVencimento)
+                .FirstOrDefault();          
+
+            if (mensalidadeBaixada == null) return "Not OK";
+
+            mensalidadeBaixada.DataDePagamento = dataDePagamento;
+            mensalidadeBaixada.ValorPago = (float)valorPago;
+
+            _context.Mensalidades.Update(mensalidadeBaixada);
+            _context.SaveChanges();
+
+            return "OK";
         }
     }
 }
