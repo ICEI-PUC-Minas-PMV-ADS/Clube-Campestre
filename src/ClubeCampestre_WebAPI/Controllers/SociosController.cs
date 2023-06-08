@@ -23,9 +23,10 @@ namespace ClubeCampestre_WebAPI.Controllers
         public async Task<ActionResult> AdicionarSocio(Socio socio)
         {
             var cotaJaExiste = await _context.Socios.FirstOrDefaultAsync(s => s.Cota == socio.Cota) != null;
+            var cpfJaExiste = await _context.Socios.FirstOrDefaultAsync(s => s.Cpf == socio.Cpf) != null;
 
-            if (cotaJaExiste)
-                return BadRequest("Já existe um sócio cadastrado com cota informada.");
+            if (cotaJaExiste || cpfJaExiste)
+                return BadRequest("Já existe um sócio cadastrado com a cota/cpf informada(o).");
 
             if (socio.Cota == 0)
                 socio.Cota = BuscarProximoNumeroDeCota();
@@ -123,6 +124,19 @@ namespace ClubeCampestre_WebAPI.Controllers
             if (socio == null) return NotFound("Não foi encontrado nenhum sócio com a cota informada.");
 
             return Ok(socio);
+        }
+
+        [HttpGet("listarIdPorCPF/{cpf}")]
+        [AllowAnonymous]
+        public int ListarIdDoSocioPorCpf(string cpf)
+        {
+            Socio socio = _context.Socios
+            .Where(s => s.Cpf == cpf)
+            .FirstOrDefault();
+
+            if (socio == null) return 0;
+
+            return socio.Id;
         }
 
         [HttpPut("{cota}")]
