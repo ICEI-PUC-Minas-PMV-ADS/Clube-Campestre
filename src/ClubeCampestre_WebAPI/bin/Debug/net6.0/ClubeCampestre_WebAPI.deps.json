@@ -9,6 +9,7 @@
       "ClubeCampestre_WebAPI/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
+          "BoletoNetCore": "3.0.1.290",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.5",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
@@ -58,6 +59,14 @@
           "lib/net6.0/BCrypt.Net-Next.dll": {
             "assemblyVersion": "4.0.3.0",
             "fileVersion": "4.0.3.0"
+          }
+        }
+      },
+      "BoletoNetCore/3.0.1.290": {
+        "runtime": {
+          "lib/netstandard2.0/BoletoNetCore.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
           }
         }
       },
@@ -796,6 +805,13 @@
       "sha512": "sha512-W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
       "path": "bcrypt.net-next/4.0.3",
       "hashPath": "bcrypt.net-next.4.0.3.nupkg.sha512"
+    },
+    "BoletoNetCore/3.0.1.290": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Yeuyk3iD3NgGY6TbRgXjy+NTzfmRo9zx5FBPpPZfQl2ulJIVPCthZwa7KiFQRFOsTyoSAqnU5kgRtZPJnJU7Og==",
+      "path": "boletonetcore/3.0.1.290",
+      "hashPath": "boletonetcore.3.0.1.290.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

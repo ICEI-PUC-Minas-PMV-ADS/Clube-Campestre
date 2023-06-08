@@ -255,3 +255,4 @@ C:\Users\ADRIANA\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\bin\Debu
 C:\Users\ADRIANA\Source\Repos\Clube-Campestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\repos\ClubeCampestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\BCrypt.Net-Next.dll
 D:\repos\ClubeCampestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\repos\ClubeCampestre\src\ClubeCampestre_WebAPI\bin\Debug\net6.0\BoletoNetCore.dll

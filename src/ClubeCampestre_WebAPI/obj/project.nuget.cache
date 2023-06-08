@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "0ehxV02WxZPZz8uMsQ8eCJYuM/6DLkynMKy3q2RSVBxDoZbOJu+qZ9eL9Ht/1NKe0crJTxg/35tghwt9xZoesg==",
+  "dgSpecHash": "jTIopxtKMdwJ8a4Mpxu2JZHPQoMun84dwMTXY2kCO5gUaa5KfCQ9RWUNCgOsZb9MJtNaDTBpS5Rar/zuw4ypxQ==",
   "success": true,
   "projectFilePath": "D:\\repos\\ClubeCampestre\\src\\ClubeCampestre_WebAPI\\ClubeCampestre_WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gusta\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\boletonetcore\\3.0.1.290\\boletonetcore.3.0.1.290.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.5\\microsoft.aspnetcore.authentication.jwtbearer.6.0.5.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

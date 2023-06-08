@@ -59,6 +59,15 @@
           }
         }
       },
+      "BoletoNetCore/3.0.1.290": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BoletoNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BoletoNetCore.dll": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1345,6 +1354,18 @@
         "lib/netstandard2.1/BCrypt.Net-Next.dll",
         "lib/netstandard2.1/BCrypt.Net-Next.xml",
         "readme.md"
+      ]
+    },
+    "BoletoNetCore/3.0.1.290": {
+      "sha512": "Yeuyk3iD3NgGY6TbRgXjy+NTzfmRo9zx5FBPpPZfQl2ulJIVPCthZwa7KiFQRFOsTyoSAqnU5kgRtZPJnJU7Og==",
+      "type": "package",
+      "path": "boletonetcore/3.0.1.290",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "boletonetcore.3.0.1.290.nupkg.sha512",
+        "boletonetcore.nuspec",
+        "lib/netstandard2.0/BoletoNetCore.dll"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -3795,6 +3816,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "BCrypt.Net-Next >= 4.0.3",
+      "BoletoNetCore >= 3.0.1.290",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.5",
       "Microsoft.EntityFrameworkCore >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
@@ -3844,6 +3866,10 @@
           "BCrypt.Net-Next": {
             "target": "Package",
             "version": "[4.0.3, )"
+          },
+          "BoletoNetCore": {
+            "target": "Package",
+            "version": "[3.0.1.290, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
