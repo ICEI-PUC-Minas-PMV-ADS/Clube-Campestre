@@ -2,7 +2,7 @@ $(document).ready(function() {
     listarParametrosFinanceiros()
     $('#btnCancelarEdicao').hide()
     $('#valor_mensalidade_parametrizacao').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
-    $('#valor_mensalidade_dependente_parametrizacao').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false}); 
+    $('#valor_convite_parametrizacao').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false}); 
     $('#valor_mensalidade').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false}); 
     $('#valor_mensalidade_pago_baixa').maskMoney({allowNegative: false, thousands:'.', decimal:',', affixesStay: false}); 
 })
@@ -22,7 +22,11 @@ $(document).ready(function() {
         },        
         responsive: true,
         columns: [
-            { data: 'socio.cota' },
+            { data: 'socio.cota',
+                render: function (data) {
+                    return `<a class="consultar_cota" onclick="consultarCadastroDoSocio(${data})">${data}</a>`
+                }
+             },
             { data: 'socio.nome' },
             { data: 'socio.cpf' },
             { data: 'socio.situacaoFinanceira',
@@ -97,6 +101,24 @@ $(document).ready(function() {
 
   });
 
+function abirModalImportarArquivo() {
+    $("#corpo-pagina").append(`
+        <div class="modal" id="modal_importar_arquivo" tabindex="-1" data-bs-keyboard="false" role="dialog" aria-labelledby="uploadingLabel">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div id="corpo-modal-arquivo" class="modal-body text-center">
+                        <h4 id="titulo_modal_arquivo">Selecionar Arquivo</h4>                                                    
+                        <input class="form-control file" type="file" id="arquivoCNAB">                                             
+                        <button id="processar_arquivo" type="submit" class="col-auto btn botao-padrao" onclick="ProcessarArquivoCNABParaBaixaDeMensalidades()"><i class="bi bi-file-earmark-break"></i> Processar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `)
+    $("#modal_importar_arquivo").modal('show')
+}
+
+
 function AtualizarSituacaoFinanceiraDosSocios() {
     $.ajax({
         type: "PUT",
@@ -106,17 +128,17 @@ function AtualizarSituacaoFinanceiraDosSocios() {
         //     'Authorization': `Bearer ${token}`
         // },
         beforeSend: function () {
-            $("#modal_atualizar_situacao_financeira").modal("show")
+            abirModalLoader('Atualizando Situação Financeira dos Sócios')
         },  
         success: function (data) {
-            $("#modal_atualizar_situacao_financeira").modal('hide')
+            fecharModalLoader()            
             var tabelaMensalidadesEmAberto = $('#tabela_mensalidades_em_aberto').DataTable()
             tabelaMensalidadesEmAberto.ajax.reload(); 
             criarAlerta(data,"alert-success")
         },
         error: function (data) { 
             setTimeout(function() {
-                $("#modal_atualizar_situacao_financeira").modal('hide')          
+                fecharModalLoader()         
             }, 750); 
             criarAlerta("Falha ao atualizar a situação financeira dos Sócios","alert-danger")
         }
