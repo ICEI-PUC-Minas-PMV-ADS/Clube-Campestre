@@ -32,13 +32,17 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-03 | Permitir que o administrador cadastre, edite e busque sócios | ALTA | 
 |RF-04 | Permitir que o administrador adicione dependentes ao cadastro dos sócios | MÉDIA |
 |RF-05 | Permitir que o administrador crie parcelas para pagamento dos sócios |ALTA |
-|RF-06 | Permitir que o administrador visualize uma lista com todos as parcelas em aberto de cada sócio | ALTA | 
+|RF-06 | Permitir que o administrador visualize uma lista com todas as parcelas em aberto de cada sócio | ALTA | 
 |RF-07 | Permitir que o administrador retire um extrato de pagamento por sócios| BAIXA | 
 |RF-08 | Permitir que o administrador visualize uma lista com todos os sócios do clube | ALTA | 
 |RF-09 | Permitir que o administrador faça filtros variados na lista de sócios | MÉDIA | 
 |RF-10 | Permitir que o administrador ordene a lista de sócios por nº da cota e nome | BAIXA |
-|RF-11 | Permitir que o administrador gere um relatório de não inadimplentes para entrada no clube | MÉDIA |
-
+|RF-11 | Permitir que o administrador gere um relatório de não inadimplentes para portaria do clube | MÉDIA |
+|RF-12 | Permitir que o administrador importe os dados de pagamentos originados do banco recebedor | ALTA |
+|RF-13 | Permitir que o administrador cadastre, edite e busque dependentes | ALTA | 
+|RF-14 | Permitir que o administrador categorize os sócios por tipo | ALTA | 
+|RF-15 | Permitir que o administrador categorize a situação financeira dos sócios | ALTA | 
+|RF-16 | Permitir que o sistema gere um cadastro numérico automático, progressivo e exclusivo, definido como "cota" | ALTA | 
 
 ### Requisitos não Funcionais
 
@@ -47,6 +51,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-01 | A aplicação deverá ser responsiva, permitindo a visualização em um browser de forma adequada.  | MÉDIA | 
 |RNF-02 | A aplicação deverá ter uma fonte padrão para todas as escritas, com alterações apenas no tamanho.   |  MÉDIA |
 |RNF-03 | A aplicação deverá apresentar um layout padrão para todas as telas, podendo ser criado ou utilizado um existente.   |  MÉDIA |
+|RNF-04 | A aplicação deverá apresentar um menu lateral responsivo.  | BAIXA | 
 
 
 ## Restrições
