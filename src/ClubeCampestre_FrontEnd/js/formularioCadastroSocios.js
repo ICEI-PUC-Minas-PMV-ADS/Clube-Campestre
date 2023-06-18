@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 })
 
-$("#btnFiltrar").click(function () {
+$("#btnBuscar").click(function () {
     buscarSocioPorCota()
 }
 )

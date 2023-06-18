@@ -13,8 +13,7 @@
 
 #corpo-pagina {
     transition: margin-left .5s; /* If you want a transition effect */
-    padding: 20px;
-  }
+}
 
 /* 80px and its content aligned to centre. Pushing it off the screen with the
    negative left margin
