@@ -4,9 +4,12 @@ using BoletoNetCore;
 using Microsoft.Win32;
 using ClubeCampestre_WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace ClubeCampestre_WebAPI.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     [Route("api/[controller]")]
     [ApiController]
     public class ArquivosCNABController : ControllerBase

@@ -34,7 +34,6 @@ namespace ClubeCampestre_WebAPI.Controllers
 
         }
         [HttpPost]
-        [AllowAnonymous]
         public async Task<ActionResult> AdicionarMensalidade(Mensalidade mensalidade) {
 
             _context.Mensalidades.Add(mensalidade);
@@ -44,7 +43,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
         public async Task<ActionResult> VisualizarMensalidade (int id) {
             var mensalidade = await _context.Mensalidades
                .FirstOrDefaultAsync(c => c.Id == id);
@@ -80,7 +78,6 @@ namespace ClubeCampestre_WebAPI.Controllers
             return Ok(mensalidadesEmAberto);
         }
 
-        [AllowAnonymous]
         [HttpGet("em-aberto")]
         public async Task<ActionResult> ListarTodasAsMensalidadesEmAberto()
         {
@@ -93,7 +90,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        [AllowAnonymous]
         public async Task<ActionResult> BaixarMensalidade(int id, Mensalidade model)
         {
 
@@ -111,7 +107,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPut("baixar/{cpf}/{dataDeVencimento}/{valor}")]
-        [AllowAnonymous]
         public string BaixarMensalidadePorCPFValorEDataDeVencimento(string cpf, DateTime dataDeVencimento, decimal valor, DateTime dataDePagamento, decimal valorPago)
         {            
             cpf = cpf.Substring(3, 11);

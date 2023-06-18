@@ -94,7 +94,7 @@ namespace ClubeCampestre_WebAPI.Controllers {
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
+        [HttpPost("autenticar")]
         public async Task<ActionResult> Authenticate(AuthenticateDto usuario) {
 
             var usuarioDb = await _context.Usuarios.SingleOrDefaultAsync(u => u.CodigoUsuario == usuario.CodigoUsuario.ToString());
@@ -105,7 +105,7 @@ namespace ClubeCampestre_WebAPI.Controllers {
 
             var jwt = GenerateJwtToken(usuarioDb);
 
-            return Ok(new { jwtToken = jwt });
+            return Ok(new { jwtToken = jwt, idUsuario = usuarioDb.Id });
         }
 
         private string GenerateJwtToken(Usuario user) {

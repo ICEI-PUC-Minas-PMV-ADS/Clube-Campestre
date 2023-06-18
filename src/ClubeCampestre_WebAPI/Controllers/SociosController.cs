@@ -59,7 +59,6 @@ namespace ClubeCampestre_WebAPI.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
         [HttpGet("listar")]
         public async Task<ActionResult> ListarSociosAtivos()
         {
@@ -72,7 +71,6 @@ namespace ClubeCampestre_WebAPI.Controllers
             return Ok(socios);
         }
 
-        [AllowAnonymous]
         [HttpPost("filtrar")]
         public async Task<ActionResult> FiltrarListaDeSociosAtivos(FiltroSocios filtros)
         {
@@ -113,7 +111,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet("{cota}")]
-        [AllowAnonymous]
         public async Task<ActionResult> ListarSocioPorCota(int cota)
         {
             var socio = await _context.Socios
@@ -127,7 +124,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet("listarIdPorCPF/{cpf}")]
-        [AllowAnonymous]
         public int ListarIdDoSocioPorCpf(string cpf)
         {
             Socio socio = _context.Socios
@@ -140,7 +136,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPut("{cota}")]
-        [AllowAnonymous]
         public async Task<ActionResult> EditarSocio(int cota, Socio socio)
         {
 
@@ -158,7 +153,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPut("{cota}/ativacao")]
-        [AllowAnonymous]
         public async Task<ActionResult> AtivarOuInativarSocio(AtivacaoSocio objAtivacao)
         {
             Socio socio = _context.Socios.Where(s => s.Cota == objAtivacao.Cota).FirstOrDefault();
@@ -184,7 +178,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet("{cota}/dependentes")]
-        [AllowAnonymous]
         public async Task<ActionResult> ListarDependentesPorCotaDoSocio(int cota)
         {
             var socio = await _context.Socios
@@ -197,7 +190,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPost("{cota}/dependentes")]
-        [AllowAnonymous]
         public async Task<ActionResult> AdicionarDependentePorCotaDoSocio(int cota, Dependente dependente)
         {
             var socio = await _context.Socios
@@ -213,7 +205,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpGet("{cota}/mensalidades")]
-        [AllowAnonymous]
         public async Task<ActionResult> ListarMensalidadesPorCotaDoSocio(int cota)
         {
             var socio = await _context.Socios
@@ -226,7 +217,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPost("{cota}/mensalidades")]
-        [AllowAnonymous]
         public async Task<ActionResult> AdicionarMensalidadePorCotaDoSocio(int cota, Mensalidade mensalidade)
         {
             var socio = await _context.Socios
@@ -250,7 +240,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPost("mensalidades/lista")]
-        [AllowAnonymous]
         public async Task<ActionResult> AdicionarMensalidadesParaTodosOsSociosAtivos(List<Mensalidade> mensalidades)
         {
             var sociosAtivos = _context.Socios 
@@ -267,7 +256,6 @@ namespace ClubeCampestre_WebAPI.Controllers
         }
 
         [HttpPut("situacao-financeira")]
-        [AllowAnonymous]
         public async Task<ActionResult> AtualizarSituacaoFinanceiraDosSocios()
         {
             var sociosAtivos = _context.Socios
