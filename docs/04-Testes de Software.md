@@ -25,6 +25,11 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 |CT17| Erro ao Criar Mensalidade duplicada para o sócio | Preencher os campos obrigatórios das mensalidades na seção "Financeiro" do cadastro do sócio e clicar no botão de "+" | Se o sócio já possuir uma mensalidade com aquele mês/ano de referência a aplicação deve exibir uma mensagem de erro na tela: "Mensalidade já criada para o sócio informado" |
 |CT18| Baixar Mensalidade| Depois de realizar o CT15, clicar no ícone de "Check" na linha com as informações da mensalidade que deseja baixar | Deverá abrir um modal com os campos do cadastro da mensalidade, e ao alterar e clicar em "Baixar" a lista de mensalidade deverá ser atualizada com as informações de pagamento e exibir uma mensagem de sucesso na tela: "Parcela baixada com sucesso!" |
 |CT19| Visualizar Todas as Mensalidades em Aberto| Ao abrir a tela "Financeiro" | Deve ser exibida uma lista com todas as mensalidades em aberto dos sócios do clube |
+|CT20| Visualizar  as parcelas em atraso e à vencer| Ao abrir a tela "Financeiro" | Deve ser exibida uma lista com todas as parcelas em aberto , a vencer e vencido do socio |
+|CT21| Importar dados do Banco para confirmar o pagamento da mensalidade | Ao abrir a tela "Financeiro" e ir em importar arquivo , vou buscar o relatorio do banco que vai demontrar os pagamentos do mês . | Deve ser exibida uma lista com todos os socios que efetuaram o pagamento do mês |
+|CT22| Datas das mensalidades Padrão | Ao abrir a tela "Financeiro"| Ao abrir a tela "Financeiro" , criar mensalidades consigo gerar todas as mensalidades e alterar a data e o valor|
+|CT23| Imprimir dados em excel | Gestão de Socio Imprimir |Ao abrir a tela "Gestão de Socio" , Consigo imprimir todas as informações dos socios do clube. |
+
 
 # Evidências de Testes de Software
 
@@ -49,3 +54,10 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 |Tela Cadastro de Sócio| Erro ao Criar Mensalidade Duplicada| ![Erro ao Criar Mensalidade Duplicada](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/6c7f6b91-764d-48bf-a189-23f879ba5b56) |
 |Tela Cadastro de Sócio| Baixar Mensalidade| ![Baixar Mensalidade](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/b5319c75-2a0c-4645-b9e5-28aac9f97e23) |
 |Tela Cadastro de Sócio| Visualizar Mensalidades em aberto| ![Visualizar Mensalidades em aberto](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/cb9223a5-b7d7-4397-88af-3f3853d4e39d) |
+|Tela Financeiro| Visualizar  as parcelas em atraso e à vencer| ![fianceiro](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/f9b0cd66-1a92-4ca7-8b5e-9bfe81db7167) |
+|Tela Financeiro| Importar dados do Banco para confirmar o pagamento da mensalidade| ![importar](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/03a536eb-57e1-470b-9104-726cf692438c)|
+|Tela Financeiro| Datas das mensalidades Padrão | ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/b4af0621-3d25-433e-9b08-764862f583a2)|
+|Tela Demonstrar arquivo Excel| Imprimir dados em excel  | ![Excel](https://github.com/ICEI-PUC-Minas-PMV-ADS/Clube-Campestre/assets/81272703/6d7321a4-9d56-41a9-b677-d649b9fb9c8d)|
+
+
+
