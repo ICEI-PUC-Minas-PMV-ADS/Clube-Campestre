@@ -19,6 +19,9 @@ $(document).ready(function() {
             contentType : "application/json",
             dataType: "json",    
             dataSrc: '',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
         },        
         responsive: true,
         columns: [
@@ -124,9 +127,9 @@ function AtualizarSituacaoFinanceiraDosSocios() {
         type: "PUT",
         url: `${BASE_URL}/Socios/situacao-financeira`,
         contentType : "application/json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         beforeSend: function () {
             abirModalLoader('Atualizando Situação Financeira dos Sócios')
         },  

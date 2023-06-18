@@ -7,9 +7,9 @@ function adicionarMensalidadePorCotaDoSocio() {
         url: `${BASE_URL}/Socios/${cota}/mensalidades`,
         contentType : "application/json",
         dataType: "json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify({
             cota : parseInt($("#num_cota").val()), 
             mesAnoReferencia: $("#ano_referencia_mensalidade").val(),           
@@ -43,6 +43,9 @@ function listarMensalidadesPorCotaDoSocio(cota) {
             ajax: {
                 url: `${BASE_URL}/Socios/${cota}/mensalidades`,
                 dataSrc: '',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
             },        
             responsive: true,
             searching: false,
@@ -180,9 +183,9 @@ function adicionarMensalidadesParaTodosOsSociosAtivos() {
         type: "POST",
         url: `${BASE_URL}/Socios/mensalidades/lista`,
         contentType : "application/json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify(mensalidades),
         success: function (data) {
             $("#modal_ciar_mensalidades").modal("hide")
@@ -203,6 +206,9 @@ function abrirModalBaixarMensalidade(id,socioId) {
     $.ajax({
         type: 'GET',
         url: `${BASE_URL}/Mensalidades/${id}`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         success: function(data) {
             $("#modal_baixar_parcela").modal("show")
             data.dataDeVencimento= new Date(data.dataDeVencimento).toLocaleDateString('pt-br');
@@ -225,9 +231,9 @@ function baixarMensalidade() {
         url: `${BASE_URL}/Mensalidades/${id}`,
         contentType : "application/json",
         dataType: "json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify({
             id : parseInt($("#id_mensalidade_baixa").val()),
             mesAnoReferencia : $("#mes_ano_referencia_mensalidade_baixa").val(),

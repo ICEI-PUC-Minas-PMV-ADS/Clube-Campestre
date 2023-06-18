@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cadastro de Sócio</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="./js/jquery.mask.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./js/menuDeNavegacao.js"></script>
-    <link rel="stylesheet" href="./css/socio.css">
-    <link rel="stylesheet" href="./css/sidebar.css">
-    <link rel="stylesheet" href="./css/shared.css">
-</head>
-<body onload="carregarMenuDeNavegacao(2)">    
+    <head>
+        <title>Cadastro de Sócio</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="./js/token.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+        <script src="./js/jquery.mask.min.js"></script>
+        <script src="./js/menuDeNavegacao.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="./css/socio.css">
+        <link rel="stylesheet" href="./css/sidebar.css">
+        <link rel="stylesheet" href="./css/shared.css">
+    </head>
+    <body onload="carregarMenuDeNavegacao(2)">    
     <div id="corpo-pagina">
-    <div id="titulo_socio" class="titulo_pagina">
-        <i id="icon_titulo" style="font-size: 54px; color: #002A48;" class="bi bi-person-plus-fill"></i>
-        <h1 id="texto_titulo">Cadastro de Sócio</h1>  
-    </div>
-    <div id="secao_filtros" class="secao">
-        <div id="input_buscar_socio">
-            <div id="cota" class="row col-auto label_input">
-                <div id="valor_mensalidade_adc_div" class="form-group" style="display: flex;">
-                    <label for="filtro_num_cota" class="col-form-label col-form-label-sm form-label">Buscar Cota:</label>
-                    <div class="input-group">
-                        <input type="text" id="filtro_num_cota" class="form-control" style="max-width: 100px;" autocomplete="off">
-                        <span class="input-group-append">
-                            <span class="input-group-text right d-block" id="btnBuscar">
-                                <i class="fa fa-search" aria-hidden="true" style="color: #707070"></i>
+        <div id="titulo_socio" class="titulo_pagina">
+            <i id="icon_titulo" style="font-size: 54px; color: #002A48;" class="bi bi-person-plus-fill"></i>
+            <h1 id="texto_titulo">Cadastro de Sócio</h1>  
+        </div>
+        <div id="secao_filtros" class="secao">
+            <div id="input_buscar_socio">
+                <div id="cota" class="row col-auto label_input">
+                    <div id="valor_mensalidade_adc_div" class="form-group" style="display: flex;">
+                        <label for="filtro_num_cota" class="col-form-label col-form-label-sm form-label">Buscar Cota:</label>
+                        <div class="input-group">
+                            <input type="text" id="filtro_num_cota" class="form-control" style="max-width: 100px;" autocomplete="off">
+                            <span class="input-group-append">
+                                <span class="input-group-text right d-block" id="btnBuscar">
+                                    <i class="fa fa-search" aria-hidden="true" style="color: #707070"></i>
+                                </span>
                             </span>
-                        </span>
-                    </div>
-                </div>                          
-            </div>   
-            <div id="botoes_filtros" class="col-auto">
-                <button class="btn btn-outline-danger btn-sm" type="reset" id="btnLimpar" onclick="limparFormulario()"> <i class="bi bi-eraser-fill"></i> Limpar </button>
-                <button class="btn botao-padrao btn-sm" id="btnSalvar" form="cadastro_socio" type="button"><i class="fa fa-floppy-o"></i> Salvar </button>
-            </div>               
-        </div>                     
-    </div>
+                        </div>
+                    </div>                          
+                </div>   
+                <div id="botoes_filtros" class="col-auto">
+                    <button class="btn btn-outline-danger btn-sm" type="reset" id="btnLimpar" onclick="limparFormulario()"> <i class="bi bi-eraser-fill"></i> Limpar </button>
+                    <button class="btn botao-padrao btn-sm" id="btnSalvar" form="cadastro_socio" type="button"><i class="fa fa-floppy-o"></i> Salvar </button>
+                </div>               
+            </div>                     
+        </div>
     <ul class="nav nav-underline" role="tablist">
         <li class="nav-item" style="width: 50%;" role="presentation">
             <a href="" class="nav-link active" id="aba-dados-pessoais" data-bs-toggle="tab" data-bs-target="#dados-pessoais-pane" type="button" role="tab" aria-controls="dados-pessoais-pane" aria-selected="true"><h3 class="titulo_secao">Dados Pessoais</h3></a>
@@ -109,11 +110,11 @@
                             <span class="btn btn-danger" id="btnInativarSocio" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Inativar cota do sócio" onclick="ativarOuInativarSocio(0)" hidden><i class="bi bi-x-circle"></i> Inativar</span>
                         </div>        
                     </div>
-                        <div class="row linha">                
-                            <div class="col-3">
-                                <label for="identidade" class="form-label">Identidade</label>
-                                <input type="text" class="form-control" autocomplete="off" id="identidade" value="" >    
-                            </div>
+                    <div class="row linha">
+                        <div class="col-3">
+                            <label for="identidade" class="form-label">Identidade</label>
+                            <input type="text" class="form-control" autocomplete="off" id="identidade" value="" >
+                        </div>
                             <div class="form-group col-2">
                                 <label for="dt_nascimento" class="col-sm-3 form-label">Data de Nascimento</label>
                                 <div>
@@ -228,16 +229,16 @@
                         <div id="lista_dependentes" class="lista">                           
                             <table class="table table-sm table" id="tabela_dependentes" onclick="">
                                 <thead>
-                                        <tr>
-                                            <th scope="col" class="nome_coluna">Nº</th>
-                                            <th scope="col" class="nome_coluna">Nome Completo</th>
-                                            <th scope="col" class="nome_coluna">Data de Nascimento</th>
-                                            <th scope="col" class="nome_coluna">Parentesco</th>
-                                            <th scope="col" class="nome_coluna">Ações</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabela_dependentes_body">
-                                    </tbody>
+                                    <tr>
+                                        <th scope="col" class="nome_coluna">Nº</th>
+                                        <th scope="col" class="nome_coluna">Nome Completo</th>
+                                        <th scope="col" class="nome_coluna">Data de Nascimento</th>
+                                        <th scope="col" class="nome_coluna">Parentesco</th>
+                                        <th scope="col" class="nome_coluna">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_dependentes_body">
+                                </tbody>
                             </table>    
                         </div>
                     </div>
@@ -304,34 +305,34 @@
                         </div>
                     </form>
                 </div>
-                  <div id="lista_mensalidades" class="lista">
+                <div id="lista_mensalidades" class="lista">
                     <table id="tabela_mensalidades" class="table table-hover">
                         <thead>
-                          <tr>
-                            <th scope="col" class="nome_coluna">Mês/Ano Referência</th>
-                            <th scope="col" class="nome_coluna">Valor Base</th>
-                            <th scope="col" class="nome_coluna">Total Pago</th>
-                            <th scope="col" class="nome_coluna">Data de Vencimento</th>                            
-                            <th scope="col" class="nome_coluna">Data de Pagamento</th>                            
-                            <th scope="col" class="nome_coluna">Status</th>
-                            <th scope="col" class="nome_coluna">Ação</th>
-                          </tr>
+                            <tr>
+                                <th scope="col" class="nome_coluna">Mês/Ano Referência</th>
+                                <th scope="col" class="nome_coluna">Valor Base</th>
+                                <th scope="col" class="nome_coluna">Total Pago</th>
+                                <th scope="col" class="nome_coluna">Data de Vencimento</th>                            
+                                <th scope="col" class="nome_coluna">Data de Pagamento</th>                            
+                                <th scope="col" class="nome_coluna">Status</th>
+                                <th scope="col" class="nome_coluna">Ação</th>
+                            </tr>
                         </thead>
                         <tbody>              
                         </tbody>
-                      </table>
+                    </table>
                 </div> 
-              </div> 
+            </div>
         </div>
         <!--#endregion -->
     </div>
     <!--#region modalEdicaoDependentes  -->
     <div class="modal fade" id="modal_editar_dependente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-          <div class="modal-content">
+            <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Dependente</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Dependente</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="cadastro_dependentes" class="">
@@ -382,29 +383,29 @@
     <!--#region modalExcluirDependente  -->
     <div class="modal fade" id="modal_excluir_dependente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Dependente</input> </h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Dependente</input> </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tem certeza que deseja excluir o dependente?</p>                    
+                    <input type="text" class="form-control" id="id_dependente_exclusao" hidden>                       
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
+                    <button class="btn btn-success btn-sm" onclick="excluirDependente()"><i class="fa fa-trash" ></i> Sim </button>              
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Tem certeza que deseja excluir o dependente?</p>                    
-                <input type="text" class="form-control" id="id_dependente_exclusao" hidden>                       
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-remove"></i> Cancelar </button>                
-                <button class="btn btn-success btn-sm" onclick="excluirDependente()"><i class="fa fa-trash" ></i> Sim </button>              
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <!--#endregion -->
     <!--#region modalBaixarParcela  -->
     <div class="modal fade" id="modal_baixar_parcela" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Baixar Parcela</h1>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Baixar Parcela</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -485,13 +486,5 @@
         </div>
     </div>
     <!--#endregion -->
-</div/>
-        <script src="./apiConfig.js"></script>
-        <script src="./js/formularioCadastroSocios.js"></script>
-        <script src="./js/sociosController.js"></script>
-        <script src="./js/dependentesController.js"></script>
-        <script src="./js/mensalidadesController.js"></script>
-        <script src="./js/parametrosFinanceirosController.js"></script>
-        <script src="./js/shared.js"></script>
     </body>
 </html>

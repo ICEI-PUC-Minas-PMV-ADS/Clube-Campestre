@@ -16,7 +16,10 @@ function ProcessarArquivoCNABParaBaixaDeMensalidades() {
         // Faz a chamada AJAX usando a biblioteca Fetch
         fetch('${BASE_URL}/ArquivosCNAB/processar', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
         })
         .then(function(response) {
             fecharModalLoader()

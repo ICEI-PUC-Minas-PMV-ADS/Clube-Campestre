@@ -6,9 +6,9 @@ function adicionarDependentePorCotaDoSocio() {
         url: `${BASE_URL}/Socios/${cota}/dependentes`,
         contentType : "application/json",
         dataType: "json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify({
             cota : parseInt($("#num_cota").val()),            
             nome : $("#nome_dependente_adc").val(),
@@ -36,6 +36,9 @@ function listarDependentesPorCotaDoSocio(cota) {
             ajax: {
                 url: `${BASE_URL}/Socios/${cota}/dependentes`,
                 dataSrc: '',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
             },        
             responsive: true,
             searching: false,
@@ -95,6 +98,9 @@ function abrirModalEditarDependente(dependenteId) {
     $.ajax({
         type: 'GET',
         url: `${BASE_URL}/Dependentes/${dependenteId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         success: function(data) {
             data.dataDeNascimento= new Date(data.dataDeNascimento).toLocaleDateString('pt-br');
             $("#id_dependente_edit").val(data.dependenteId),
@@ -113,9 +119,9 @@ function editarDependente() {
         url: `${BASE_URL}/Dependentes/${dependenteId}`,
         contentType : "application/json",
         dataType: "json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify({
             dependenteId : parseInt($("#id_dependente_edit").val()),
             nome : $("#nome_dependente_edit").val(),
@@ -140,6 +146,9 @@ function abrirModalExcluirDependente(dependenteId) {
     $.ajax({
         type: 'GET',
         url: `${BASE_URL}/Dependentes/${dependenteId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         success: function(data) {
             $("#id_dependente_exclusao").val(data.dependenteId)
         }
@@ -151,6 +160,9 @@ function excluirDependente() {
     $.ajax({
         type: 'DELETE',
         url: `${BASE_URL}/Dependentes/${dependenteId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         success: function() {
             $("#modal_excluir_dependente").modal("hide")
             criarAlerta("Dependente excluído com sucesso","alert-success")

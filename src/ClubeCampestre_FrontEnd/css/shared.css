@@ -27,6 +27,19 @@ body{
     color: #002A48;
 }
 
+#titulo_tela_login{
+    margin-top: 6%;
+    color: #776CFA;
+}
+
+#texto_titulo_login{
+    font-weight: 600;
+}
+
+#titulo_login, #titulo_tela_login{
+    align-self: center;
+}
+
 #icon_titulo{
     margin-right: 15px;
 }
@@ -44,6 +57,21 @@ body{
     margin: 10px;
     background-color: white;
     border: solid 2px whitesmoke;
+}
+
+#secao_login{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-top: 2%;
+}
+
+.campo_login{
+    margin: 25px 0;
+}
+
+#btnLogin{
+    margin: 20px 0;
 }
 
 .secao_tabela {

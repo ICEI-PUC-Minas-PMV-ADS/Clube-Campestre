@@ -3,6 +3,9 @@ function listarParametrosFinanceiros() {
     $.ajax({
         type: 'GET',
         url: `${BASE_URL}/ParametrosFinanceiros`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         async: false,
         success: function(data) {
             $("#id_parametros").val(data.id)
@@ -36,13 +39,16 @@ function atualizarParametrosFinanceiros() {
     $.ajax({
         type: 'PUT',
         url: `${BASE_URL}/ParametrosFinanceiros/${id}`,
-        contentType : "application/json",      
+        contentType : "application/json",
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },      
         data: JSON.stringify({
             id: id,
             valorDaMensalidade : parseFloat($("#valor_mensalidade_parametrizacao").val().replace(",",".")).toFixed(2),
             valorDoConvite : parseFloat($("#valor_convite_parametrizacao").val().replace(",",".")).toFixed(2),
             diaDeVencimento : parseInt($("#dia_vencimento_parametrizacao").val()),
-            usuarioId: 1           
+            usuarioId: `${idUsuario}`         
         }),
         success: function(data) {
             cancelarEdicaoParametrosFinanceiros()

@@ -6,9 +6,9 @@ function adicionarSocio() {
         url: `${BASE_URL}/Socios/`,
         contentType : "application/json",
         dataType: "json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify({
             cota : 0,
             dataDeAssociacao : dtAssc,
@@ -28,7 +28,7 @@ function adicionarSocio() {
             telefonePrincipal : $("#telefone_principal").val(),
             telefoneSecundario : $("#telefone_secundario").val(),
             situacaoFinanceira : 0,
-            usuarioId : 1
+            usuarioId : `${idUsuario}` 
         }),
         success: function (data) {
             listarSocioPorCota(data.cota)
@@ -64,9 +64,9 @@ function listarSocioPorCota(cota) {
         type: "GET",
         url: `${BASE_URL}/Socios/${cota}`,
         contentType : "application/json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         success: function (data) {
             data.dataDeAssociacao = new Date(data.dataDeAssociacao).toLocaleDateString('pt-br');
             data.dataDeNascimento= new Date(data.dataDeNascimento).toLocaleDateString('pt-br');
@@ -123,9 +123,9 @@ function editarSocio(cota) {
         url: `${BASE_URL}/Socios/${cota}`,
         contentType : "application/json",
         dataType: "json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+             'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify({
             id : parseInt($("#id_socio").val()),
             cota : parseInt(cota),
@@ -145,7 +145,7 @@ function editarSocio(cota) {
             email : $("#email").val(),
             telefonePrincipal : $("#telefone_principal").val(),
             telefoneSecundario : $("#telefone_secundario").val(),
-            usuarioId : 1
+            usuarioId : `${idUsuario}` 
         }),
         success: function () {
             criarAlerta("Cadastro alterado com sucesso!","alert-success")            
@@ -163,9 +163,9 @@ function editarSocio(cota) {
         type: "PUT",
         url: `${BASE_URL}/Socios/${cota}/ativacao`,
         contentType: "application/json",
-        // headers: {
-        //     'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
         data: JSON.stringify({
             cota : parseInt($("#num_cota").val()),
             condicao : parseInt(2),

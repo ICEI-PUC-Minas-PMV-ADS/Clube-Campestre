@@ -20,6 +20,9 @@ $(document).ready(function() {
             contentType : "application/json",
             dataType: "json",    
             dataSrc: '',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
             data: function(d) {
                 d.condicoesDosSocios = $("#condicao_socio").select2("val");
                 d.situacoesFinanceiras = $("#situacao_financeira").select2("val");
