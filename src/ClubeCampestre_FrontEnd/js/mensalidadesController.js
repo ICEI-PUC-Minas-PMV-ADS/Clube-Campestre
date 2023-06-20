@@ -83,12 +83,12 @@ function listarMensalidadesPorCotaDoSocio(cota) {
                         if (row.dataDePagamento != null) {
                             return `
                                 <button disabled class="col-auto btn btn-sm btn-primary"">
-                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>                       
+                                    <i class="bi bi-check2-circle"></i>                       
                                 </button>`
                         }
                         return `
                         <button class="col-auto btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal_baixar_parcela" onclick="abrirModalBaixarMensalidade(${row.id},${row.socioId})">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>                       
+                            <i class="bi bi-download"></i>                      
                         </button>`
                     }
                 }            
@@ -238,7 +238,7 @@ function baixarMensalidade() {
             id : parseInt($("#id_mensalidade_baixa").val()),
             mesAnoReferencia : $("#mes_ano_referencia_mensalidade_baixa").val(),
             dataDeVencimento : dtVenc,
-            valor : parseFloat($("#valor_mensalidade_baixa").val()).toFixed(2).replace(",","."),
+            valor : $("#valor_mensalidade_baixa").val().replace(",","."),
             dataDePagamento : dtPagam,
             valorPago: totalPago,
             socioId : parseInt($("#id_socio").val()),

@@ -1,37 +1,42 @@
 $(document).ready(function() {
     $('#tabela_socios_ativos').DataTable(
         {
-        dom: 'Bfrtip',
-        buttons:[
-            {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                pageSize: 'LEGAL'
+            dom: 'Blfrtip',
+            lengthChange: true,
+            lengthMenu: [
+                [50, 100, 150, -1],
+                [50, 100, 150, 'Todos'],
+            ],
+            buttons:[
+                {
+                    extend: 'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL'
+                },
+                'excel',
+                'print'
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
             },
-            'excel',
-            'print'
-        ],
-        language: {
-            url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
-        },
-        ajax: {
-            type: "POST",
-            url: `https://localhost:7013/api/Socios/filtrar`,
-            contentType : "application/json",
-            dataType: "json",    
-            dataSrc: '',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            data: function(d) {
-                d.condicoesDosSocios = $("#condicao_socio").select2("val");
-                d.situacoesFinanceiras = $("#situacao_financeira").select2("val");
-                return JSON.stringify(d);
-            },
-        },        
-        responsive: true,
-        columns: [
-            { data: 'cota',
+            ajax: {
+                type: "POST",
+                url: `https://localhost:7013/api/Socios/filtrar`,
+                contentType : "application/json",
+                dataType: "json",    
+                dataSrc: '',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                data: function(d) {
+                    d.condicoesDosSocios = $("#condicao_socio").select2("val");
+                    d.situacoesFinanceiras = $("#situacao_financeira").select2("val");
+                    return JSON.stringify(d);
+                },
+            },        
+            responsive: true,
+            columns: [
+                { data: 'cota',
                 render: function (data) {
                     return `<a class="consultar_cota" onclick="consultarCadastroDoSocio(${data})">${data}</a>`
                 }
@@ -42,8 +47,8 @@ $(document).ready(function() {
             { data: 'telefonePrincipal' },
             { data: 'dataDeAssociacao' },
             { data: 'condicao',
-                render: function (data) {
-                    if(data == 0){
+            render: function (data) {
+                if(data == 0){
                         return '<span>Fundador</span>'
                     }
                     else if(data == 1){
@@ -58,22 +63,18 @@ $(document).ready(function() {
                 } 
             },
             { data: 'situacaoFinanceira',
-                render: function (data) {
-                    if(data == 0){
-                        return '<span class="label_situacao_financeira label_regular">Regular</span>'
-                    }
-                    else if(data == 1){
-                        return '<span class="label_situacao_financeira label_debito">Débito</span>'
-                    }
-                    else if(data == 2){
-                        return '<span class="label_situacao_financeira label_inadimplente">Inadimplente</span>'
-                    }
-                } 
+            render: function (data) {
+                if(data == 0){
+                    return '<span class="label_situacao_financeira label_regular">Regular</span>'
+                }
+                else if(data == 1){
+                    return '<span class="label_situacao_financeira label_debito">Débito</span>'
+                }
+                else if(data == 2){
+                    return '<span class="label_situacao_financeira label_inadimplente">Inadimplente</span>'
+                }
+            } 
             },
-        ],
-        lengthMenu: [
-            [50, 100, 150, -1],
-            [50, 100, 150, 'Todos'],
         ],
         'columnDefs': [ 
             {
