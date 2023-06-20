@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    carregarPerfilDoUsuarioLogado()
+})
+
 function criarAlerta(mensagem, tipo) {
     var icon
     switch (tipo) {
@@ -66,8 +70,9 @@ $(function() {
     });       
 });
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+$(document).ready(function() {
+    $('[data-bs-toggle="tooltip"]').tooltip();
+})
 
 $(function() {
     $('#ano_referencia_mensalidade').datepicker({

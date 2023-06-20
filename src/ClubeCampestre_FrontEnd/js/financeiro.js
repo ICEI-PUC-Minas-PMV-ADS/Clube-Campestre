@@ -74,7 +74,7 @@ $(document).ready(function() {
                     }
                     return `
                     <button class="col-auto btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal_baixar_parcela" onclick="abrirModalBaixarMensalidade(${row.id},${row.socioId})">
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i>                       
+                    <i class="bi bi-download"></i>               
                     </button>`
                 }
             } 

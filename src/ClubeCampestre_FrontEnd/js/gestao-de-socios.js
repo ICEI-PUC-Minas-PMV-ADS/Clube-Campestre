@@ -23,7 +23,7 @@ $(document).ready(function() {
                 type: "POST",
                 url: `https://localhost:7013/api/Socios/filtrar`,
                 contentType : "application/json",
-                dataType: "json",    
+                dataType: "json",
                 dataSrc: '',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -33,68 +33,66 @@ $(document).ready(function() {
                     d.situacoesFinanceiras = $("#situacao_financeira").select2("val");
                     return JSON.stringify(d);
                 },
-            },        
+            },    
             responsive: true,
             columns: [
                 { data: 'cota',
-                render: function (data) {
-                    return `<a class="consultar_cota" onclick="consultarCadastroDoSocio(${data})">${data}</a>`
-                }
-            },
-            { data: 'nome' },
-            { data: 'cpf' },
-            { data: 'email' },
-            { data: 'telefonePrincipal' },
-            { data: 'dataDeAssociacao' },
-            { data: 'condicao',
-            render: function (data) {
-                if(data == 0){
-                        return '<span>Fundador</span>'
+                    render: function (data) {
+                        return `<a class="consultar_cota" onclick="consultarCadastroDoSocio(${data})">${data}</a>`
                     }
-                    else if(data == 1){
-                        return '<span>Proprietário</span>'
-                    }
-                    else if(data == 2){
-                        return '<span>Temporário</span>'
-                    }
-                    else if(data == 3){
-                        return '<span>Inativo</span>'
-                    }
-                } 
-            },
-            { data: 'situacaoFinanceira',
-            render: function (data) {
-                if(data == 0){
-                    return '<span class="label_situacao_financeira label_regular">Regular</span>'
+                },
+                { data: 'nome' },
+                { data: 'cpf' },
+                { data: 'email' },
+                { data: 'telefonePrincipal' },
+                { data: 'dataDeAssociacao' },
+                { data: 'condicao',
+                    render: function (data) {
+                        if(data == 0){
+                            return '<span>Fundador</span>'
+                        }
+                        else if(data == 1){
+                            return '<span>Proprietário</span>'
+                        }
+                        else if(data == 2){
+                            return '<span>Temporário</span>'
+                        }
+                        else if(data == 3){
+                            return '<span>Inativo</span>'
+                        }
+                    } 
+                },
+                { data: 'situacaoFinanceira',
+                    render: function (data) {
+                        if(data == 0){
+                            return '<span class="label_situacao_financeira label_regular">Regular</span>'
+                        }
+                        else if(data == 1){
+                            return '<span class="label_situacao_financeira label_debito">Débito</span>'
+                        }
+                        else if(data == 2){
+                            return '<span class="label_situacao_financeira label_inadimplente">Inadimplente</span>'
+                        }
+                    } 
+                },
+            ],
+            'columnDefs': [ 
+                {
+                    'targets': [2,4], /* column index */
+                    'orderable': false /* true or false */            
+                },
+                {
+                    "targets": 7,
+                    "className": "dt-center"
+                },
+                {
+                    'targets': 5,
+                    'render': DataTable.render.date(),
                 }
-                else if(data == 1){
-                    return '<span class="label_situacao_financeira label_debito">Débito</span>'
-                }
-                else if(data == 2){
-                    return '<span class="label_situacao_financeira label_inadimplente">Inadimplente</span>'
-                }
-            } 
-            },
-        ],
-        'columnDefs': [ 
-            {
-                'targets': [2,4], /* column index */
-                'orderable': false /* true or false */            
-            },
-            {
-                "targets": 7,
-                "className": "dt-center"
-            },
-            {
-                'targets': 5,
-                'render': DataTable.render.date(),
-            }
-        ],
-        
-    }
+            ],    
+        }
     );
-
-  });
+});
 
 $('.select_multiple').select2({
 multiple: true,
