@@ -14,8 +14,15 @@ function autenticarUsuario() {
             window.location.href = '/gestao-de-socios.html'
         },
         error: function () {
-            criarAlerta("Ocorreu um erro na autenticação. Verifique suas credenciais e tente novamente.","alert-danger")
+            criarAlerta("Ocorreu um erro. Verifique suas credenciais e tente novamente.","alert-danger")
         }
     })
 
+}
+
+
+function realizarLogout() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('idUsuario')
+    window.location.href = '/login.html'
 }

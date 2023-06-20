@@ -25,11 +25,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body onload="carregarMenuDeNavegacao(3)">
-    <div id="corpo-pagina">        
-        <div id="titulo_financeiro" class="titulo_pagina">
-            <i id="icon_titulo" style="font-size: 45px; color: #002A48;" class="bi bi-cash-stack"></i>
-            <h1 id="texto_titulo">Financeiro</h1>  
-        </div>
+    <div id="corpo-pagina">      
+        <div id="cabecalho">
+            <div id="titulo_financeiro" class="titulo_pagina">
+                <i id="icon_titulo" style="font-size: 45px; color: #002A48;" class="bi bi-cash-stack"></i>
+                <h1 id="texto_titulo">Financeiro</h1>  
+            </div>
+        </div>  
         <div id="secao_filtros" class="secao">
             <h4 id="titulo_parametrizacao" class="titulo_secao">Parametrização</h4>
             <div id="input_parametros" class="col-12 linha">
@@ -259,6 +261,5 @@
          <!--#endregion -->        
     </div>
     <script src="./js/arquivoCNABController.js"></script>
-    <script src="./js/shared.js"></script>
 </body>
 </html>
