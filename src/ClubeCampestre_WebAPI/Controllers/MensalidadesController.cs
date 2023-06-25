@@ -108,14 +108,14 @@ namespace ClubeCampestre_WebAPI.Controllers
 
         [HttpPut("baixar/{cpf}/{dataDeVencimento}/{valor}")]
         public string BaixarMensalidadePorCPFValorEDataDeVencimento(string cpf, DateTime dataDeVencimento, decimal valor, DateTime dataDePagamento, decimal valorPago)
-        {            
+        {
             cpf = cpf.Substring(3, 11);
             var idSocio = _sociosController.ListarIdDoSocioPorCpf(cpf);
 
             var mensalidadeBaixada = _context.Mensalidades
                 .Where(m => m.SocioId == idSocio)
                 .Where(m => m.DataDeVencimento == dataDeVencimento)
-                .Where(m => Equals(m.Valor, valor))
+                .Where(m => Math.Abs((decimal)m.Valor - valor) < 0.0001m)
                 .FirstOrDefault();          
 
             if (mensalidadeBaixada == null) return "Não foi possível baixar a mensalidade do cpf";
