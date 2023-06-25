@@ -21,7 +21,7 @@ $(document).ready(function() {
             },
             ajax: {
                 type: "POST",
-                url: `https://localhost:7013/api/Socios/filtrar`,
+                url: `${BASE_URL}/Socios/filtrar`,
                 contentType : "application/json",
                 dataType: "json",
                 dataSrc: '',

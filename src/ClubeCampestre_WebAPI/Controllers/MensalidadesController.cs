@@ -115,9 +115,10 @@ namespace ClubeCampestre_WebAPI.Controllers
             var mensalidadeBaixada = _context.Mensalidades
                 .Where(m => m.SocioId == idSocio)
                 .Where(m => m.DataDeVencimento == dataDeVencimento)
+                .Where(m => Equals(m.Valor, valor))
                 .FirstOrDefault();          
 
-            if (mensalidadeBaixada == null) return "Not OK";
+            if (mensalidadeBaixada == null) return "Não foi possível baixar a mensalidade do cpf";
 
             mensalidadeBaixada.DataDePagamento = dataDePagamento;
             mensalidadeBaixada.ValorPago = (float)valorPago;
