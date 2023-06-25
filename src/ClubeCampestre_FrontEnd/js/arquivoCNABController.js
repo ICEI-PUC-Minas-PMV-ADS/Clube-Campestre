@@ -14,7 +14,7 @@ function ProcessarArquivoCNABParaBaixaDeMensalidades() {
         abirModalLoader("Processando Arquivo de baixa de Mensalidades dos Sócios...")
     
         // Faz a chamada AJAX usando a biblioteca Fetch
-        fetch('${BASE_URL}/ArquivosCNAB/processar', {
+        fetch(`${BASE_URL}/ArquivosCNAB/processar`, {
             method: 'POST',
             body: formData,
             headers: {
