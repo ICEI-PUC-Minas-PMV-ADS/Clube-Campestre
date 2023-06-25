@@ -73,7 +73,7 @@ $(document).ready(function() {
                             </button>`
                     }
                     return `
-                    <button class="col-auto btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal_baixar_parcela" onclick="abrirModalBaixarMensalidade(${row.id},${row.socioId})">
+                    <button class="col-auto btn btn-sm btn-outline-primary" onclick="abrirModalBaixarMensalidade(${row.id},${row.socioId})">
                     <i class="bi bi-download"></i>               
                     </button>`
                 }

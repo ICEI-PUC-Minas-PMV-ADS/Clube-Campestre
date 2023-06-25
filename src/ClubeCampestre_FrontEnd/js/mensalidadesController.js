@@ -83,12 +83,12 @@ function listarMensalidadesPorCotaDoSocio(cota) {
                         if (row.dataDePagamento != null) {
                             return `
                                 <button disabled class="col-auto btn btn-sm btn-primary"">
-                                    <i class="bi bi-check2-circle"></i>                       
+                                    <i class="bi bi-check2-circle"></i>               
                                 </button>`
                         }
                         return `
-                        <button class="col-auto btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal_baixar_parcela" onclick="abrirModalBaixarMensalidade(${row.id},${row.socioId})">
-                            <i class="bi bi-download"></i>                      
+                        <button class="col-auto btn btn-sm btn-outline-primary" onclick="abrirModalBaixarMensalidade(${row.id},${row.socioId})">
+                            <i class="bi bi-download"></i>                     
                         </button>`
                     }
                 }            
@@ -112,6 +112,7 @@ function listarMensalidadesPorCotaDoSocio(cota) {
 }
 
 function abrirModalCriarMensalidades() {
+    $("#modal_ciar_mensalidades").modal('show')
     var parametros = listarParametrosFinanceiros();
     $('#valor_mensalidade').val(parseFloat(parametros.valorDaMensalidade).toFixed(2).replace(".",","))
 }

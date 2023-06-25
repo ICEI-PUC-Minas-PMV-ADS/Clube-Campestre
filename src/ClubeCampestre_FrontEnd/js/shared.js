@@ -15,20 +15,21 @@ function criarAlerta(mensagem, tipo) {
             icon = "bi-x-circle"
             break;
     } 
-    $("#corpo-pagina").append(`
+    $("#alertas").append(`
         <div class="alert ${tipo} alert-dismissible fade show" role="alert">
             <i class="bi ${icon}"></i>
             <strong>${mensagem}</strong>
             <button type="button" class="btn-close" data-bs-target="#my-alert" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `)
-    fecharAlerta()
+    const alerta = $('#alertas').children().last();
+    fecharAlerta(alerta)
 }
 
-function fecharAlerta() {
+function fecharAlerta(alerta) {
     setTimeout(function() {
-        $(".alert").alert('close');
-    }, 2000);
+        $(alerta).alert('close');
+    }, 3000);
 }
 
 function abirModalLoader(mensagem) {
@@ -73,6 +74,13 @@ $(function() {
 $(document).ready(function() {
     $('[data-bs-toggle="tooltip"]').tooltip();
 })
+
+
+$('#btnCriarMensalidades').tooltip({
+    boundary: 'window',
+    title: 'Criar mensalidades para todos os sócios ativos',
+    placement: 'top'
+});
 
 $(function() {
     $('#ano_referencia_mensalidade').datepicker({
