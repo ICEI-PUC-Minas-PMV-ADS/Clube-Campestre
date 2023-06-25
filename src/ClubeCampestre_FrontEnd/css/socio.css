@@ -44,6 +44,10 @@
 
 #btnReativarSocio, #btnInativarSocio{
     margin: 1px;
+    margin-left: 15px;
+    align-self: flex-end;
+    width: 100px;
+    padding-right: 8px;
 }
 
 .lista{

@@ -468,6 +468,16 @@ button.dt-button:hover {
     border: none;
 }
 
+#alertas {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0px;
+    z-index: 1500;
+    align-self: center;
+}
+
 .alert {
     display: flex;
     flex-direction: row;
@@ -476,7 +486,6 @@ button.dt-button:hover {
     justify-content: space-evenly;
     justify-self: flex-start;
     flex-wrap: nowrap;
-    position: fixed;
     margin-bottom: 1rem;
     border: none;
     border-radius: 6px;

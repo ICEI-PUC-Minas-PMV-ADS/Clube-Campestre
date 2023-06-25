@@ -25,7 +25,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body onload="carregarMenuDeNavegacao(3)">
-    <div id="corpo-pagina">      
+    <div id="corpo-pagina">  
+        <div id="alertas"></div>    
         <div id="cabecalho">
             <div id="titulo_financeiro" class="titulo_pagina">
                 <i id="icon_titulo" style="font-size: 45px; color: #002A48;" class="bi bi-cash-stack"></i>
@@ -72,7 +73,7 @@
                 <button type="button" class="col-auto btn btn-outline-primary" id="btnEditar" onclick="editarParametrosFinanceiros()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar parâmetros"><i class="fa fa-pencil"></i></button>
                 <button type="button" class="col-auto btn btn-outline-danger" id="btnCancelarEdicao" onclick="cancelarEdicaoParametrosFinanceiros()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar edição"><i class="fa fa-remove"></i></button>
                 <button type="button" class="col-auto btn btn-success" id="btnSalvarParametros" onclick="atualizarParametrosFinanceiros()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Salvar parâmetros"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                <button type="button" class="col-auto btn botao-padrao" id="btnCriarMensalidades" data-bs-toggle="modal" data-bs-target="#modal_ciar_mensalidades" onclick="abrirModalCriarMensalidades()"><i class="bi bi-plus-lg"></i> Criar Mensalidades </button>
+                <button type="button" class="col-auto btn botao-padrao" id="btnCriarMensalidades" onclick="abrirModalCriarMensalidades()"><i class="bi bi-plus-lg"></i> Criar Mensalidades </button>
                 <button type="button" class="col-auto btn botao-padrao" id="btnAtualizarSituacaoFinanceira" onclick="AtualizarSituacaoFinanceiraDosSocios()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Atualizar situação financeira de todos os sócios ativos"><i class="bi bi-arrow-repeat"></i> Atualizar Situação Financeira</button>
                 <button type="button" class="col-auto btn botao-padrao" id="btnAbrirModalImportarArquivo" onclick="abirModalImportarArquivo()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Importar arquivo do banco para baixar mensalidades"><i class="bi bi-upload"></i> Importar arquivo Sicoob</button>
             </div>  
@@ -103,7 +104,7 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Baixar Parcela</h1>
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Baixar Mensalidade</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

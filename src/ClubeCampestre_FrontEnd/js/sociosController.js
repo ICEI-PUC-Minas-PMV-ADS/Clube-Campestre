@@ -173,7 +173,8 @@ function editarSocio(cota) {
         }),
         success: function (data) {
             criarAlerta(data,"alert-success")
-            limparFormulario()         
+            limparFormulario()
+            listarSocioPorCota(cota)       
         },
         error: function (data) {
             criarAlerta(data,"alert-danger")

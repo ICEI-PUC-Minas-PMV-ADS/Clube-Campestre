@@ -26,6 +26,7 @@
     </head>
     <body onload="carregarMenuDeNavegacao(2)">    
     <div id="corpo-pagina">
+        <div id="alertas"></div>
         <div id="cabecalho">
             <div id="titulo_socio" class="titulo_pagina">
                 <i id="icon_titulo" style="font-size: 54px; color: #002A48;" class="bi bi-person-plus-fill"></i>
@@ -96,7 +97,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="condicao_socio_div" class="form-group col-2">
+                        <div id="condicao_socio_div" class="form-group col-auto">
                             <label for="condicao_socio" class="form-label">Condição</label>
                             <select id="condicao_socio" class="form-select select" required>
                                 <option value=""></option>
@@ -107,10 +108,8 @@
                             </select>  
                             <div class="invalid-feedback">*Campo obrigatório</div> 
                         </div>
-                        <div class="col-1">
-                            <span class="btn btn-success" id="btnReativarSocio" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Reativar cota do sócio" onclick="ativarOuInativarSocio(1)" hidden><i class="bi bi-check2-circle"></i> Reativar</span>
-                            <span class="btn btn-danger" id="btnInativarSocio" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Inativar cota do sócio" onclick="ativarOuInativarSocio(0)" hidden><i class="bi bi-x-circle"></i> Inativar</span>
-                        </div>        
+                        <span class="btn btn-success col-auto" id="btnReativarSocio" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Reativar cota do sócio" onclick="ativarOuInativarSocio(1)"><i class="bi bi-check2-circle"></i> Reativar</span>
+                        <span class="btn btn-danger col-auto" id="btnInativarSocio" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Inativar cota do sócio" onclick="ativarOuInativarSocio(0)"><i class="bi bi-x-circle"></i> Inativar</span>
                     </div>
                     <div class="row linha">
                         <div class="col-3">

@@ -48,6 +48,8 @@ function limparFormulario() {
     $(".botaoAdicionar").css("pointer-events", "none");
     $(".botaoAdicionar").addClass("disabled");
     $('#tabela_dependentes, #tabela_mensalidades').DataTable().clear().destroy()
+    $("#btnReativarSocio").hide()
+    $("#btnInativarSocio").hide()
 }
 
 function desabilitarCamposDoFormulario() {
